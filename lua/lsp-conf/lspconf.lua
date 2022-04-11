@@ -37,6 +37,25 @@ local lsp_installer = require("nvim-lsp-installer")
 --coq
 vim.g.coq_settings = { auto_start = 'shut-up' }
 
+local enhance_server_opts = {
+	["sumneko_lua"] = function(opts)
+		local root_files = {
+			'.luarc.json',
+			'.luacheckrc',
+			'.stylua.toml',
+			'selene.toml',
+			'.git'
+		}
+		local util = require'lspconfig.util'
+		local unpack = table.unpack or unpack
+		opts.root_dir = 
+		function(fname)
+			return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+		end
+
+	end,
+}
+
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
 -- or if the server is already installed).
 lsp_installer.on_server_ready(function(server)
@@ -59,6 +78,9 @@ lsp_installer.on_server_ready(function(server)
 		})
 		server:attach_buffers()
 	else
+		if enhance_server_opts[server.name] then
+			enhance_server_opts[server.name](opts)
+		end
 
 		-- This setup() function will take the provided server configuration and decorate it with the necessary properties
 		-- before passing it onwards to lspconfig.
