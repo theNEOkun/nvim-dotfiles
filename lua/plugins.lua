@@ -43,18 +43,6 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	--Test
-	use {
-		"rcarriga/vim-ultest",
-		requires = {
-			"vim-test/vim-test"
-		},
-		run = ":UpdateRemotePlugins"
-	}
-	use {
-		'tpope/vim-dispatch'
-	}
-
 	--Autocomplete
 	use {
 		'ms-jpq/coq_nvim',
@@ -68,6 +56,18 @@ return require('packer').startup(function(use)
 	}
 
 	require('lsp-conf.lspconf')
+
+	--Test
+	use {
+		"rcarriga/vim-ultest",
+		requires = {
+			"vim-test/vim-test"
+		},
+		run = ":UpdateRemotePlugins"
+	}
+	use {
+		'tpope/vim-dispatch'
+	}
 	--Specific
 	----Rust
 	use {
