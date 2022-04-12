@@ -141,6 +141,10 @@ return require('packer').startup(function(use)
 	----Colors
 	use {
 		'marko-cerovac/material.nvim',
-		'catppuccin/nvim'
+		'catppuccin/nvim',
+		{
+			'mcchrish/zenbones.nvim',
+			requires = 'rktjmp/lush.nvim'
+		}
 	}
 end)

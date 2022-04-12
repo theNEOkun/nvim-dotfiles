@@ -1,7 +1,6 @@
 local g = vim.g
 local set = vim.opt
 
-vim.cmd('colorscheme catppuccin')
 
 set.number = true
 set.tabstop = 4
@@ -11,6 +10,8 @@ set.smartindent = true
 set.wrap = false
 set.termguicolors = true
 set.timeoutlen = 500
+
+vim.cmd('colorscheme duckbones')
 
 set.clipboard:prepend {"unnamed"}
 
