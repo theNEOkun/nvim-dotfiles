@@ -135,9 +135,6 @@ return require('packer').startup(function(use)
 	----RipGrep
 	use 'jremmen/vim-ripgrep'
 
-	----Find
-	use 'sharkdp/fd'
-
 	----UndoTree
 	use 'mbbill/undotree'
 
