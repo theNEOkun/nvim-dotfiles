@@ -130,7 +130,7 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-surround'
 	use 'jiangmiao/auto-pairs'
 	use 'fladson/vim-kitty'
-	use 'wfxr/minimap.vim'
+	--use 'wfxr/minimap.vim'
 
 	----RipGrep
 	use 'jremmen/vim-ripgrep'
