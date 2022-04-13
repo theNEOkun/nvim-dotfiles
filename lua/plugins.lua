@@ -147,6 +147,7 @@ return require('packer').startup(function(use)
 			requires = 'rktjmp/lush.nvim'
 		},
 		'folke/tokyonight.nvim',
-		'EdenEast/nightfox.nvim'
+		'EdenEast/nightfox.nvim',
+		'NTBBloodbath/doom-one.nvim'
 	}
 end)

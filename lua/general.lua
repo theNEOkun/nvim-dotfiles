@@ -27,4 +27,4 @@ g.minimap_auto_start_win_enter = 1
 vim.api.nvim_set_keymap('n', '<space>', '<nop>', {})
 g.mapleader = " "
 
-vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme doom-one')
