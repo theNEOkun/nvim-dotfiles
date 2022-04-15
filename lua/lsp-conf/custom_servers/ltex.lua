@@ -1,86 +1,122 @@
---https://github.com/tiagovla/.dotfiles/tree/0f664e30def1e460dd04fc8276f0d12f1ee2e88b
+--https://github.com/seblj/dotfiles/blob/master/nvim/lua/config/lspconfig/ltex.lua
+--https://github.com/tiagovla/.dotfiles/blob/0f664e30def1e460dd04fc8276f0d12f1ee2e88b/neovim/.config/nvim/lua/plugins/config/lsp/custom_servers/ltex.lua
 
-local util = require "lspconfig.util"
-local handlers = require "vim.lsp.handlers"
+local M = {}
 
-local filename = "ltex_config.json"
-
-local function load_config()
-    local file = io.open(filename, "r")
-    if file then
-        local config = vim.json.decode(file:read "a")
-        file:close()
-        return config
-    end
-    return { dictionary = {}, disabledRules = {}, hiddenFalsePositives = {} }
-end
-
-local function update_config()
-    local ltex = util.get_active_client_by_name(0, "ltex")
-    local config = load_config()
-    if ltex then
-        ltex.config.settings.ltex = config
-        ltex.request("workspace/didChangeConfiguration", ltex.config.settings, function(err, result) end)
-    end
-end
-
-local function add_to_config(type, lang, value)
-    local config = load_config()
-    local key = config[type][lang]
-    if key then
-        if not vim.tbl_contains(key, value) then
-            table.insert(key, value)
-        end
-    else
-        config[type][lang] = { value }
-    end
-
-    local file = io.open(filename, "w")
-    if file then
-        file:write(vim.json.encode(config))
-        file:close()
-    end
-    update_config()
-end
-
-local function populate_config(type, data)
-    for k, vv in pairs(data) do
-        for _, v in pairs(vv) do
-            add_to_config(type, k, v)
-        end
-    end
-end
-
-local function on_workspace_executecommand(err, content, ctx)
-    if ctx.params.command == "_ltex.addToDictionary" then
-        local data = ctx.params.arguments[1].words
-        populate_config("dictionary", data)
-    elseif ctx.params.command == "_ltex.disableRules" then
-        local data = ctx.params.arguments[1].ruleIds
-        populate_config("disabledRules", data)
-    elseif ctx.params.command == "_ltex.hideFalsePositives" then
-        local data = ctx.params.arguments[1].falsePositives
-        populate_config("hiddenFalsePositives", data)
-    else
-        handlers[ctx.method](err, content, ctx)
-    end
-end
-
-return {
-    on_init = function(client)
-        client.config.settings.ltex = load_config()
-    end,
-    handlers = {
-        ["workspace/executeCommand"] = on_workspace_executecommand,
-    },
+M.file = {
+	dictionary = vim.fn.stdpath('config') .. '/spell/en.utf-8.add',
+	disabledRules = vim.fn.stdpath('config') .. '/spell/disable.txt',
+	hiddenFalsePositives = vim.fn.stdpath('config') .. '/spell/false.txt',
 }
 
--- or something like this:
--- require("lspconfig").ltex.setup {
---     on_init = function(client)
---         client.config.settings.ltex = load_config()
---     end,
---     handlers = {
---         ["workspace/executeCommand"] = on_workspace_executecommand,
---     },
--- }
+local file_exists = function(file)
+	local f = io.open(file, 'rb')
+	if f then
+		f:close()
+	end
+	return f ~= nil
+end
+
+M.lines_from = function(file)
+	if not file_exists(file) then
+		return {}
+	end
+	local lines = {}
+	for line in io.lines(file) do
+		table.insert(lines, line)
+	end
+	return lines
+end
+
+local get_client_by_name = function(name)
+	local buf_clients = vim.lsp.buf_get_clients()
+	for _, client in ipairs(buf_clients) do
+		if client.name == name then
+			return client
+		end
+	end
+	return nil
+end
+
+local update_config = function(lang, configtype)
+	local client = get_client_by_name('ltex')
+	vim.pretty_print(client)
+	if client then
+		if client.config.settings.ltex[configtype] then
+			client.config.settings.ltex[configtype] = {
+				[lang] = M.lines_from(M.file[configtype]),
+			}
+			return client.notify('workspace/didChangeConfiguration', client.config.settings)
+		else
+			return vim.notify('Error when reading dictionary config, check it')
+		end
+	else
+		return nil
+	end
+end
+
+local add_to_file = function(configtype, lang, file, value)
+	local dict = M.lines_from(file)
+	for _, v in ipairs(dict) do
+		if v == value then
+			return nil
+		end
+	end
+	file = io.open(file, 'a+')
+	if file then
+		file:write(value .. '\n')
+		file:close()
+	else
+		return vim.notify(string.format('Failed insert %s', value))
+	end
+	return update_config(lang, configtype)
+end
+
+local do_command = function(arg, configtype)
+	for lang, words in pairs(arg) do
+		for _, word in ipairs(words) do
+			add_to_file(configtype, lang, M.file[configtype], word)
+		end
+	end
+end
+
+local orig_execute_command = vim.lsp.buf.execute_command
+vim.lsp.buf.execute_command = function(command)
+	local arg = command.arguments[1]
+	if command.command == '_ltex.addToDictionary' then
+		do_command(arg.words, 'dictionary')
+	elseif command.command == '_ltex.disableRules' then
+		do_command(arg.ruleIds, 'disabledRules')
+	elseif command.command == '_ltex.hideFalsePositives' then
+		do_command(arg.falsePositives, 'hiddenFalsePositives')
+	else
+		orig_execute_command(command)
+	end
+end
+
+M.on_attach = function(_)
+	--require('config.lspconfig').make_config().on_attach(client)
+	-- Set some config on attach to prevent reading from the
+	-- files when the language server is not used
+	update_config('en-US', 'dictionary')
+	update_config('en-US', 'disabledRules')
+	update_config('en-US', 'hiddenFalsePositives')
+	vim.keymap.set('n', 'zuw', function()
+		vim.cmd('normal! zuw')
+		update_config('en-US', 'dictionary')
+	end, {
+	buffer = true,
+	desc = 'Remove word from spellfile and update ltex'
+})
+vim.keymap.set('n', 'zg', function()
+	vim.cmd('normal! zg')
+	update_config('en-US', 'dictionary')
+end, {
+buffer = true,
+desc = 'Add word to spellfile and update ltex',
+	})
+	-- TODO: Add some commands to remove the entry
+	-- under the cursor from both disable and false
+end
+
+return M

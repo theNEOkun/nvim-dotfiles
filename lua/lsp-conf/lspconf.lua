@@ -12,7 +12,7 @@ keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', key_opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -30,6 +30,11 @@ local on_attach = function(_, bufnr)
 	buf_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', key_opts)
 	buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', key_opts)
 	buf_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', key_opts)
+
+	if client.name == 'ltex' then
+		local settings = require('lsp-conf.custom_servers.ltex')
+		settings.on_attach()
+	end
 end
 
 local lsp_installer = require("nvim-lsp-installer")
@@ -49,7 +54,7 @@ local enhance_server_opts = {
 		local util = require('lspconfig.util')
 		local unpack = table.unpack or unpack
 		opts.root_dir = function(fname)
-			local root = util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)	
+			local root = util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
 			if root == os.getenv('HOME') then
 				root = vim.fn.getcwd()
 			end
@@ -57,10 +62,14 @@ local enhance_server_opts = {
 		end
 	end,
 	['ltex'] = function(opts)
-		local settings = require('lsp-conf.custom_servers.ltex')
-		opts.on_init = settings.on_init
-		opts.handlers = settings.handlers
-	end
+		opts.settings = {
+			ltex = {
+				dictionary = {},
+				disabledRules = {},
+				hiddenFalsePositives = {}
+			}
+		}
+	end,
 }
 
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
