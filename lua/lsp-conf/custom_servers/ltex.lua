@@ -3,11 +3,12 @@
 
 local M = {}
 
-M.file = {
-	dictionary = vim.fn.stdpath('config') .. '/spell/en.utf-8.add',
-	disabledRules = vim.fn.stdpath('config') .. '/spell/disable.txt',
-	hiddenFalsePositives = vim.fn.stdpath('config') .. '/spell/false.txt',
+M.file = function(lang) return {
+	dictionary = vim.fn.stdpath('config') .. '/spell/'..lang..'.utf-8.add',
+	disabledRules = vim.fn.stdpath('config') .. '/spell/'..lang..'/disable.txt',
+	hiddenFalsePositives = vim.fn.stdpath('config') .. '/spell/'..lang..'/false.txt',
 }
+end
 
 local file_exists = function(file)
 	local f = io.open(file, 'rb')
@@ -40,11 +41,12 @@ end
 
 local update_config = function(lang, configtype)
 	local client = get_client_by_name('ltex')
+
 	vim.pretty_print(client)
 	if client then
 		if client.config.settings.ltex[configtype] then
 			client.config.settings.ltex[configtype] = {
-				[lang] = M.lines_from(M.file[configtype]),
+				[lang] = M.lines_from(M.file('en')[configtype]),
 			}
 			return client.notify('workspace/didChangeConfiguration', client.config.settings)
 		else
@@ -75,7 +77,7 @@ end
 local do_command = function(arg, configtype)
 	for lang, words in pairs(arg) do
 		for _, word in ipairs(words) do
-			add_to_file(configtype, lang, M.file[configtype], word)
+			add_to_file(configtype, lang, M.file('en')[configtype], word)
 		end
 	end
 end
