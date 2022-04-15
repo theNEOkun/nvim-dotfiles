@@ -55,6 +55,11 @@ local enhance_server_opts = {
 			end
 			return root
 		end
+	end,
+	['ltex'] = function(opts)
+		local settings = require('lsp-conf.custom_servers.ltex')
+		opts.on_init = settings.on_init
+		opts.handlers = settings.handlers
 	end
 }
 
