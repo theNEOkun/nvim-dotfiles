@@ -27,14 +27,6 @@ return require('packer').startup(function(use)
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
 
-	use {
-		"brymer-meneses/grammar-guard.nvim",
-		requires = {
-			"neovim/nvim-lspconfig",
-			"williamboman/nvim-lsp-installer"
-		}
-	}
-
 	--TreeSitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
