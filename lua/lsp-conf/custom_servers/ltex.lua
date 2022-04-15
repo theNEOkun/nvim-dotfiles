@@ -41,8 +41,6 @@ end
 
 local update_config = function(lang, configtype)
 	local client = get_client_by_name('ltex')
-
-	vim.pretty_print(client)
 	if client then
 		if client.config.settings.ltex[configtype] then
 			client.config.settings.ltex[configtype] = {
