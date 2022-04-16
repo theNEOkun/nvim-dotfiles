@@ -6,6 +6,14 @@ local keymap = vim.api.nvim_set_keymap
 
 --General
 
+--Tabs
+--Next
+keymap('n', '<A-t>', '<cmd>:tabn<CR>', no_remap_opt)
+--New
+keymap('n', '<A-e>', '<cmd>:tabe<CR>', no_remap_opt)
+--Close
+keymap('n', '<A-q>', '<cmd>:tabc<CR>', no_remap_opt)
+
 --Increment and Decrement
 keymap('n', '+', '<C-a>', no_remap_opt)
 keymap('n', '-', '<C-x>', no_remap_opt)
