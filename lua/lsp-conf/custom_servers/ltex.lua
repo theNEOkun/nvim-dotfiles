@@ -102,18 +102,15 @@ M.on_attach = function(client, bufnr)
 	update_config('en-US', 'dictionary', client)
 	update_config('en-US', 'disabledRules', client)
 	update_config('en-US', 'hiddenFalsePositives', client)
-	vim.keymap.set('n', 'zuw', function()
+	local buf_map = require('utils').buf_map_func
+	buf_map(bufnr, 'n', 'zuw', function()
 		vim.cmd('normal! zuw')
-		update_config('en-US', 'dictionary')
-	end, {
-	buffer = true,
-	desc = 'Remove word from spellfile and update ltex'})
-	vim.keymap.set('n', 'zg', function()
+		require('lsp-conf.custom_servers.ltex').update_config('en-US', 'dictionary')
+	end)
+	buf_map(bufnr, 'n', 'zg', function()
 		vim.cmd('normal! zg')
-		update_config('en-US', 'dictionary')
-	end, {
-	buffer = true,
-	desc = 'Add word to spellfile and update ltex'})
+		require('lsp-conf.custom_servers.ltex').update_config('en-US', 'dictionary')
+	end)
 	-- TODO: Add some commands to remove the entry
 	-- under the cursor from both disable and false
 end

@@ -1,5 +1,6 @@
 local M = {}
 
+--Changes the root_dir so as not to cascade all the way down to home-dir
 M.server_config = function(_, opts)
 	local root_files = {
 		'.luarc.json',
