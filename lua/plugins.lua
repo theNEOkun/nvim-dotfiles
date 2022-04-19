@@ -114,10 +114,17 @@ return require('packer').startup(function(use)
 
 	require('line.lualine')
 
-	use 'tpope/vim-commentary'
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
+
 	----GIT
 	use 'airblade/vim-gitgutter'
 	use 'tpope/vim-fugitive'
+
 	----Surrounding
 	use 'tpope/vim-surround'
 	use 'jiangmiao/auto-pairs'
