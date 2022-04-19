@@ -3,11 +3,12 @@
 
 local M = {}
 
-M.file = function(lang) return {
-	dictionary = vim.fn.stdpath('config') .. '/spell/'..lang..'.utf-8.add',
-	disabledRules = vim.fn.stdpath('config') .. '/spell/'..lang..'/disable.txt',
-	hiddenFalsePositives = vim.fn.stdpath('config') .. '/spell/'..lang..'/false.txt',
-}
+M.file = function(lang)
+	return {
+		dictionary = vim.fn.stdpath('config') .. '/spell/'..lang..'.utf-8.add',
+		disabledRules = vim.fn.stdpath('config') .. '/spell/'..lang..'/disable.txt',
+		hiddenFalsePositives = vim.fn.stdpath('config') .. '/spell/'..lang..'/false.txt',
+	}
 end
 
 local file_exists = function(file)
@@ -30,7 +31,7 @@ M.lines_from = function(file)
 end
 
 local get_client_by_name = function(name)
-	local buf_clients = vim.lsp.buf_get_clients()
+	local buf_clients = vim.lsp.get_active_clients()
 	for _, client in ipairs(buf_clients) do
 		if client.name == name then
 			return client
@@ -39,8 +40,7 @@ local get_client_by_name = function(name)
 	return nil
 end
 
-local update_config = function(lang, configtype)
-	local client = get_client_by_name('ltex')
+local update_config = function(lang, configtype, client)
 	if client then
 		if client.config.settings.ltex[configtype] then
 			client.config.settings.ltex[configtype] = {
@@ -69,7 +69,7 @@ local add_to_file = function(configtype, lang, file, value)
 	else
 		return vim.notify(string.format('Failed insert %s', value))
 	end
-	return update_config(lang, configtype)
+	return update_config(lang, configtype, get_client_by_name('ltex'))
 end
 
 local do_command = function(arg, configtype)
@@ -99,9 +99,9 @@ M.on_attach = function(client, bufnr)
 	--require('config.lspconfig').make_config().on_attach(client)
 	-- Set some config on attach to prevent reading from the
 	-- files when the language server is not used
-	update_config('en-US', 'dictionary')
-	update_config('en-US', 'disabledRules')
-	update_config('en-US', 'hiddenFalsePositives')
+	update_config('en-US', 'dictionary', client)
+	update_config('en-US', 'disabledRules', client)
+	update_config('en-US', 'hiddenFalsePositives', client)
 	vim.keymap.set('n', 'zuw', function()
 		vim.cmd('normal! zuw')
 		update_config('en-US', 'dictionary')
