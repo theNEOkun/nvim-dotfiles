@@ -78,15 +78,7 @@ return require('packer').startup(function(use)
 		}
 	}
 	use 'rust-lang/rust.vim'
-	use {
-		'saecki/crates.nvim',
-		event = { "BufRead Cargo.toml" },
-		requires = { { 'nvim-lua/plenary.nvim' } },
-		config = function()
-			require('crates').setup()
-		end,
-	}
-
+	
 	----eww
 	use 'elkowar/yuck.vim'
 

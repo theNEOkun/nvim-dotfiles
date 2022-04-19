@@ -94,7 +94,8 @@ vim.lsp.buf.execute_command = function(command)
 	end
 end
 
-M.on_attach = function(_)
+M.on_attach = function(client, bufnr)
+	require('lsp-conf.helper').on_attach(client, bufnr)
 	--require('config.lspconfig').make_config().on_attach(client)
 	-- Set some config on attach to prevent reading from the
 	-- files when the language server is not used
@@ -106,17 +107,27 @@ M.on_attach = function(_)
 		update_config('en-US', 'dictionary')
 	end, {
 	buffer = true,
-	desc = 'Remove word from spellfile and update ltex'
-})
-vim.keymap.set('n', 'zg', function()
-	vim.cmd('normal! zg')
-	update_config('en-US', 'dictionary')
-end, {
-buffer = true,
-desc = 'Add word to spellfile and update ltex',
-	})
+	desc = 'Remove word from spellfile and update ltex'})
+	vim.keymap.set('n', 'zg', function()
+		vim.cmd('normal! zg')
+		update_config('en-US', 'dictionary')
+	end, {
+	buffer = true,
+	desc = 'Add word to spellfile and update ltex'})
 	-- TODO: Add some commands to remove the entry
 	-- under the cursor from both disable and false
+end
+
+M.server_config = function(_, opts)
+	opts.on_attach = M.on_attach
+	opts.settings = {
+		ltex = {
+			dictionary = {},
+			disabledRules = {},
+			hiddenFalsePositives = {}
+		}
+	}
+	return opts
 end
 
 return M
