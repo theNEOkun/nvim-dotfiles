@@ -28,3 +28,5 @@ require('utils').map('n', '<space>', '<nop>')
 g.mapleader = " "
 
 vim.cmd('colorscheme doom-one')
+
+vim.api.nvim_command("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
