@@ -49,8 +49,6 @@ keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 
 
---UndoTree
-keymap('n', '<F5>', ':UndotreeToggle<CR>')
 
 vim.g.coq_settings.keymap = {
 	bigger_preview = "<c-i>"

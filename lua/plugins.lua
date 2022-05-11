@@ -65,9 +65,23 @@ return require('packer').startup(function(use)
 		},
 		run = ":UpdateRemotePlugins"
 	}
+
 	use {
 		'tpope/vim-dispatch'
 	}
+
+	--Debugging
+	
+	use {
+		'mfussenegger/nvim-dap',
+		'Pocco81/dap-buddy.nvim',
+		'rcarriga/nvim-dap-ui',
+		'theHamsta/nvim-dap-virtual-text',
+		'rcarriga/vim-ultest',
+	}
+
+	require('dap.dap')
+
 	--Specific
 	----Rust
 	use {
@@ -77,6 +91,7 @@ return require('packer').startup(function(use)
 			'nvim-lua/plenary.nvim'
 		}
 	}
+
 	use 'rust-lang/rust.vim'
 	
 	----eww
