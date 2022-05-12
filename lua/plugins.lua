@@ -88,6 +88,10 @@ return require('packer').startup(function(use)
 		requires = 'mfussenegger/nvim-dap'
 	}
 
+	use {
+		'jbyuki/one-small-step-for-vimkind'
+	}
+
 	require('dap.dap')
 
 	--Specific
