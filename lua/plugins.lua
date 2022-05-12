@@ -73,11 +73,17 @@ return require('packer').startup(function(use)
 	--Debugging
 	
 	use {
-		'mfussenegger/nvim-dap',
-		'Pocco81/dap-buddy.nvim',
 		'rcarriga/nvim-dap-ui',
+		config = require('dapui').setup()
+	}
+
+	use {
+		'mfussenegger/nvim-dap',
+	}
+
+	use {
+		'Pocco81/dap-buddy.nvim',
 		'theHamsta/nvim-dap-virtual-text',
-		'rcarriga/vim-ultest',
 	}
 
 	require('dap.dap')
