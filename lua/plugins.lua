@@ -74,16 +74,18 @@ return require('packer').startup(function(use)
 	
 	use {
 		'rcarriga/nvim-dap-ui',
-		config = require('dapui').setup()
-	}
-
-	use {
-		'mfussenegger/nvim-dap',
+		config = require('dapui').setup(),
+		requires = 'mfussenegger/nvim-dap'
 	}
 
 	use {
 		'Pocco81/dap-buddy.nvim',
+	}
+
+	use {
 		'theHamsta/nvim-dap-virtual-text',
+		config = require('nvim-dap-virtual-text').setup(),
+		requires = 'mfussenegger/nvim-dap'
 	}
 
 	require('dap.dap')
