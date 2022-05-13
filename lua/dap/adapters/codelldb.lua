@@ -1,7 +1,7 @@
 local dap = require('dap')
 
 local home = os.getenv('HOME')
-local cmd = home.."/library/vscode-lldb/extension/adapter/codelldb"
+local cmd = home .. "/library/vscode_lldb/extension/adapter"
 
 dap.adapters.codelldb = function(on_adapter)
   -- This asks the system for a free port
