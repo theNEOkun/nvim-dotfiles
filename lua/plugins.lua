@@ -71,7 +71,7 @@ return require('packer').startup(function(use)
 	}
 
 	--Debugging
-	
+
 	use {
 		'rcarriga/nvim-dap-ui',
 		config = require('dapui').setup(),
@@ -92,7 +92,7 @@ return require('packer').startup(function(use)
 		'jbyuki/one-small-step-for-vimkind'
 	}
 
-	require('dap.dap')
+	require('dap.dap_init')
 
 	--Specific
 	----Rust
@@ -105,7 +105,7 @@ return require('packer').startup(function(use)
 	}
 
 	use 'rust-lang/rust.vim'
-	
+
 	----eww
 	use 'elkowar/yuck.vim'
 
@@ -154,9 +154,8 @@ return require('packer').startup(function(use)
 
 	----Surrounding
 	use 'tpope/vim-surround'
-	use 'jiangmiao/auto-pairs'
 	use 'fladson/vim-kitty'
-	--use 'wfxr/minimap.vim'
+	require('autopairs')
 
 	----RipGrep
 	use 'jremmen/vim-ripgrep'
