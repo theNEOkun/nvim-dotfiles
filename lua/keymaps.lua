@@ -1,8 +1,4 @@
-local key_opts = { noremap=true, silent=true }
-
 local keymap = require('utils').map
-
-
 --General
 
 --Tabs

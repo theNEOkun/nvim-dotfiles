@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
 	--TreeSitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		config = require('treesitter-conf.treesitter'),
+		config = require('treesitter-conf'),
 		run = ':TSUpdate',
 		{
 			'nvim-treesitter/nvim-treesitter-refactor'
@@ -40,6 +40,9 @@ return require('packer').startup(function(use)
 		},
 		{
 			'p00f/nvim-ts-rainbow'
+		},
+		{
+			'RRethy/nvim-treesitter-endwise'
 		}
 	}
 
@@ -51,11 +54,15 @@ return require('packer').startup(function(use)
 			'ms-jpq/coq.artifacts'
 		},
 		{
-			'ms-jpq/coq.thirdparty'
+			'ms-jpq/coq.thirdparty',
+			config = function() require('coq_3p') {
+				{ src = 'dap' },
+				{ src = "nvimlua", short_name = "nLUA", conf_only = true }
+			} end
 		}
 	}
 
-	require('lsp-conf.lspconf')
+	require('lsp-conf')
 
 	--Test
 	use {
@@ -139,7 +146,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	require('line.lualine')
+	require('line')
 
 	use {
 		'numToStr/Comment.nvim',
@@ -155,13 +162,12 @@ return require('packer').startup(function(use)
 	----Surrounding
 	use 'tpope/vim-surround'
 	use 'fladson/vim-kitty'
-	require('autopairs')
+
+	--require('autopairs')
+	use 'jiangmiao/auto-pairs'
 
 	----RipGrep
 	use 'jremmen/vim-ripgrep'
-
-	----UndoTree
-	use 'mbbill/undotree'
 
 	----Colors
 	use {
