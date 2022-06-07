@@ -16,7 +16,7 @@ M.server_config = function(server, opts)
 			codelldb_path, lidlldb_path
 			)
 		},
-		server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
+		server = opts,
 	}
 	require('rust-tools').setup(rust_opts)
 	server:attach_buffers()
