@@ -62,7 +62,6 @@ return require('packer').startup(function(use)
 			} end
 		}
 	}
-
 	require('lsp-conf')
 
 	--Test
@@ -92,7 +91,11 @@ return require('packer').startup(function(use)
 
 	use {
 		'theHamsta/nvim-dap-virtual-text',
-		config = require('nvim-dap-virtual-text').setup(),
+		config = function()
+			M = require('nvim-dap-virtual-text').setup();
+			require('dap.dap_init');
+			return M;
+		end,
 		requires = 'mfussenegger/nvim-dap'
 	}
 
@@ -100,7 +103,6 @@ return require('packer').startup(function(use)
 		'jbyuki/one-small-step-for-vimkind'
 	}
 
-	require('dap.dap_init')
 
 	--Specific
 	----Rust
@@ -122,7 +124,7 @@ return require('packer').startup(function(use)
 	--Others
 	use {
 		'kyazdani42/nvim-tree.lua',
-		config = require'nvim-tree'.setup({
+		config = require('nvim-tree').setup({
 			git = {
 				ignore = false,
 			},
@@ -144,10 +146,11 @@ return require('packer').startup(function(use)
 		requires = {
 			'kyazdani42/nvim-web-devicons',
 			opt = true
-		}
+		},
+		config = function()
+			require('line')
+		end
 	}
-
-	require('line')
 
 	use {
 		'numToStr/Comment.nvim',
