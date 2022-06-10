@@ -2,7 +2,7 @@ local keymap = require('utils').map
 
 local key_opts = { noremap=true, silent=true }
 --CHADTree
-keymap('n', '<F2>', '<cmd>:NvimTreeToggle<cr>', key_opts)
+keymap('n', '<F6>', '<cmd>:NvimTreeToggle<cr>', key_opts)
 
 --Tagbar
 keymap('n', '<F8>', '<cmd>:TagbarToggle<CR>')
