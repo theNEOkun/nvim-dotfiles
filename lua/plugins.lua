@@ -26,11 +26,12 @@ return require('packer').startup(function(use)
 	--LSP
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
+	use 'kosayoda/nvim-lightbulb'
 
 	--TreeSitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		config = require('treesitter-conf.treesitter'),
+		config = require('treesitter-conf'),
 		run = ':TSUpdate',
 		{
 			'nvim-treesitter/nvim-treesitter-refactor'
@@ -40,6 +41,9 @@ return require('packer').startup(function(use)
 		},
 		{
 			'p00f/nvim-ts-rainbow'
+		},
+		{
+			'RRethy/nvim-treesitter-endwise'
 		}
 	}
 
@@ -51,11 +55,15 @@ return require('packer').startup(function(use)
 			'ms-jpq/coq.artifacts'
 		},
 		{
-			'ms-jpq/coq.thirdparty'
+			'ms-jpq/coq.thirdparty',
+			config = function() require('coq_3p') {
+				{ src = 'dap' },
+				{ src = "nvimlua", short_name = "nLUA", conf_only = true }
+			} end
 		}
 	}
 
-	require('lsp-conf.lspconf')
+	require('lsp-conf')
 
 	--Test
 	use {
@@ -65,9 +73,35 @@ return require('packer').startup(function(use)
 		},
 		run = ":UpdateRemotePlugins"
 	}
+
 	use {
 		'tpope/vim-dispatch'
 	}
+
+	--Debugging
+
+	use {
+		'rcarriga/nvim-dap-ui',
+		config = require('dapui').setup(),
+		requires = 'mfussenegger/nvim-dap'
+	}
+
+	use {
+		'Pocco81/dap-buddy.nvim',
+	}
+
+	use {
+		'theHamsta/nvim-dap-virtual-text',
+		config = require('nvim-dap-virtual-text').setup(),
+		requires = 'mfussenegger/nvim-dap'
+	}
+
+	use {
+		'jbyuki/one-small-step-for-vimkind'
+	}
+
+	require('dap.dap_init')
+
 	--Specific
 	----Rust
 	use {
@@ -77,8 +111,9 @@ return require('packer').startup(function(use)
 			'nvim-lua/plenary.nvim'
 		}
 	}
+
 	use 'rust-lang/rust.vim'
-	
+
 	----eww
 	use 'elkowar/yuck.vim'
 
@@ -112,7 +147,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	require('line.lualine')
+	require('line')
 
 	use {
 		'numToStr/Comment.nvim',
@@ -121,21 +156,29 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	--use {
+	--	'romgrk/barbar.nvim',
+	--	requires = {
+	--		'kyazdani42/nvim-web-devicons',
+	--		opt = true
+	--	}
+	--}
+
+	--require('barbar')
+
 	----GIT
 	use 'airblade/vim-gitgutter'
 	use 'tpope/vim-fugitive'
 
 	----Surrounding
 	use 'tpope/vim-surround'
-	use 'jiangmiao/auto-pairs'
 	use 'fladson/vim-kitty'
-	--use 'wfxr/minimap.vim'
+
+	--require('autopairs')
+	use 'jiangmiao/auto-pairs'
 
 	----RipGrep
 	use 'jremmen/vim-ripgrep'
-
-	----UndoTree
-	use 'mbbill/undotree'
 
 	----Colors
 	use {
