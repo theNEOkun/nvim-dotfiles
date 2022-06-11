@@ -113,6 +113,7 @@ return require('packer').startup(function(use)
 	}
 
 	use 'rust-lang/rust.vim'
+	use 'ron-rs/ron.vim'
 
 	----eww
 	use 'elkowar/yuck.vim'
