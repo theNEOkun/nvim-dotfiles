@@ -66,11 +66,15 @@ return require('packer').startup(function(use)
 
 	--Test
 	use {
-		"rcarriga/vim-ultest",
-		requires = {
-			"vim-test/vim-test"
+		"nvim-neotest/neotest",
+		{
+			"nvim-neotest/neotest-vim-test",
+			requires = {
+				"vim-test/vim-test"
+			},
+			config = function() require("neotest-vim-test")({ ignore_filetypes = {} }) end,
+
 		},
-		run = ":UpdateRemotePlugins"
 	}
 
 	use {
@@ -159,16 +163,6 @@ return require('packer').startup(function(use)
 			require('Comment').setup()
 		end
 	}
-
-	--use {
-	--	'romgrk/barbar.nvim',
-	--	requires = {
-	--		'kyazdani42/nvim-web-devicons',
-	--		opt = true
-	--	}
-	--}
-
-	--require('barbar')
 
 	----GIT
 	use 'airblade/vim-gitgutter'
