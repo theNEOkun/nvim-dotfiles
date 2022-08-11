@@ -24,8 +24,12 @@ return require('packer').startup(function(use)
 		},
 	}
 	--LSP
-	use 'neovim/nvim-lspconfig'
-	use 'williamboman/nvim-lsp-installer'
+	use {
+		'neovim/nvim-lspconfig',
+		'williamboman/mason.nvim',
+		"williamboman/mason-lspconfig.nvim"
+	}
+
 	use 'kosayoda/nvim-lightbulb'
 
 	--TreeSitter
