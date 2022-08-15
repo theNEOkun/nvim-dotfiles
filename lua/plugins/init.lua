@@ -27,7 +27,23 @@ return require('packer').startup(function(use)
 	use {
 		'neovim/nvim-lspconfig',
 		'williamboman/mason.nvim',
-		"williamboman/mason-lspconfig.nvim"
+		"williamboman/mason-lspconfig.nvim",
+		{
+
+		--Autocomplete
+		'ms-jpq/coq_nvim',
+		{
+			'ms-jpq/coq.artifacts'
+		},
+		{
+			'ms-jpq/coq.thirdparty',
+			config = function() require('coq_3p') {
+				{ src = 'dap' },
+				{ src = "nvimlua", short_name = "nLUA", conf_only = true }
+			} end
+		}
+		require('lsp-conf')
+		}
 	}
 
 	use 'kosayoda/nvim-lightbulb'
@@ -50,23 +66,6 @@ return require('packer').startup(function(use)
 			'RRethy/nvim-treesitter-endwise'
 		}
 	}
-
-	--Autocomplete
-	use {
-		'ms-jpq/coq_nvim',
-
-		{
-			'ms-jpq/coq.artifacts'
-		},
-		{
-			'ms-jpq/coq.thirdparty',
-			config = function() require('coq_3p') {
-				{ src = 'dap' },
-				{ src = "nvimlua", short_name = "nLUA", conf_only = true }
-			} end
-		}
-	}
-	require('lsp-conf')
 
 	--Test
 	use {
@@ -194,4 +193,6 @@ return require('packer').startup(function(use)
 		'EdenEast/nightfox.nvim',
 		'NTBBloodbath/doom-one.nvim'
 	}
+
 end)
+
