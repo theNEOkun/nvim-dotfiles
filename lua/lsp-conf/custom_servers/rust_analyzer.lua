@@ -14,7 +14,7 @@ M.server_config = function(server, opts)
 		},
 		dap = {
 			adapter = require('rust-tools.dap').get_codelldb_adapter(
-			codelldb_path, lidlldb_path
+				codelldb_path, lidlldb_path
 			)
 		},
 		server = opts,
