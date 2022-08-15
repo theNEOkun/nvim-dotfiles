@@ -29,20 +29,19 @@ return require('packer').startup(function(use)
 		'williamboman/mason.nvim',
 		"williamboman/mason-lspconfig.nvim",
 		{
-
-		--Autocomplete
-		'ms-jpq/coq_nvim',
-		{
-			'ms-jpq/coq.artifacts'
-		},
-		{
-			'ms-jpq/coq.thirdparty',
-			config = function() require('coq_3p') {
-				{ src = 'dap' },
-				{ src = "nvimlua", short_name = "nLUA", conf_only = true }
-			} end
-		}
-		require('lsp-conf')
+			--Autocomplete
+			'ms-jpq/coq_nvim',
+			{
+				'ms-jpq/coq.artifacts'
+			},
+			{
+				'ms-jpq/coq.thirdparty',
+				config = function() require('coq_3p') {
+					{ src = 'dap' },
+					{ src = "nvimlua", short_name = "nLUA", conf_only = true }
+				} end
+			},
+			require('lsp-conf')
 		}
 	}
 
