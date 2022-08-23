@@ -1,7 +1,7 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	PACKER_BOOSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 return require('packer').startup(function(use)
@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		config = require('telescope').setup {
 			defaults = {
-				file_ignore_patterns={"node_modules"}
+				file_ignore_patterns = { "node_modules" }
 			}
 		},
 		requires = {
@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
 		"williamboman/mason-lspconfig.nvim",
 		{
 			--Autocomplete
+
 			'ms-jpq/coq_nvim',
 			{
 				'ms-jpq/coq.artifacts'
@@ -37,11 +38,14 @@ return require('packer').startup(function(use)
 			{
 				'ms-jpq/coq.thirdparty',
 				config = function() require('coq_3p') {
-					{ src = 'dap' },
-					{ src = "nvimlua", short_name = "nLUA", conf_only = true }
-				} end
+						{ src = 'dap' },
+						{ src = "nvimlua", short_name = "nLUA", conf_only = true }
+					}
+				end
 			},
-			require('lsp-conf')
+			config = function()
+				require('lsp-conf')
+			end
 		}
 	}
 
@@ -194,4 +198,3 @@ return require('packer').startup(function(use)
 	}
 
 end)
-

@@ -13,6 +13,6 @@ keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 
-vim.g.coq_settings.keymap = {
-	bigger_preview = "<c-i>"
-}
+--vim.g.coq_settings.keymap = {
+--	bigger_preview = "<c-i>"
+--}
