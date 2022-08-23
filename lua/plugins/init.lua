@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
 	use {
 		'neovim/nvim-lspconfig',
 		'williamboman/mason.nvim',
-		"williamboman/mason-lspconfig.nvim",
+		'williamboman/mason-lspconfig.nvim',
 		{
 			--Autocomplete
 
@@ -43,10 +43,8 @@ return require('packer').startup(function(use)
 					}
 				end
 			},
-			config = function()
-				require('lsp-conf')
-			end
-		}
+		},
+		config = require('lsp-conf')
 	}
 
 	use 'kosayoda/nvim-lightbulb'
