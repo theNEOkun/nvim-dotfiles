@@ -147,7 +147,10 @@ return require('packer').startup(function(use)
 
 	----Line
 	--use 'vim-airline/vim-airline'
-	use 'ryanoasis/vim-devicons'
+	use {
+		'kyazdani42/nvim-web-devicons',
+		config = function() require("nvim-web-devicons").setup() end,
+	}
 
 	use {
 		'nvim-lualine/lualine.nvim',
