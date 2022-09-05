@@ -72,25 +72,12 @@ return require('packer').startup(function(use)
 	use {
 		"nvim-neotest/neotest",
 		{
-			{
-				"nvim-neotest/neotest-vim-test",
-				requires = {
-					"vim-test/vim-test"
-				},
-				config = function() require("neotest-vim-test")({ ignore_filetypes = {} }) end,
+			"nvim-neotest/neotest-vim-test",
+			requires = {
+				"vim-test/vim-test"
 			},
-			{
-				"nvim-neotest/neotest-plenary",
-				"rouge8/neotest-rust"
-			},
+			config = function() require("neotest-vim-test")({ ignore_filetypes = {} }) end,
 		},
-		config = function() require('neotest').setup({
-				adapters = {
-					require("neotest-rust"),
-					require("neotest-plenary")
-				}
-			})
-		end,
 	}
 
 	use {

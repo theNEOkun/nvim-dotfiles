@@ -65,4 +65,11 @@ M.buf_map_func = function(bufnr, mode, keys, command, opts)
 	buf_keymap(bufnr, mode, keys, command, options)
 end
 
+M.map_func = function(mode, keys, command, opts)
+	local options = { noremap = true, silent = false }
+	if opts then options = vim.tbl_extend("force", options, opts) end
+	command = bind_function(mode, keys, command)
+	keymap(mode, keys, command, options)
+end
+
 return M
