@@ -184,6 +184,12 @@ return require('packer').startup(function(use)
 	----RipGrep
 	use 'jremmen/vim-ripgrep'
 
+	-- Helper
+	use {
+		'takac/vim-hardtime',
+		'danth/pathfinder.vim'
+	}
+
 	----Colors
 	use {
 		'marko-cerovac/material.nvim',
