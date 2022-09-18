@@ -185,10 +185,10 @@ return require('packer').startup(function(use)
 	use 'jremmen/vim-ripgrep'
 
 	-- Helper
-	use {
-		'takac/vim-hardtime',
-		'danth/pathfinder.vim'
-	}
+--	use {
+--		'takac/vim-hardtime',
+--		'danth/pathfinder.vim'
+--	}
 
 	----Colors
 	use {
