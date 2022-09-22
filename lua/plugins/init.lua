@@ -192,15 +192,8 @@ return require('packer').startup(function(use)
 
 	----Colors
 	use {
-		'marko-cerovac/material.nvim',
-		'catppuccin/nvim',
-		{
-			'mcchrish/zenbones.nvim',
-			requires = 'rktjmp/lush.nvim'
-		},
-		'folke/tokyonight.nvim',
-		'EdenEast/nightfox.nvim',
-		'NTBBloodbath/doom-one.nvim'
+		'navarasu/onedark.nvim',
+		'NTBBloodbath/doom-one.nvim',
 	}
 
 end)
