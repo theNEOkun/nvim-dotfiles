@@ -11,16 +11,16 @@ return require('packer').startup(function(use)
 	--Telescope
 	use {
 		'nvim-telescope/telescope.nvim',
-		config = require('telescope').setup {
-			defaults = {
-				file_ignore_patterns = { "node_modules" }
-			}
-		},
 		requires = {
 			'nvim-lua/plenary.nvim'
 		},
 		{
 			'nvim-telescope/telescope-fzy-native.nvim'
+		},
+		config = require('telescope').setup {
+			defaults = {
+				file_ignore_patterns = { "node_modules" }
+			}
 		},
 	}
 	--LSP
@@ -32,10 +32,8 @@ return require('packer').startup(function(use)
 			--Autocomplete
 
 			'ms-jpq/coq_nvim',
-			{
-				'ms-jpq/coq.artifacts'
-			},
-			{
+			requires = {
+				'ms-jpq/coq.artifacts',
 				'ms-jpq/coq.thirdparty',
 				config = function() require('coq_3p') {
 						{ src = 'dap' },
@@ -52,20 +50,14 @@ return require('packer').startup(function(use)
 	--TreeSitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
+		{
+			'nvim-treesitter/nvim-treesitter-refactor',
+			'windwp/nvim-ts-autotag',
+			'p00f/nvim-ts-rainbow',
+			'RRethy/nvim-treesitter-endwise'
+		},
 		config = require('treesitter-conf'),
 		run = ':TSUpdate',
-		{
-			'nvim-treesitter/nvim-treesitter-refactor'
-		},
-		{
-			'windwp/nvim-ts-autotag',
-		},
-		{
-			'p00f/nvim-ts-rainbow'
-		},
-		{
-			'RRethy/nvim-treesitter-endwise'
-		}
 	}
 
 	--Test
@@ -200,5 +192,7 @@ return require('packer').startup(function(use)
 		'NvChad/nvim-colorizer.lua',
 		config = function() require('colorizer').setup() end
 	}
+
+	use 'ThePrimeagen/vim-be-good'
 
 end)
