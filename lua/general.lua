@@ -6,6 +6,8 @@ local unpack = table.unpack or unpack;
 set.number = true
 set.relativenumber = true;
 
+set.filetype="on";
+
 set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
@@ -15,13 +17,15 @@ set.termguicolors = true
 set.timeoutlen = 500
 set.background = "dark"
 
-set.clipboard:prepend {"unnamed"}
+set.colorcolumn = "101"
+
+set.clipboard:prepend { "unnamed" }
 
 set.mouse = "a"
-set.fenc='utf-8';
+set.fenc = 'utf-8';
 
 g.wildmenu = true
-g.wildmode = {"list, full"}
+g.wildmode = { "list, full" }
 
 --Minimap
 g.minimap_width = 5
@@ -33,7 +37,8 @@ g.mapleader = " "
 
 set.list = true;
 
-set.listchars = { space='⋅', eol='¬', extends='»', precedes='«', nbsp='⣿', trail='_', tab='> ', unpack(set.listchars)};
+set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
+	unpack(set.listchars) };
 
 vim.cmd('colorscheme onedark')
 
