@@ -129,6 +129,18 @@ return require('packer').startup(function(use)
 			git = {
 				ignore = false,
 			},
+			hijack_netrw = true,
+			hijack_directories = {
+				enable = true,
+				auto_open = true,
+			},
+			view = {
+				--mappings = {
+				--	list = {
+				--		{ key = "<CR>", action = "edit_in_place" }
+				--	}
+				--}
+			}
 		}),
 		requires = {
 			'kyazdani42/nvim-web-devicons',
@@ -178,10 +190,10 @@ return require('packer').startup(function(use)
 	use 'jremmen/vim-ripgrep'
 
 	-- Helper
---	use {
---		'takac/vim-hardtime',
---		'danth/pathfinder.vim'
---	}
+	--	use {
+	--		'takac/vim-hardtime',
+	--		'danth/pathfinder.vim'
+	--	}
 
 	----Colors
 	use {

@@ -6,7 +6,7 @@ local unpack = table.unpack or unpack;
 set.number = true
 set.relativenumber = true;
 
-set.filetype="on";
+set.filetype = "on";
 
 set.tabstop = 4
 set.softtabstop = 4
