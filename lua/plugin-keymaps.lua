@@ -18,7 +18,7 @@ m.toggle_replace = toggle_replace
 
 --CHADTree
 --keymap('n', '<F6>', '<cmd>:lua require("lua.plugin-keymaps").toggle_replace()<CR>', key_opts)
-keymap('n', '-', '<cmd>:NvimTreeToggle<CR>', key_opts)
+keymap('n', '<C-->', '<cmd>:NvimTreeToggle<CR>', key_opts)
 
 --Tagbar
 keymap('n', '<F8>', '<cmd>:TagbarToggle<CR>')
