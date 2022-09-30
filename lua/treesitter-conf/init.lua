@@ -1,4 +1,4 @@
-return require'nvim-treesitter.configs'.setup {
+return require 'nvim-treesitter.configs'.setup {
 	-- One of "all", "maintained" (parsers with maintainers), or a list of languages
 	ensure_installed = "all",
 	ignore_install = { "phpdoc" },
@@ -53,5 +53,14 @@ return require'nvim-treesitter.configs'.setup {
 	},
 	autotag = {
 		enable = true
-	}
+	},
+	textsubjects = {
+		enable = true,
+		prev_selection = ',', -- (Optional) keymap to select the previous selection
+		keymaps = {
+			['.'] = 'textsubjects-smart',
+			[';'] = 'textsubjects-container-outer',
+			['i;'] = 'textsubjects-container-inner',
+		},
+	},
 }

@@ -54,7 +54,8 @@ return require('packer').startup(function(use)
 			'nvim-treesitter/nvim-treesitter-refactor',
 			'windwp/nvim-ts-autotag',
 			'p00f/nvim-ts-rainbow',
-			'RRethy/nvim-treesitter-endwise'
+			'RRethy/nvim-treesitter-endwise',
+			'RRethy/nvim-treesitter-textsubjects',
 		},
 		config = require('treesitter-conf'),
 		run = ':TSUpdate',
