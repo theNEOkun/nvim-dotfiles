@@ -42,4 +42,4 @@ set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nb
 
 vim.cmd('colorscheme onedark')
 
-vim.api.nvim_command("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
+-- vim.api.nvim_command("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
