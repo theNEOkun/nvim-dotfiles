@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
 		'neovim/nvim-lspconfig',
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
-		requires = {
+		{
 			--Autocomplete
 			'ms-jpq/coq_nvim',
 			requires = {
