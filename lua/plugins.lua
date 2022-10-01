@@ -123,12 +123,24 @@ return require('packer').startup(function(use)
 	use 'p00f/clangd_extensions.nvim'
 
 	--Others
+	-- use {
+	-- 	'kyazdani42/nvim-tree.lua',
+	-- 	config = require('nvimTree'),
+	-- 	requires = {
+	-- 		'kyazdani42/nvim-web-devicons',
+	-- 		opt = true
+	-- 	}
+	-- }
+	--
+	--Tree
 	use {
-		'kyazdani42/nvim-tree.lua',
-		config = require('nvimTree'),
+		'nvim-neo-tree/neo-tree.nvim',
+		branch = "v2.x",
+		config = require('neoTree').setup,
 		requires = {
+			'nvim-lua/plenary.nvim',
 			'kyazdani42/nvim-web-devicons',
-			opt = true
+			'MunifTanjim/nui.nvim'
 		}
 	}
 
