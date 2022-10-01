@@ -2,25 +2,28 @@ local tree = require("neo-tree");
 
 local keymap = require('utils').map
 local g = vim.g;
+local api = vim.api;
 
 local m = {}
 
 g.loaded = 1;
 g.loaded_netrwPlugin = 1;
 
-keymap('n', '<C-->', '<CMD>:Neotree<CR>');
+local command = "NeoTreeShowInSplitToggle"
+
+keymap('n', '<C-->', '<CMD>:' .. command .. '<CR>');
+api.nvim_create_user_command('Ex', function() vim.cmd(command) end, { nargs = 0 })
+api.nvim_create_user_command('Sex', function()
+	vim.cmd('vsplit')
+	vim.cmd(command)
+end, { nargs = 0 })
+api.nvim_create_user_command('Vex', function()
+	vim.cmd('split')
+	vim.cmd(command)
+end, { nargs = 0 })
 
 m.setup = tree.setup({
 	enable_git_status = true,
-	default_component_configs = {
-		git_status = {
-			untracked = "",
-			ignored   = "",
-			unstaged  = "",
-			staged    = "",
-			conflict  = "",
-		},
-	},
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
@@ -33,10 +36,6 @@ m.setup = tree.setup({
 		hijack_netrw_behavior = "open_current",
 		follow_current_file = true,
 	},
-	window = {
-		position = "current",
-	},
-	toggle = true,
 });
 
 return m
