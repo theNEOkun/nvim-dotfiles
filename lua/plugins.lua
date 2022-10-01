@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
 		config = require('lsp-conf')
 	}
 
-	use 'kosayoda/nvim-lightbulb'
+	-- use 'kosayoda/nvim-lightbulb'
 
 	--TreeSitter
 	use {
@@ -86,10 +86,6 @@ return require('packer').startup(function(use)
 	}
 
 	use {
-		'Pocco81/dap-buddy.nvim',
-	}
-
-	use {
 		'theHamsta/nvim-dap-virtual-text',
 		config = function()
 			M = require('nvim-dap-virtual-text').setup();
@@ -122,6 +118,7 @@ return require('packer').startup(function(use)
 
 	----C/C++
 	use 'p00f/clangd_extensions.nvim'
+
 	--Others
 	use {
 		'kyazdani42/nvim-tree.lua',
@@ -172,12 +169,6 @@ return require('packer').startup(function(use)
 
 	----RipGrep
 	use 'jremmen/vim-ripgrep'
-
-	-- Helper
-	--	use {
-	--		'takac/vim-hardtime',
-	--		'danth/pathfinder.vim'
-	--	}
 
 	----Colors
 	use {
