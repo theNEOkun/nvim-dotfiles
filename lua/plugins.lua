@@ -28,9 +28,8 @@ return require('packer').startup(function(use)
 		'neovim/nvim-lspconfig',
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
-		{
+		requires = {
 			--Autocomplete
-
 			'ms-jpq/coq_nvim',
 			requires = {
 				'ms-jpq/coq.artifacts',
@@ -50,7 +49,7 @@ return require('packer').startup(function(use)
 	--TreeSitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		{
+		requires = {
 			'nvim-treesitter/nvim-treesitter-refactor',
 			'windwp/nvim-ts-autotag',
 			'p00f/nvim-ts-rainbow',
@@ -80,19 +79,21 @@ return require('packer').startup(function(use)
 	--Debugging
 
 	use {
-		'rcarriga/nvim-dap-ui',
-		config = require('dapui').setup(),
-		requires = 'mfussenegger/nvim-dap'
-	}
+		{
+			'rcarriga/nvim-dap-ui',
+			config = require('dapui').setup(),
+			requires = 'mfussenegger/nvim-dap'
+		},
+		{
+			'theHamsta/nvim-dap-virtual-text',
+			config = function()
+				M = require('nvim-dap-virtual-text').setup();
+				require('dap.dap_init');
+				return M;
+			end,
+			requires = 'mfussenegger/nvim-dap'
 
-	use {
-		'theHamsta/nvim-dap-virtual-text',
-		config = function()
-			M = require('nvim-dap-virtual-text').setup();
-			require('dap.dap_init');
-			return M;
-		end,
-		requires = 'mfussenegger/nvim-dap'
+		}
 	}
 
 	use {
@@ -103,17 +104,19 @@ return require('packer').startup(function(use)
 	--Specific
 	----Rust
 	use {
-		'simrat39/rust-tools.nvim',
-		requires = {
-			'mfussenegger/nvim-dap',
-			'nvim-lua/plenary.nvim'
-		}
+		{
+			'simrat39/rust-tools.nvim',
+			requires = {
+				'mfussenegger/nvim-dap',
+				'nvim-lua/plenary.nvim'
+			}
+
+		},
+		'rust-lang/rust.vim',
+		'ron-rs/ron.vim'
+
 	}
 
-	use 'rust-lang/rust.vim'
-	use 'ron-rs/ron.vim'
-
-	----eww
 	use 'elkowar/yuck.vim'
 
 	----C/C++
