@@ -28,9 +28,9 @@ g.wildmenu = true
 g.wildmode = { "list, full" }
 
 --Minimap
-g.minimap_width = 5
-g.minimap_auto_start = 1
-g.minimap_auto_start_win_enter = 1
+-- g.minimap_width = 5
+-- g.minimap_auto_start = 1
+-- g.minimap_auto_start_win_enter = 1
 
 require('utils').map('n', '<space>', '<nop>')
 g.mapleader = " "

@@ -125,23 +125,7 @@ return require('packer').startup(function(use)
 	--Others
 	use {
 		'kyazdani42/nvim-tree.lua',
-		config = require('nvim-tree').setup({
-			git = {
-				ignore = false,
-			},
-			hijack_netrw = true,
-			hijack_directories = {
-				enable = true,
-				auto_open = true,
-			},
-			view = {
-				--mappings = {
-				--	list = {
-				--		{ key = "<CR>", action = "edit_in_place" }
-				--	}
-				--}
-			}
-		}),
+		config = require('nvimTree'),
 		requires = {
 			'kyazdani42/nvim-web-devicons',
 			opt = true
