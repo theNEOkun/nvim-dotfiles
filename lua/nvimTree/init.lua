@@ -21,7 +21,7 @@ m.toggle_replace = toggle_replace;
 
 --CHADTree
 keymap('n', '<C-->', '<cmd>:lua require("nvimTree").toggle_replace()<CR>')
--- keymap('n', '<C-->', '<cmd>:NvimTreeToggle<CR>', key_opts)
+keymap('n', '<F6>', '<cmd>:NvimTreeToggle<CR>')
 
 api.nvim_create_user_command('Ex', toggle_replace, { nargs = 0 })
 api.nvim_create_user_command('Sex', function()
@@ -44,7 +44,8 @@ nvim_tree.setup({
 		number = true,
 		mappings = {
 			list = {
-				{ key = "<CR>", action = "edit_in_place" }
+				{ key = "<CR>", action = "edit_in_place" },
+				{ key = "<C-e>", action = "edit" }
 			}
 		}
 	},
