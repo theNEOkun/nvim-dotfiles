@@ -24,6 +24,13 @@ end, { nargs = 0 })
 
 m.setup = tree.setup({
 	enable_git_status = true,
+	window = {
+		mappings = {
+			["<space>"] = {
+				"open",
+			}
+		},
+	},
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
