@@ -31,3 +31,13 @@ keymap('i', '<C-j>', '<Esc>:m .+1<CR>==gi')
 keymap('i', '<C-k>', '<Esc>:m .-2<CR>==gi')
 keymap('v', '<C-j>', ":m '>+1<CR>gv=gv")
 keymap('v', '<C-k>', ":m '<-2<CR>gv=gv")
+
+-- ENter just a line
+keymap('n', '<leader>o', 'o<ESC>');
+keymap('n', '<leader>O', 'O<ESC>');
+keymap('v', '<leader>o', 'o<ESC>');
+keymap('v', '<leader>O', 'O<ESC>');
+
+-- Simple esc
+keymap('i', 'jj', '<ESC>');
+keymap('v', 'jj', '<ESC>');
