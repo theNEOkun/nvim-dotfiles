@@ -37,7 +37,3 @@ keymap('n', '<leader>o', 'o<ESC>');
 keymap('n', '<leader>O', 'O<ESC>');
 keymap('v', '<leader>o', 'o<ESC>');
 keymap('v', '<leader>O', 'O<ESC>');
-
--- Simple esc
-keymap('i', 'jj', '<ESC>');
-keymap('v', 'jj', '<ESC>');
