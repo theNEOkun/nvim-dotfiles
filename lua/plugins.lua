@@ -56,20 +56,8 @@ return require('packer').startup(function(use)
 			'RRethy/nvim-treesitter-endwise',
 			'RRethy/nvim-treesitter-textsubjects',
 		},
-		config = require('treesitter-conf'),
+		config = function() require('treesitter-conf') end,
 		run = ':TSUpdate',
-	}
-
-	--Test
-	use {
-		"nvim-neotest/neotest",
-		{
-			"nvim-neotest/neotest-vim-test",
-			requires = {
-				"vim-test/vim-test"
-			},
-			config = function() require("neotest-vim-test")({ ignore_filetypes = {} }) end,
-		},
 	}
 
 	use {
@@ -122,20 +110,9 @@ return require('packer').startup(function(use)
 	----C/C++
 	use 'p00f/clangd_extensions.nvim'
 
-	--Others
-	-- use {
-	-- 	'kyazdani42/nvim-tree.lua',
-	-- 	config = require('nvimTree'),
-	-- 	requires = {
-	-- 		'kyazdani42/nvim-web-devicons',
-	-- 		opt = true
-	-- 	}
-	-- }
-	--
 	--Tree
 	use {
 		'nvim-neo-tree/neo-tree.nvim',
-		branch = "v2.x",
 		config = require('neoTree').setup,
 		requires = {
 			'nvim-lua/plenary.nvim',
