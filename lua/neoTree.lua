@@ -11,7 +11,7 @@ g.loaded_netrwPlugin = 1;
 
 local command = "NeoTreeShowInSplitToggle"
 
-keymap('n', 'å', '<CMD>:' .. command .. '<CR>');
+keymap('n', '<A-->', '<CMD>:' .. command .. '<CR>');
 api.nvim_create_user_command('Ex', function() vim.cmd(command) end, { nargs = 0 })
 api.nvim_create_user_command('Sex', function()
 	vim.cmd('vsplit')
