@@ -37,3 +37,9 @@ keymap('n', '<leader>o', 'o<ESC>');
 keymap('n', '<leader>O', 'O<ESC>');
 keymap('v', '<leader>o', 'o<ESC>');
 keymap('v', '<leader>O', 'O<ESC>');
+
+-- Remove arrow-keys
+keymap('n', '<Up>', '<Nop>')
+keymap('n', '<Down>', '<Nop>')
+keymap('n', '<Left>', '<Nop>')
+keymap('n', '<Right>', '<Nop>')

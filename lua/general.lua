@@ -21,9 +21,6 @@ set.colorcolumn = "101"
 
 set.clipboard:prepend { "unnamed" }
 
-set.mouse = "a"
-set.fenc = 'utf-8';
-
 g.wildmenu = true
 g.wildmode = { "list, full" }
 
