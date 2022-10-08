@@ -165,7 +165,9 @@ return require('packer').startup(function(use)
 	----Colors
 	use {
 		'navarasu/onedark.nvim',
+		'lunarvim/Onedarker.nvim',
 		'NTBBloodbath/doom-one.nvim',
+		'EdenEast/nightfox.nvim',
 	}
 
 	use {
