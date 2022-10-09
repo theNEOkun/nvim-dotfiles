@@ -70,7 +70,7 @@ return require('packer').startup(function(use)
 		{
 			'rcarriga/nvim-dap-ui',
 			config = require('dapui').setup(),
-			requires = 'mfussenegger/nvim-dap'
+			requires = 'mfussenegger/nvim-dap',
 		},
 		{
 			'theHamsta/nvim-dap-virtual-text',
@@ -117,7 +117,7 @@ return require('packer').startup(function(use)
 		requires = {
 			'nvim-lua/plenary.nvim',
 			'kyazdani42/nvim-web-devicons',
-			'MunifTanjim/nui.nvim'
+			{ 'MunifTanjim/nui.nvim', opt = true }
 		}
 	}
 
@@ -164,10 +164,10 @@ return require('packer').startup(function(use)
 
 	----Colors
 	use {
-		'navarasu/onedark.nvim',
-		'lunarvim/Onedarker.nvim',
-		'NTBBloodbath/doom-one.nvim',
-		'EdenEast/nightfox.nvim',
+		{ 'navarasu/onedark.nvim', opt = true },
+		{ 'lunarvim/Onedarker.nvim', opt = true },
+		{ 'NTBBloodbath/doom-one.nvim', opt = true },
+		{ 'EdenEast/nightfox.nvim', opt = true },
 	}
 
 	use {
