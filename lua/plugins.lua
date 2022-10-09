@@ -113,12 +113,12 @@ return require('packer').startup(function(use)
 	--Tree
 	use {
 		'nvim-neo-tree/neo-tree.nvim',
-		config = require('neoTree').setup,
 		requires = {
 			'nvim-lua/plenary.nvim',
 			'kyazdani42/nvim-web-devicons',
-			{ 'MunifTanjim/nui.nvim', opt = true }
-		}
+			'MunifTanjim/nui.nvim',
+		},
+		config = require('neoTree').setup,
 	}
 
 	use 'preservim/tagbar'
@@ -164,11 +164,12 @@ return require('packer').startup(function(use)
 
 	----Colors
 	use {
-		{ 'navarasu/onedark.nvim', opt = true },
-		{ 'lunarvim/Onedarker.nvim', opt = true },
-		{ 'NTBBloodbath/doom-one.nvim', opt = true },
-		{ 'EdenEast/nightfox.nvim', opt = true },
+		'navarasu/onedark.nvim', 
+		'lunarvim/Onedarker.nvim', 
+		'NTBBloodbath/doom-one.nvim', 
+		'EdenEast/nightfox.nvim', 
 	}
+	vim.cmd('colorscheme onedarker');
 
 	use {
 		'NvChad/nvim-colorizer.lua',
