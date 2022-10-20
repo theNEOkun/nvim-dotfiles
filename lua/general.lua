@@ -1,4 +1,4 @@
-local g = vim.g
+local g = vim.g;
 local set = vim.opt
 
 local unpack = table.unpack or unpack;
@@ -34,6 +34,7 @@ g.mapleader = " "
 
 set.list = true;
 
+vim.cmd('colorscheme onedarker');
 set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
 	unpack(set.listchars) };
 

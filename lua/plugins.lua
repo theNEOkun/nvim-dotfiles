@@ -169,7 +169,6 @@ return require('packer').startup(function(use)
 		'NTBBloodbath/doom-one.nvim', 
 		'EdenEast/nightfox.nvim', 
 	}
-	vim.cmd('colorscheme onedarker');
 
 	use {
 		'NvChad/nvim-colorizer.lua',
