@@ -55,6 +55,7 @@ return require('packer').startup(function(use)
 			'p00f/nvim-ts-rainbow',
 			'RRethy/nvim-treesitter-endwise',
 			'RRethy/nvim-treesitter-textsubjects',
+			'nvim-treesitter/nvim-treesitter-context',
 		},
 		config = function() require('treesitter-conf') end,
 		run = ':TSUpdate',
