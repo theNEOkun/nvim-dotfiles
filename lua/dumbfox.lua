@@ -20,7 +20,6 @@ local palette = {
 		add = "#35BF86",
 		remove = "#F22c86",
 		delta = "#6F44F0",
-		background = "#3B224C",
 		cursor_match_bg = "#212121",
 		cursor_match_fg = "#6C6999",
 	}
@@ -29,7 +28,7 @@ local palette = {
 -- Sets the colors of the different "special" parts
 palette.all.comment = palette.all.sirocco;
 palette.all.bg0 = palette.all.revolver;
-palette.all.bg1 = palette.all.background;
+palette.all.bg1 = palette.all.midnight;
 palette.all.bg2 = palette.all.revolver;
 palette.all.bg3 = palette.all.delta;
 palette.all.bg4 = palette.all.revolver;
@@ -81,12 +80,6 @@ local specs = {
 nightfox.setup({
 	palettes = palette,
 	specs = specs,
-	modules = {
-		treesitter = true,
-		tsrainbow = true,
-		telescope = true,
-		neotree = true
-	}
 });
 
 nightfox.override.groups({
@@ -94,12 +87,8 @@ nightfox.override.groups({
 		CursorLineNr = { bg = palette.all.revolver },
 		LineNr = { bg = palette.all.revolver },
 		SignColumn = { bg = palette.all.revolver },
+		GitGutterAdd = { bg = palette.all.revolver },
+		GitGutterDelete = { bg = palette.all.revolver },
+		GitGutterChange = { bg = palette.all.revolver },
 	},
-	modules = {
-		gitgutter = {
-			GitGutterAdd = { bg = palette.all.revolver },
-			GitGutterDelete = { bg = palette.all.revolver },
-			GitGutterChange = { bg = palette.all.revolver },
-		}
-	}
 });
