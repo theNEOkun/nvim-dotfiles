@@ -1,6 +1,4 @@
 local nightfox = require("nightfox")
-local old_palette = require('nightfox.palette').load();
-local old_specs = require('nightfox.spec').load();
 
 local palette = {
 	all = {
@@ -19,42 +17,89 @@ local palette = {
 		honey = "#efba5d",
 		apricot = "#f47868",
 		lightning = "#ffcd1c",
+		add = "#35BF86",
+		remove = "#F22c86",
 		delta = "#6F44F0",
-		bg1 = "#540099",
+		background = "#3B224C",
 		cursor_match_bg = "#212121",
-		cursor_match_fg = "#6C6999" ,
-		sel0 = "#281733",
-		sel1 = "#281733"
+		cursor_match_fg = "#6C6999",
 	}
 };
 
+-- Sets the colors of the different "special" parts
 palette.all.comment = palette.all.sirocco;
 palette.all.bg0 = palette.all.revolver;
+palette.all.bg1 = palette.all.background;
+palette.all.bg2 = palette.all.revolver;
+palette.all.bg3 = palette.all.delta;
+palette.all.bg4 = palette.all.revolver;
 palette.all.fg0 = palette.all.lavender;
+palette.all.fg1 = palette.all.lavender;
+palette.all.fg2 = palette.all.lilac;
+palette.all.fg3 = palette.all.grey;
+palette.all.sel0 = palette.all.delta;
+palette.all.sel1 = palette.all.bossanova;
 
 local specs = {
 	all = {
 		syntax = {
-			keyword = "almond",
-			variable = "lavender",
-			builtin0 = "lavender",
-			type = "white",
-			builtin1 = "white",
-			operator = "lilac",
-			func = "white",
-			const = "white",
-			builtin2 = "white",
-			string = "silver",
-			number = "chamois",
 			bracket = "lavender",
+			builtin0 = "lavender",
+			builtin1 = "white",
+			builtin2 = "white",
+			comment = "comment",
+			conditional = "",
+			const = "white",
+			dep = "red",
+			field = "green",
+			func = "white",
 			ident = "lilac",
+			keyword = "almond",
+			number = "chamois",
+			operator = "lilac",
 			preproc = "mint",
-			statement = "bossanova"
+			regex = "mint",
+			statement = "bossanova",
+			string = "silver",
+			type = "white",
+			variable = "lavender",
+		},
+		diag = {
+			warn = "lightning",
+			error = "apricot",
+			info = "delta",
+			hint = "silver",
+		},
+		git = {
+			add = "add",
+			remove = "remove",
+			changed = "delta"
 		}
 	}
 }
 
 nightfox.setup({
-	palettes = vim.tbl_deep_extend("force", old_palette, palette),
+	palettes = palette,
 	specs = specs,
+	modules = {
+		treesitter = true,
+		tsrainbow = true,
+		telescope = true,
+		neotree = true
+	}
+});
+
+nightfox.override.groups({
+	all = {
+		CursorLineNr = { bg = palette.all.revolver },
+		LineNr = { bg = palette.all.revolver },
+		SignColumn = { bg = palette.all.revolver },
+	},
+	modules = {
+		gitgutter = {
+			GitGutterAdd = { bg = palette.all.revolver },
+			GitGutterDelete = { bg = palette.all.revolver },
+			GitGutterChange = { bg = palette.all.revolver },
+		}
+	}
 });

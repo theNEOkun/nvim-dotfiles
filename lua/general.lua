@@ -34,8 +34,8 @@ g.mapleader = " "
 
 set.list = true;
 
--- require"dumbfox"
-vim.cmd('colorscheme onedarker');
+require"dumbfox"
+vim.cmd('colorscheme nightfox');
 set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
 	unpack(set.listchars) };
 

@@ -57,7 +57,7 @@ return require('packer').startup(function(use)
 			'RRethy/nvim-treesitter-textsubjects',
 			'nvim-treesitter/nvim-treesitter-context',
 		},
-		config = function() require('treesitter-conf') end,
+		config = require('treesitter-conf').setup(),
 		run = ':TSUpdate',
 	}
 
