@@ -40,9 +40,17 @@ m.setup = tree.setup({
 				"node_modules"
 			},
 		},
-		hijack_netrw_behavior = "open_current",
 		follow_current_file = true,
 	},
+	event_handlers = {
+		{
+			event = "after_render",
+			handler = function (_)
+				vim.cmd("set number");
+				vim.cmd("set relativenumber");
+			end
+		}
+	}
 });
 
 return m

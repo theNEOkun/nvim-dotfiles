@@ -87,6 +87,8 @@ nightfox.override.groups({
 		CursorLineNr = { bg = palette.all.revolver },
 		LineNr = { bg = palette.all.revolver },
 		SignColumn = { bg = palette.all.revolver },
+		FoldColumn = { bg = palette.all.revolver },
+		SignColumnSB = { bg = palette.all.revolver },
 		GitGutterAdd = { bg = palette.all.revolver },
 		GitGutterDelete = { bg = palette.all.revolver },
 		GitGutterChange = { bg = palette.all.revolver },
