@@ -25,6 +25,7 @@ end, { nargs = 0 })
 m.setup = tree.setup({
 	enable_git_status = true,
 	window = {
+		position = "current",
 		mappings = {
 			["<space>"] = {
 				"open",
@@ -41,6 +42,7 @@ m.setup = tree.setup({
 			},
 		},
 		follow_current_file = true,
+		netrw_hijack_behavior = "open_default",
 	},
 	event_handlers = {
 		{

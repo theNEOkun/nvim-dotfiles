@@ -5,6 +5,7 @@ local unpack = table.unpack or unpack;
 
 set.number = true
 set.relativenumber = true;
+set.signcolumn = "yes";
 
 set.filetype = "on";
 
