@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
 			'p00f/nvim-ts-rainbow',
 			'RRethy/nvim-treesitter-endwise',
 			'RRethy/nvim-treesitter-textsubjects',
-			'nvim-treesitter/nvim-treesitter-context',
+			'JoosepAlviste/nvim-ts-context-commentstring',
 		},
 		config = require('treesitter-conf').setup(),
 		run = ':TSUpdate',
@@ -165,7 +165,6 @@ return require('packer').startup(function(use)
 
 	----Colors
 	use {
-		'navarasu/onedark.nvim',
 		'lunarvim/Onedarker.nvim',
 		'NTBBloodbath/doom-one.nvim',
 		'EdenEast/nightfox.nvim',

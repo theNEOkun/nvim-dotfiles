@@ -1,5 +1,3 @@
-require("treesitter-context").setup();
-
 local m = {}
 
 m.setup = function() require 'nvim-treesitter.configs'.setup {
@@ -66,6 +64,9 @@ m.setup = function() require 'nvim-treesitter.configs'.setup {
 				['<C-o>'] = 'textsubjects-container-outer',
 				['<C-i>'] = 'textsubjects-container-inner',
 			},
+		},
+		context_commentstring = {
+			enable = true,
 		},
 	}
 end
