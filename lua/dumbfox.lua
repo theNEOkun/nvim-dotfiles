@@ -20,8 +20,7 @@ local palette = {
 		add = "#35BF86",
 		remove = "#F22c86",
 		delta = "#6F44F0",
-		cursor_match_bg = "#212121",
-		cursor_match_fg = "#6C6999",
+		cursor_bg = "#540099",
 	}
 };
 
@@ -36,7 +35,7 @@ palette.all.fg0 = palette.all.lavender;
 palette.all.fg1 = palette.all.lavender;
 palette.all.fg2 = palette.all.lilac;
 palette.all.fg3 = palette.all.grey;
-palette.all.sel0 = palette.all.delta;
+palette.all.sel0 = palette.all.cursor_bg;
 palette.all.sel1 = palette.all.bossanova;
 
 local specs = {
@@ -50,7 +49,7 @@ local specs = {
 			conditional = "almond",
 			const = "white",
 			dep = "red",
-			field = "green",
+			field = "white",
 			func = "white",
 			ident = "lilac",
 			keyword = "honey",
@@ -77,9 +76,20 @@ local specs = {
 	}
 }
 
+-- Setting up the colorscheme
 nightfox.setup({
 	palettes = palette,
 	specs = specs,
+	options = {
+		styles = {
+			comments = "italic",
+			keywords = "bold",
+			functions = "italic"
+		},
+		inverse = {
+			search = "true"
+		}
+	},
 });
 
 nightfox.override.groups({
