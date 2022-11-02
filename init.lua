@@ -6,4 +6,5 @@ else
 	require('plugins')
 	require('keymaps')
 	require('plugin-keymaps')
+	require('skeletons')
 end

@@ -8,25 +8,25 @@ local keymap = vim.api.nvim_set_keymap
 local buf_keymap = vim.api.nvim_buf_set_keymap
 
 local bind_function = function(mode, keys, func)
-  local func_name = "bind_" .. mode .. "_" .. keys
+	local func_name = "bind_" .. mode .. "_" .. keys
 
-  local func_name_escaped = func_name
-  -- Escape Lua things
-  func_name_escaped = func_name_escaped:gsub("'", "\\'")
-  func_name_escaped = func_name_escaped:gsub('"', '\\"')
-  func_name_escaped = func_name_escaped:gsub("\\[", "\\[")
-  func_name_escaped = func_name_escaped:gsub("\\]", "\\]")
+	local func_name_escaped = func_name
+	-- Escape Lua things
+	func_name_escaped = func_name_escaped:gsub("'", "\\'")
+	func_name_escaped = func_name_escaped:gsub('"', '\\"')
+	func_name_escaped = func_name_escaped:gsub("\\[", "\\[")
+	func_name_escaped = func_name_escaped:gsub("\\]", "\\]")
 
-  -- Escape VimScript things
-  -- We only escape `<` - I couldn't be bothered to deal with how <lt>/<gt> have angle brackets in themselves
-  -- And this works well-enough anyways
-  func_name_escaped = func_name_escaped:gsub("<", "<lt>")
+	-- Escape VimScript things
+	-- We only escape `<` - I couldn't be bothered to deal with how <lt>/<gt> have angle brackets in themselves
+	-- And this works well-enough anyways
+	func_name_escaped = func_name_escaped:gsub("<", "<lt>")
 
-  M.keybind[func_name] = func
+	M.keybind[func_name] = func
 
-  local lua_command = ":lua require('utils').keybind['" .. func_name_escaped .. "']()<CR>"
+	local lua_command = ":lua require('utils').keybind['" .. func_name_escaped .. "']()<CR>"
 
-  return lua_command
+	return lua_command
 end
 
 --Used to map to a keybinding
@@ -35,7 +35,7 @@ end
 --@param command is the command to execute
 --@param opts are the options to use
 M.map = function(mode, keys, command, opts)
-	local options = { noremap=false, silent=true}
+	local options = { noremap = false, silent = true }
 	if opts then options = vim.tbl_extend("force", options, opts) end
 	keymap(mode, keys, command, options)
 end
@@ -70,6 +70,18 @@ M.map_func = function(mode, keys, command, opts)
 	if opts then options = vim.tbl_extend("force", options, opts) end
 	command = bind_function(mode, keys, command)
 	keymap(mode, keys, command, options)
+end
+
+-- Creates an autocommand "easier"
+-- @param actions are the actions to do the command on
+-- @param aupattern is the pattern to listen formd
+-- @param aucommand is the command to do
+M.autocmd = function(actions, aupattern, aucommand)
+	local augroup = vim.api.nvim_create_augroup(actions, { clear = true });
+	vim.api.nvim_create_autocmd(actions, {
+		pattern = aupattern, group = augroup,
+		command = aucommand,
+	});
 end
 
 return M
