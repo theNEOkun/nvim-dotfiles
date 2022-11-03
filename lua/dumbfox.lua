@@ -100,10 +100,6 @@ nightfox.setup({
 
 nightfox.override.groups({
 	all = {
-		["@title"] = { bg = "green" },
-		TSTitle = { bg = "green" },
-		["@literal"] = { bg = "green" },
-		TSLiteral = { bg = "green" },
 		CursorLineNr = { bg = palette.all.revolver },
 		LineNr = { bg = palette.all.revolver },
 		SignColumn = { bg = palette.all.revolver },

@@ -8,6 +8,7 @@ m.setup = function() require 'nvim-treesitter.configs'.setup {
 		sync_install = false,
 		highlight = {
 			enable = true,
+			additional_vim_regex_hightlighting = { "markdown" }
 		},
 		incremental_selection = {
 			enable = true,
