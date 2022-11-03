@@ -68,6 +68,12 @@ local specs = {
 			info = "delta",
 			hint = "silver",
 		},
+		diag_bg = {
+			warn = "revolver",
+			error = "revolver",
+			info = "revolver",
+			hint = "revolver",
+		},
 		git = {
 			add = "add",
 			remove = "remove",
@@ -94,6 +100,10 @@ nightfox.setup({
 
 nightfox.override.groups({
 	all = {
+		["@title"] = { bg = "green" },
+		TSTitle = { bg = "green" },
+		["@literal"] = { bg = "green" },
+		TSLiteral = { bg = "green" },
 		CursorLineNr = { bg = palette.all.revolver },
 		LineNr = { bg = palette.all.revolver },
 		SignColumn = { bg = palette.all.revolver },
@@ -102,5 +112,10 @@ nightfox.override.groups({
 		GitGutterAdd = { bg = palette.all.revolver },
 		GitGutterDelete = { bg = palette.all.revolver },
 		GitGutterChange = { bg = palette.all.revolver },
+		TSTagAttribute = { fg = palette.all.lavender },
+		DiagnosticSignError = { bg = palette.all.revolver },
+		DiagnosticSignWarn = { bg = palette.all.revolver },
+		DiagnosticSignInfo = { bg = palette.all.revolver },
+		DiagnosticSignHint = { bg = palette.all.revolver },
 	},
 });

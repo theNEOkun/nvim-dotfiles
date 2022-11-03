@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
 			'RRethy/nvim-treesitter-textsubjects',
 			'nvim-treesitter/nvim-treesitter-textobjects',
 			'JoosepAlviste/nvim-ts-context-commentstring',
+			'MDeiml/tree-sitter-markdown',
 		},
 		config = require('treesitter-conf').setup(),
 		run = ':TSUpdate',
