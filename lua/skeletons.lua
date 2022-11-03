@@ -7,10 +7,10 @@ autocmd("BufNewFile", {
 	"0r ~/library/skeletons/README.md")
 
 -- When creating a bash-file
-autocmd("BufNewFile", {
-	"*.sh"
-},
-	"0r ~/library/skeletons/bash.sh")
+-- autocmd("BufNewFile", {
+-- 	"*.sh"
+-- },
+-- 	"0r ~/library/skeletons/bash.sh")
 
 -- When creating a makefile
 autocmd("BufNewFile", {
