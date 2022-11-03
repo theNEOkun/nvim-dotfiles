@@ -102,7 +102,7 @@ M.on_attach = function(client, bufnr)
 	update_config('en-US', 'dictionary', client)
 	update_config('en-US', 'disabledRules', client)
 	update_config('en-US', 'hiddenFalsePositives', client)
-	local buf_map = require('utils').buf_map_func
+	local buf_map = require('utils').buf_map
 	buf_map(bufnr, 'n', 'zuw', function()
 		vim.cmd('normal! zuw')
 		require('lsp-conf.custom_servers.ltex').update_config('en-US', 'dictionary')

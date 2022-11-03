@@ -1,5 +1,4 @@
 local keymap = require('utils').map
-local keymap_func = require('utils').map_func
 
 --Tagbar
 keymap('n', '<F8>', '<cmd>:TagbarToggle<CR>')

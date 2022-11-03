@@ -158,6 +158,12 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-surround'
 	use 'fladson/vim-kitty'
 
+	--TODO things to do
+	use {
+		'folke/todo-comments.nvim',
+		config = function() require("todo-conf").setup() end
+	}
+
 	--require('autopairs')
 	use 'jiangmiao/auto-pairs'
 
