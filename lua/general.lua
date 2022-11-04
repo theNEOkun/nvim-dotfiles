@@ -25,10 +25,7 @@ set.clipboard:prepend { "unnamed" }
 g.wildmenu = true
 g.wildmode = { "list, full" }
 
---Minimap
--- g.minimap_width = 5
--- g.minimap_auto_start = 1
--- g.minimap_auto_start_win_enter = 1
+set.path:append { "**" };
 
 require('utils').map('n', '<space>', '<nop>')
 g.mapleader = " "
@@ -39,5 +36,3 @@ require"dumbfox"
 vim.cmd('colorscheme nightfox');
 set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
 	unpack(set.listchars) };
-
--- vim.api.nvim_command("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
