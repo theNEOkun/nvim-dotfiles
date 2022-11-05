@@ -3,9 +3,9 @@ if vim.g.vscode then
 	require('keymaps')
 	require('skeletons')
 else
+	require('plugin-keymaps')
+	require('plugins')
 	require('general')
 	require('keymaps')
 	require('skeletons')
-	require('plugin-keymaps')
-	require('plugins')
 end
