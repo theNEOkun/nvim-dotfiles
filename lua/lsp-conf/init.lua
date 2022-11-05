@@ -10,7 +10,7 @@ vim.g.coq_settings = { auto_start = 'shut-up' }
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
 -- or if the server is already installed).
 local func = function()
-	for i, server in pairs(lsp_installer.get_installed_servers()) do
+	for _, server in pairs(lsp_installer.get_installed_servers()) do
 		local opts = require('coq').lsp_ensure_capabilities {
 			on_attach = require('lsp-conf.helper').on_attach,
 		}

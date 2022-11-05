@@ -153,7 +153,8 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'
 
 	----Surrounding
-	use 'tpope/vim-surround'
+	-- use 'tpope/vim-surround'
+	use 'kylechui/nvim-surround'
 	use 'fladson/vim-kitty'
 
 	-- TODO things to do

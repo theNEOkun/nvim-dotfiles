@@ -34,7 +34,7 @@ palette.all.bg4 = palette.all.delta;
 palette.all.fg0 = palette.all.lavender;
 palette.all.fg1 = palette.all.lavender;
 palette.all.fg2 = palette.all.lilac;
-palette.all.fg3 = palette.all.grey;
+palette.all.fg3 = palette.all.delta;
 palette.all.sel0 = palette.all.cursor_bg;
 palette.all.sel1 = palette.all.bossanova;
 
@@ -96,6 +96,10 @@ nightfox.setup({
 			search = "true"
 		}
 	},
+	groups = {
+		all = {
+		}
+	}
 });
 
 nightfox.override.groups({
@@ -108,7 +112,7 @@ nightfox.override.groups({
 		GitGutterAdd = { bg = palette.all.revolver },
 		GitGutterDelete = { bg = palette.all.revolver },
 		GitGutterChange = { bg = palette.all.revolver },
-		TSTagAttribute = { fg = palette.all.lavender },
+		["@tag.attribute"] = { fg = palette.all.lavender },
 		DiagnosticSignError = { bg = palette.all.revolver },
 		DiagnosticSignWarn = { bg = palette.all.revolver },
 		DiagnosticSignInfo = { bg = palette.all.revolver },

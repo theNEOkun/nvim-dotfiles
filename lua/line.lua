@@ -22,7 +22,7 @@ require('lualine').setup{
 		lualine_b = {},
 		lualine_c = {'filename'},
 		lualine_x = {'location'},
-		lualine_y = {'encoding',},
+		lualine_y = {},
 		lualine_z = {}
 	},
 }
