@@ -26,9 +26,21 @@ autocmd("BufNewFile",
 	{ "main.c" },
 	"0r ~/library/skeletons/main.c",
 	augroup)
---
+
 -- When creating a new c-main
 autocmd("BufNewFile",
 	{ "main.cpp" },
 	"0r ~/library/skeletons/main.cpp",
+	augroup)
+
+-- When creating a main.js file
+autocmd("BufNewFile",
+	{ "main.js" },
+	"0r ~/library/skeletons/main.js",
+	augroup)
+
+-- When creating an index-file
+autocmd("BufNewFile",
+	{ "index.html" },
+	"0r ~/library/skeletons/index.html",
 	augroup)
