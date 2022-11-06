@@ -17,3 +17,9 @@ autocmd("BufNewFile", {
 	"Makefile", "makefile"
 },
 	"0r ~/library/skeletons/Makefile")
+
+-- When creating a new c-main
+autocmd("BufNewFile", {
+	"main.c"
+},
+	"0r ~/library/skeletons/c_main")
