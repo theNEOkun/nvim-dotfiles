@@ -96,10 +96,6 @@ nightfox.setup({
 			search = "true"
 		}
 	},
-	groups = {
-		all = {
-		}
-	}
 });
 
 nightfox.override.groups({

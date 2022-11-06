@@ -13,13 +13,15 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		requires = {
 			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope-fzy-native.nvim'
 		},
 		config = require('telescope').setup {
 			defaults = {
 				file_ignore_patterns = { "node_modules" }
 			}
 		},
+		{
+			'nvim-telescope/telescope-fzy-native.nvim'
+		}
 	}
 	--LSP
 	use {

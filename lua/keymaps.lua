@@ -33,13 +33,15 @@ keymap('v', '<C-j>', ":m '>+1<CR>gv=gv")
 keymap('v', '<C-k>', ":m '<-2<CR>gv=gv")
 
 -- ENter just a line
-keymap('n', '<leader>o', 'o<ESC>');
-keymap('n', '<leader>O', 'O<ESC>');
-keymap('v', '<leader>o', 'o<ESC>');
-keymap('v', '<leader>O', 'O<ESC>');
+keymap({ 'n', 'v' }, '<leader>o', 'o<ESC>');
+keymap({ 'n', 'v' }, '<leader>O', 'O<ESC>');
 
 -- Remove arrow-keys
-keymap('n', '<Up>', '<Nop>')
-keymap('n', '<Down>', '<Nop>')
-keymap('n', '<Left>', '<Nop>')
-keymap('n', '<Right>', '<Nop>')
+keymap({ 'n', 'v' }, '<Up>', '<Nop>')
+keymap({ 'n', 'v' }, '<Down>', '<Nop>')
+keymap({ 'n', 'v' }, '<Left>', '<Nop>')
+keymap({ 'n', 'v' }, '<Right>', '<Nop>')
+
+-- Some custom text-objects
+keymap({ 'o', 'x' }, 'il', ':<C-u>norm! $v^<CR>', { silent = true });
+keymap({ 'o', 'x' }, 'al', ':<C-u>norm! $v0<CR>', { silent = true });
