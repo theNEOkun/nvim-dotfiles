@@ -5,6 +5,7 @@ local M = {}
 M.keybind = {}
 
 local keymap = vim.keymap.set
+local api = vim.api
 
 --Used to map to a keybinding
 --@param mode is the mode for the keybinding
@@ -29,14 +30,18 @@ M.buf_map = function(bufnr, mode, keys, command, opts)
 	keymap(mode, keys, command, options)
 end
 
+M.autogroup = function(group_name)
+	return api.nvim_create_augroup(group_name, { clear = false });
+end
+
 -- Creates an autocommand "easier"
 -- @param actions are the actions to do the command on
 -- @param aupattern is the pattern to listen formd
 -- @param aucommand is the command to do
-M.autocmd = function(actions, aupattern, aucommand)
-	local augroup = vim.api.nvim_create_augroup(actions, { clear = true });
-	vim.api.nvim_create_autocmd(actions, {
-		pattern = aupattern, group = augroup,
+M.autocmd = function(actions, aupattern, aucommand, augroup)
+	api.nvim_create_autocmd(actions, {
+		pattern = aupattern,
+		group = augroup,
 		command = aucommand,
 	});
 end

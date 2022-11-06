@@ -43,5 +43,9 @@ keymap({ 'n', 'v' }, '<Left>', '<Nop>')
 keymap({ 'n', 'v' }, '<Right>', '<Nop>')
 
 -- Some custom text-objects
+-- Work on an entire line, either with or without the whitespace
 keymap({ 'o', 'x' }, 'il', ':<C-u>norm! $v^<CR>', { silent = true });
 keymap({ 'o', 'x' }, 'al', ':<C-u>norm! $v0<CR>', { silent = true });
+
+-- Work on the entire file
+keymap({ 'o', 'x' }, 'aa', ':<C-u>norm! gg^vG$<CR>', { silent = true });
