@@ -24,11 +24,11 @@ autocmd("BufNewFile",
 -- When creating a new c-main
 autocmd("BufNewFile",
 	{ "main.c" },
-	"0r ~/library/skeletons/c_main",
+	"0r ~/library/skeletons/main.c",
 	augroup)
 --
 -- When creating a new c-main
 autocmd("BufNewFile",
 	{ "main.cpp" },
-	"0r ~/library/skeletons/cpp_main",
+	"0r ~/library/skeletons/main.cpp",
 	augroup)
