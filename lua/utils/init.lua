@@ -46,4 +46,16 @@ M.autocmd = function(actions, aupattern, aucommand, augroup)
 	});
 end
 
+-- Creates a user-command
+-- @param command is the command to listen for
+-- @param func is the function to execute
+-- @param args are the args to give
+M.u_cmd = function(command, func, args)
+	api.nvim_create_user_command(
+		command,
+		func,
+		args
+	);
+end
+
 return M

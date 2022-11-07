@@ -1,6 +1,7 @@
 local tree = require("neo-tree");
 
 local keymap = require('utils').map
+local cmd = require('utils').u_cmd;
 local g = vim.g;
 local api = vim.api;
 
@@ -12,12 +13,12 @@ g.loaded_netrwPlugin = 1;
 local command = "NeoTreeShowInSplitToggle"
 
 keymap('n', '<A-->', '<CMD>:' .. command .. '<CR>');
-api.nvim_create_user_command('Ex', function() vim.cmd(command) end, { nargs = 0 })
-api.nvim_create_user_command('Sex', function()
+cmd('Ex', function() vim.cmd(command) end, { nargs = 0 })
+cmd('Sex', function()
 	vim.cmd('vsplit')
 	vim.cmd(command)
 end, { nargs = 0 })
-api.nvim_create_user_command('Vex', function()
+cmd('Vex', function()
 	vim.cmd('split')
 	vim.cmd(command)
 end, { nargs = 0 })
@@ -47,7 +48,7 @@ m.setup = tree.setup({
 	event_handlers = {
 		{
 			event = "after_render",
-			handler = function (_)
+			handler = function(_)
 				vim.cmd("set number");
 				vim.cmd("set relativenumber");
 			end
