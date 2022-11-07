@@ -42,7 +42,6 @@ m.setup = tree.setup({
 				"node_modules"
 			},
 		},
-		follow_current_file = true,
 		netrw_hijack_behavior = "open_default",
 	},
 	event_handlers = {
