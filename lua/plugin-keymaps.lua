@@ -18,4 +18,5 @@ keymap('n', '<F10>a', ':lua require("neotest").run.run({suite = true})<CR>');
 keymap('n', '<F10>f', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>');
 keymap('n', '<F10>s', ':lua require("neotest").run.run()<CR>');
 
-cmd('MakeTags', ':!ctags -R .', {})
+-- Command to create ctags
+cmd('MakeTags', ':!ctags -R .');

@@ -56,7 +56,7 @@ M.u_cmd = function(command, func, args)
 	api.nvim_create_user_command(
 		command,
 		func,
-		args
+		l_args
 	);
 end
 
