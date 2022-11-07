@@ -51,6 +51,8 @@ end
 -- @param func is the function to execute
 -- @param args are the args to give
 M.u_cmd = function(command, func, args)
+	local l_args = { nargs = 0 };
+	if args then l_args = vim.tbl_extend("force", l_args, args) end
 	api.nvim_create_user_command(
 		command,
 		func,

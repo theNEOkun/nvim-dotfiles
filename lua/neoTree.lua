@@ -13,15 +13,15 @@ g.loaded_netrwPlugin = 1;
 local command = "NeoTreeShowInSplitToggle"
 
 keymap('n', '<A-->', '<CMD>:' .. command .. '<CR>');
-cmd('Ex', function() vim.cmd(command) end, { nargs = 0 })
+cmd('Ex', function() vim.cmd(command) end)
 cmd('Sex', function()
 	vim.cmd('vsplit')
 	vim.cmd(command)
-end, { nargs = 0 })
+end)
 cmd('Vex', function()
 	vim.cmd('split')
 	vim.cmd(command)
-end, { nargs = 0 })
+end)
 
 m.setup = tree.setup({
 	enable_git_status = true,
