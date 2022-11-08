@@ -21,6 +21,6 @@ for _, item in pairs(list) do
 
 	autocmd("BufNewFile",
 		item,
-		"0r ~/library/skeletons/"..item[1],
-		augroup)
+		"0r ~/library/skeletons/"..item[1], -- Use the first item in the inner list to get the file
+		augroup) -- Same augroup for everyone
 end
