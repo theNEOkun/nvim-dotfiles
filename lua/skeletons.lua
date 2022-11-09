@@ -8,6 +8,7 @@ local list = {
 	{ "Makefile", "makefile" },
 	{ "bash.sh", "*.sh" },
 	{ "main.c" },
+	{ "main.h", "*.h" },
 	{ "main.cpp" },
 	{ "main.js" },
 	{ "index.html" },
