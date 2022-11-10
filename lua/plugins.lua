@@ -107,7 +107,7 @@ return require('packer').startup(function(use)
 
 	-- JS
 	use {
-		'rest-nvim/rest.nvim',
+		'theNEOkun/rest.nvim',
 		config = function() require('rest-nvim').setup({
 				-- Open request results in a horizontal split
 				result_split_horizontal = false,
