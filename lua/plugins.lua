@@ -144,7 +144,7 @@ return require('packer').startup(function(use)
 			})
 		end,
 		opt = true,
-		ft = { 'js', 'ts', 'http' },
+		ft = { 'http' },
 	}
 
 	--Tree
@@ -210,10 +210,6 @@ return require('packer').startup(function(use)
 		'lunarvim/Onedarker.nvim',
 		'NTBBloodbath/doom-one.nvim',
 		'EdenEast/nightfox.nvim',
-	}
-
-	use {
-		'norcalli/nvim-base16.lua',
 	}
 
 	use {
