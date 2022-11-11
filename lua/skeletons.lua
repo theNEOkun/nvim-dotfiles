@@ -16,6 +16,7 @@ local list = {
 	{ "main.py" },
 	{ ".classpath" },
 	{ ".project" },
+	{ "main.java" },
 };
 
 for _, item in pairs(list) do
