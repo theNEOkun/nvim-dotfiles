@@ -17,6 +17,7 @@ local list = {
 	{ ".classpath" },
 	{ ".project" },
 	{ "main.java" },
+	{ "pom.xml" }
 };
 
 for _, item in pairs(list) do
