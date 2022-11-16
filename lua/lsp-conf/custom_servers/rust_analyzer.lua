@@ -20,7 +20,6 @@ M.server_config = function(server, opts)
 		server = opts,
 	}
 	require('rust-tools').setup(rust_opts)
-	server:attach_buffers()
 end
 
 return M

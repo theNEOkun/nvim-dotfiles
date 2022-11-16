@@ -14,8 +14,8 @@ local func = function()
 		local opts = require('coq').lsp_ensure_capabilities {
 			on_attach = require('lsp-conf.helper').on_attach,
 		}
-		if list[server.name] then
-			local curr_server = list[server.name]
+		if list[server] then
+			local curr_server = list[server]
 			opts = curr_server.server_config(server, opts)
 		end
 
