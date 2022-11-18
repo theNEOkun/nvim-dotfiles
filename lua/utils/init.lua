@@ -60,4 +60,30 @@ M.u_cmd = function(command, func, args)
 	);
 end
 
+-- Just a split function because Lua does not have this, nothing more
+-- Borrowed from [rest-nvim/rest.nvim](www.github.com/rest-nvim/rest.nvim)
+-- @param str String to split
+-- @param sep Separator
+-- @param max_splits Number of times to split the string (optional)
+M.split = function(str, sep, max_splits)
+	if sep == nil then
+		sep = "%s"
+	end
+	max_splits = max_splits or -1
+
+	local str_tbl = {}
+	local nField, nStart = 1, 1
+	local nFirst, nLast = str:find(sep, nStart)
+	while nFirst and max_splits ~= 0 do
+		str_tbl[nField] = str:sub(nStart, nFirst - 1)
+		nField = nField + 1
+		nStart = nLast + 1
+		nFirst, nLast = str:find(sep, nStart)
+		max_splits = max_splits - 1
+	end
+	str_tbl[nField] = str:sub(nStart)
+
+	return str_tbl
+end
+
 return M
