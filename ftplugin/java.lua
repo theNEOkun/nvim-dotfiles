@@ -18,5 +18,3 @@ keymap({ 'n', 'x' }, '<leader>mp', function()
 end)
 
 u_cmd('Mt', ":!mvn -q test");
-
-
