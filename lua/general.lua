@@ -3,6 +3,9 @@ local set = vim.opt
 
 local unpack = table.unpack or unpack;
 
+require('utils').map('n', '<space>', '<nop>')
+g.mapleader = " "
+
 set.number = true
 set.relativenumber = true;
 set.signcolumn = "yes";
@@ -26,9 +29,6 @@ g.wildmenu = true
 g.wildmode = { "list, full" }
 
 set.path:append { "**" };
-
-require('utils').map('n', '<space>', '<nop>')
-g.mapleader = " "
 
 set.list = true;
 

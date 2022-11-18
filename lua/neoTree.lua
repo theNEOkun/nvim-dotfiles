@@ -3,7 +3,6 @@ local tree = require("neo-tree");
 local keymap = require('utils').map
 local cmd = require('utils').u_cmd;
 local g = vim.g;
-local api = vim.api;
 
 local m = {}
 
@@ -13,13 +12,16 @@ g.loaded_netrwPlugin = 1;
 local command = "NeoTreeShowInSplitToggle"
 
 keymap('n', '<A-->', '<CMD>:' .. command .. '<CR>');
+-- Just explore
 cmd('Ex', function() vim.cmd(command) end)
+-- Horisontal explore
 cmd('Sex', function()
-	vim.cmd('vsplit')
+	vim.cmd('split')
 	vim.cmd(command)
 end)
+-- Vertical Explore
 cmd('Vex', function()
-	vim.cmd('split')
+	vim.cmd('vsplit')
 	vim.cmd(command)
 end)
 
