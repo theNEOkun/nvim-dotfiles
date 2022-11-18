@@ -86,6 +86,23 @@ local specs = {
 nightfox.setup({
 	palettes = palette,
 	specs = specs,
+	groups = {
+		all = {
+			CursorLineNr = { bg = palette.all.revolver },
+			LineNr = { bg = palette.all.revolver },
+			SignColumn = { bg = palette.all.revolver },
+			FoldColumn = { bg = palette.all.revolver },
+			SignColumnSB = { bg = palette.all.revolver },
+			GitGutterAdd = { bg = palette.all.revolver },
+			GitGutterDelete = { bg = palette.all.revolver },
+			GitGutterChange = { bg = palette.all.revolver },
+			["@tag.attribute"] = { fg = palette.all.lavender },
+			DiagnosticSignError = { bg = palette.all.revolver },
+			DiagnosticSignWarn = { bg = palette.all.revolver },
+			DiagnosticSignInfo = { bg = palette.all.revolver },
+			DiagnosticSignHint = { bg = palette.all.revolver },
+		},
+	},
 	options = {
 		styles = {
 			comments = "italic",
@@ -95,23 +112,5 @@ nightfox.setup({
 		inverse = {
 			search = "true"
 		}
-	},
-});
-
-nightfox.override.groups({
-	all = {
-		CursorLineNr = { bg = palette.all.revolver },
-		LineNr = { bg = palette.all.revolver },
-		SignColumn = { bg = palette.all.revolver },
-		FoldColumn = { bg = palette.all.revolver },
-		SignColumnSB = { bg = palette.all.revolver },
-		GitGutterAdd = { bg = palette.all.revolver },
-		GitGutterDelete = { bg = palette.all.revolver },
-		GitGutterChange = { bg = palette.all.revolver },
-		["@tag.attribute"] = { fg = palette.all.lavender },
-		DiagnosticSignError = { bg = palette.all.revolver },
-		DiagnosticSignWarn = { bg = palette.all.revolver },
-		DiagnosticSignInfo = { bg = palette.all.revolver },
-		DiagnosticSignHint = { bg = palette.all.revolver },
 	},
 });
