@@ -61,7 +61,7 @@ M.u_cmd = function(command, func, args)
 end
 
 -- Just a split function because Lua does not have this, nothing more
--- Borrowed from [rest-nvim/rest.nvim](www.github.com/rest-nvim/rest.nvim)
+-- Borrowed from [rest-nvim/rest.nvim](www.github.com/)
 -- @param str String to split
 -- @param sep Separator
 -- @param max_splits Number of times to split the string (optional)
