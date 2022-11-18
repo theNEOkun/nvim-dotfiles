@@ -3,18 +3,23 @@ local set = vim.opt
 
 local unpack = table.unpack or unpack;
 
+-- Set the leader-key to spacebar
 require('utils').map('n', '<space>', '<nop>')
 g.mapleader = " "
 
+-- Use relative linenumbers
 set.number = true
 set.relativenumber = true;
 set.signcolumn = "yes";
 
+-- Use filetypes-plugin
 set.filetype = "on";
 
-set.tabstop = 4
-set.softtabstop = 4
-set.shiftwidth = 4
+-- Use tabstop
+set.tabstop = 2
+set.softtabstop = 2
+set.shiftwidth = 2
+set.expandtab = true
 set.smartindent = true
 set.wrap = false
 set.termguicolors = true
@@ -32,7 +37,7 @@ set.path:append { "**" };
 
 set.list = true;
 
-require"dumbfox"
+require "dumbfox"
 vim.cmd('colorscheme nightfox');
 set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
-	unpack(set.listchars) };
+  unpack(set.listchars) };
