@@ -100,6 +100,8 @@ return require('packer').startup(function(use)
 
 	}
 
+  use 'mfussenegger/nvim-jdtls';
+
 	use 'elkowar/yuck.vim'
 
 	----C/C++
