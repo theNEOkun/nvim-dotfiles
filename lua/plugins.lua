@@ -83,7 +83,6 @@ return require('packer').startup(function(use)
 		'jbyuki/one-small-step-for-vimkind'
 	}
 
-
 	--Specific
 	----Rust
 	use {
@@ -100,9 +99,7 @@ return require('packer').startup(function(use)
 
 	}
 
-  use 'mfussenegger/nvim-jdtls';
-
-	use 'elkowar/yuck.vim'
+  -- use 'mfussenegger/nvim-jdtls';
 
 	----C/C++
 	use 'p00f/clangd_extensions.nvim'
@@ -192,8 +189,12 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'
 
 	----Surrounding
-	use 'tpope/vim-surround'
-	use 'fladson/vim-kitty'
+	-- use 'tpope/vim-surround'
+  use {
+    'kylechui/nvim-surround',
+    config = function() require("nvim-surround").setup() end
+  }
+	-- use 'fladson/vim-kitty'
 
 	-- TODO things to do
 	use {

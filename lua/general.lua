@@ -31,9 +31,10 @@ set.colorcolumn = "101"
 set.clipboard:prepend { "unnamed" }
 
 g.wildmenu = true
-g.wildmode = { "list, full" }
+g.wildmode = { "list", "full" }
+g.wildoptions = { "fuzzy" }
 
-set.path:append { "**" };
+-- set.path:append { "**" };
 
 set.list = true;
 

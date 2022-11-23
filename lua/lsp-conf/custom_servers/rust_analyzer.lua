@@ -5,7 +5,7 @@ local codelldb_path = extension_path .. '/adapter/codelldb'
 local lidlldb_path = extension_path .. '/lldb/lib/liblldb.so'
 
 M.server_config = function(server, opts)
-	opts.cmd = { os.getenv('HOME') .. "/.local/share/nvim/lsp_servers/rust/rust-analyzer" }
+	opts.cmd = { 'rust-analyzer' }
 	local rust_opts = {
 		tools = {
 			hover_actions = {
@@ -14,7 +14,7 @@ M.server_config = function(server, opts)
 		},
 		dap = {
 			adapter = require('rust-tools.dap').get_codelldb_adapter(
-				codelldb_path, lidlldb_path
+				'codelldb', lidlldb_path
 			)
 		},
 		server = opts,
