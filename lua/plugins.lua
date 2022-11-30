@@ -11,6 +11,7 @@ require("dep") {
     'todo-conf',
     'colors',
     'rest',
+    'autopairs',
   },
 
   --  'kosayoda/nvim-lightbulb'
@@ -78,10 +79,7 @@ require("dep") {
     function() require("nvim-surround").setup() end
   },
   --  'fladson/vim-kitty'
-  --require('autopairs')
-  {
-    'jiangmiao/auto-pairs'
-  },
+  -- require('autopairs')
 
   ----RipGrep
   {
