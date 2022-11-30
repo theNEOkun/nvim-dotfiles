@@ -38,8 +38,8 @@ g.wildoptions = { "fuzzy" }
 
 set.list = true;
 
--- require "dumbfox"
--- vim.cmd('colorscheme nightfox');
-vim.cmd('colorscheme onedarkpro');
+require "dumbfox"
+vim.cmd('colorscheme nightfox');
+-- vim.cmd('colorscheme onedarkpro');
 set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
   unpack(set.listchars) };

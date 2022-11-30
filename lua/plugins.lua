@@ -50,6 +50,7 @@ return require('packer').startup(function(use)
 			'RRethy/nvim-treesitter-textsubjects',
 			'nvim-treesitter/nvim-treesitter-textobjects',
 			'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/playground',
 		},
 		config = function() require('treesitter-conf').setup() end,
 		run = ':TSUpdate',
