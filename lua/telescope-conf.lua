@@ -1,10 +1,21 @@
-local telescope = require("telescope");
-local keymap = require("utils").map;
+return {
+  {
 
-telescope.setup({
-	defaults = {
-		file_ignore_patterns = { "node_modules" },
-	}
-});
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    function()
+      local telescope = require("telescope");
+      local keymap = require("utils").map;
 
-keymap('n', '<leader>fk', '<cmd>lua require("telescope.builtin").keymaps()<cr>')
+      telescope.setup({
+        defaults = {
+          file_ignore_patterns = { "node_modules" },
+        }
+      });
+
+      keymap('n', '<leader>fk', '<cmd>lua require("telescope.builtin").keymaps()<cr>')
+    end
+  }
+}

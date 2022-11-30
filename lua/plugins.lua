@@ -4,15 +4,8 @@ require("dep") {
     'lsp-conf.init',
     'neoTree',
     'treesitter-conf',
-  },
-
-  --Telescope
-  {
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function() require("telescope-conf") end,
+    'telescope-conf',
+    'dap.dap_init',
   },
 
   --  'kosayoda/nvim-lightbulb'
@@ -23,11 +16,6 @@ require("dep") {
 
   --Debugging
 
-  {
-    'rcarriga/nvim-dap-ui',
-    function() require('dapui').setup() end,
-    requires = 'mfussenegger/nvim-dap',
-  },
   {
     'theHamsta/nvim-dap-virtual-text',
     function()
