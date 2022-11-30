@@ -33,6 +33,7 @@ set.clipboard:prepend { "unnamed" }
 g.wildmenu = true
 g.wildmode = { "list", "full" }
 g.wildoptions = { "fuzzy" }
+vim.cmd(":set wildignore+=*/node_modules/*,*.obj,*.class")
 
 -- set.path:append { "**" };
 
