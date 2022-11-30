@@ -1,6 +1,6 @@
 local scan = require("plenary.scandir")
 
-local base = 'lsp-conf.custom_servers'
+local base = 'packages.lsp-conf.custom_servers'
 
 local M = {}
 
@@ -16,6 +16,6 @@ end
 
 local home = os.getenv('HOME')
 
-get_files(home.."/.config/nvim/lua/lsp-conf/custom_servers")
+get_files(home.."/.config/nvim/lua/packages/lsp-conf/custom_servers")
 
 return M

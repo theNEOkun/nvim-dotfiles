@@ -22,7 +22,7 @@ return {
     require("mason-lspconfig").setup()
     local lsp_installer = require("mason-lspconfig")
 
-    local list = require('lsp-conf.custom_servers')
+    local list = require('packages.lsp-conf.custom_servers')
 
     --coq
     vim.g.coq_settings = { auto_start = 'shut-up' }
@@ -32,7 +32,7 @@ return {
     local func = function()
       for _, server in pairs(lsp_installer.get_installed_servers()) do
         local opts = require('coq').lsp_ensure_capabilities {
-          on_attach = require('lsp-conf.helper').on_attach,
+          on_attach = require('packages.lsp-conf.helper').on_attach,
         }
         if list[server] then
           local curr_server = list[server]

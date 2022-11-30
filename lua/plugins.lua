@@ -1,11 +1,15 @@
 require("bootstrap")
 require("dep") {
   modules = {
+    prefix = "packages.",
     'lsp-conf.init',
-    'neoTree',
-    'treesitter-conf',
-    'telescope-conf',
     'dap.dap_init',
+    'line',
+    'neoTree',
+    'telescope-conf',
+    'treesitter-conf',
+    'todo-conf',
+    'colors',
   },
 
   --  'kosayoda/nvim-lightbulb'
@@ -15,17 +19,6 @@ require("dep") {
   },
 
   --Debugging
-
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    function()
-      M = require('nvim-dap-virtual-text').setup();
-      require('dap.dap_init');
-      return M;
-    end,
-    requires = 'mfussenegger/nvim-dap'
-
-  },
 
   {
     'jbyuki/one-small-step-for-vimkind'
@@ -102,17 +95,6 @@ require("dep") {
     'kyazdani42/nvim-web-devicons',
     config = function() require("nvim-web-devicons").setup() end,
   },
-
-  {
-    'nvim-lualine/lualine.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
-    function()
-      require('line')
-    end
-  },
-
   {
     'numToStr/Comment.nvim',
     function()
@@ -135,13 +117,6 @@ require("dep") {
     function() require("nvim-surround").setup() end
   },
   --  'fladson/vim-kitty'
-
-  -- TODO things to do
-  {
-    'folke/todo-comments.nvim',
-    function() require("todo-conf").setup() end
-  },
-
   --require('autopairs')
   {
     'jiangmiao/auto-pairs'
@@ -151,31 +126,6 @@ require("dep") {
   {
     'jremmen/vim-ripgrep'
   },
-
-  ----Colors
-  {
-    'lunarvim/Onedarker.nvim',
-  },
-  {
-    'olimorris/onedarkpro.nvim',
-    function() require('onedarkpro').setup({
-        dark_theme = "onedark_vivid"
-      })
-    end
-  },
-  {
-
-    'NTBBloodbath/doom-one.nvim',
-  },
-  {
-    'EdenEast/nightfox.nvim',
-  },
-
-  {
-    'NvChad/nvim-colorizer.lua',
-    config = function() require('colorizer').setup() end
-  },
-
   {
     'ThePrimeagen/vim-be-good'
   },

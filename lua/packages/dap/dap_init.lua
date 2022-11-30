@@ -1,12 +1,25 @@
 return {
   {
     'rcarriga/nvim-dap-ui',
-    requires = 'mfussenegger/nvim-dap',
+    requires = {
+      {
+        'mfussenegger/nvim-dap'
+      },
+      {
+        'theHamsta/nvim-dap-virtual-text',
+        function()
+          M = require('nvim-dap-virtual-text').setup();
+          require('packages.dap.dap_init');
+          return M;
+        end,
+        requires = 'mfussenegger/nvim-dap'
+      },
+    },
     function()
-      require('dap.keymaps')
+      require('packages.dap.keymaps')
 
       local dap = require('dap')
-      require('dap.adapters.lua_adapt')
+      require('packages.dap.adapters.lua_adapt')
 
       local get_config_codelldb = function(path)
         return {
@@ -49,7 +62,7 @@ return {
       dap.configurations.c = dap.configurations.cpp
 
       dap.configurations.rust = { get_config_codelldb(function() return vim.fn.input('Executable name: ',
-          vim.fn.getcwd() .. '/target/debug/', 'file')
+        vim.fn.getcwd() .. '/target/debug/', 'file')
       end), }
     end
   }
