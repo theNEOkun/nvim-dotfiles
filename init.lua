@@ -8,5 +8,5 @@ else
 	require('plugin-keymaps')
 	require('keymaps')
 	require('skeletons')
-  require('autocommands')
+	require('autocommands')
 end
