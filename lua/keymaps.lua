@@ -3,8 +3,8 @@ local split = require('utils').split;
 local g = vim.g;
 --General
 
-require('utils').map('n', '<space>', '<nop>');
-g.mapleader = " ";
+-- require('utils').map('n', '<space>', '<nop>');
+-- g.mapleader = " ";
 
 --Tabs
 --Next

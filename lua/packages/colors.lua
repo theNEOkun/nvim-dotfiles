@@ -16,6 +16,10 @@ return {
   },
   {
     'EdenEast/nightfox.nvim',
+    function()
+      require "dumbfox"
+      vim.cmd('colorscheme nightfox');
+    end
   },
 
   {

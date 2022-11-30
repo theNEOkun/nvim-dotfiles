@@ -5,7 +5,7 @@ local unpack = table.unpack or unpack;
 
 -- Set the leader-key to spacebar
 require('utils').map('n', '<space>', '<nop>')
-g.mapleader = " "
+g.mapleader = " ";
 
 -- Use relative linenumbers
 set.number = true
@@ -38,8 +38,6 @@ g.wildoptions = { "fuzzy" }
 
 set.list = true;
 
-require "dumbfox"
-vim.cmd('colorscheme nightfox');
 -- vim.cmd('colorscheme onedarkpro');
 set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
   unpack(set.listchars) };
