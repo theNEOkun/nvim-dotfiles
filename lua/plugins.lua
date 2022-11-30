@@ -211,6 +211,12 @@ return require('packer').startup(function(use)
 	----Colors
 	use {
 		'lunarvim/Onedarker.nvim',
+    {
+    'olimorris/onedarkpro.nvim',
+    config = function() require('onedarkpro').setup({
+      dark_theme="onedark_vivid"
+    }) end
+    },
 		'NTBBloodbath/doom-one.nvim',
 		'EdenEast/nightfox.nvim',
 	}
