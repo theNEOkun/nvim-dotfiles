@@ -31,9 +31,9 @@ set.colorcolumn = "101"
 set.clipboard:prepend { "unnamed" }
 
 g.wildmenu = true
-g.wildmode = { "list", "full" }
+g.wildmode = { "list", "longest", "full" }
 g.wildoptions = { "fuzzy" }
-vim.cmd(":set wildignore+=*/node_modules/*,*.obj,*.class")
+vim.cmd(":set wildignore+=*/node_modules/*,*.obj,*.class,*/obj/*,*/bin/*")
 
 -- set.path:append { "**" };
 

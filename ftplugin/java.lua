@@ -31,12 +31,10 @@ u_cmd('Mt', ":!mvn -q test");
 
 local pkgLine = 'package ' .. getPackage() .. ';';
 local firstLine = 'public class ' .. getName() .. " {";
-local constructor = '\tpublic void ' .. getName() .. " { \t}"
+local constructor = '  public ' .. getName() .. "() { \t}"
 local lastLine = "}";
 
-local all = pkgLine .. firstLine .. constructor .. lastLine;
-
-u_cmd('Mf', ':norm i' .. all)
+u_cmd('Mf', ':norm i' .. pkgLine .. '<CR>' .. firstLine .. '<CR>' .. constructor .. '<CR>' .. lastLine)
 
 
 -- NVIM-JDTLS
