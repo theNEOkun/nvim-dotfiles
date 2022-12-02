@@ -8,6 +8,8 @@ return {
       --Autocomplete
       {
         'ms-jpq/coq_nvim',
+        branch = 'dev',
+        pin = true,
         deps = {
           {
             'ms-jpq/coq.artifacts'
