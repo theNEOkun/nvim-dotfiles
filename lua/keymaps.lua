@@ -1,6 +1,4 @@
 local keymap = require('utils').map;
-local split = require('utils').split;
-local g = vim.g;
 --General
 
 -- require('utils').map('n', '<space>', '<nop>');

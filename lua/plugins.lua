@@ -3,7 +3,7 @@ require("dep") {
   modules = {
     prefix = "packages.",
     'lsp-conf.init',
-    'dap.dap_init',
+    'dap.init',
     'line',
     'neoTree',
     -- 'netrw',
