@@ -50,6 +50,11 @@ keymap({ 'n', 'v' }, '<Right>', '<Nop>');
 -- Go To Tag
 keymap({ 'n' }, 'gt', '<c-]>');
 
+keymap({ 'n' }, '<C-d>', '<C-d>zz');
+keymap({ 'n' }, '<C-u>', '<C-u>zz');
+keymap({ 'n' }, 'n', 'nzzzv');
+keymap({ 'n' }, 'N', 'Nzzzv');
+
 -- Some custom text-objects
 -- Work on an entire line, either with or without the whitespace
 keymap({ 'o', 'x' }, 'il', ':<C-u>norm! $v^<CR>', { silent = true });
