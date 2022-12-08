@@ -1,9 +1,7 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
+    requires = { 'kyazdani42/nvim-web-devicons', },
     function()
       require('lualine').setup {
         options = {
@@ -16,13 +14,17 @@ return {
           globalstatus = false,
         },
         sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_a = { { 'mode', color = 'StatusLine' } },
+          lualine_b = {
+            { 'branch', color = 'StatusLine' },
+            { 'diff', color = 'StatusLine' },
+            { 'diagnostics', color = 'StatusLine' }
+          },
           lualine_c = { 'filename' },
           lualine_f = {},
           lualine_x = {},
-          lualine_y = { 'fileformat', 'filetype' },
-          lualine_z = { 'location' }
+          lualine_y = { { 'filetype', color = 'StatusLine' } },
+          lualine_z = { { 'location', color = 'StatusLine' } }
         },
         inactive_sections = {
           lualine_a = {},
