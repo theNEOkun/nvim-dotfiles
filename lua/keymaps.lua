@@ -53,6 +53,9 @@ keymap({ 'n' }, '<C-u>', '<C-u>zz');
 keymap({ 'n' }, 'n', 'nzzzv');
 keymap({ 'n' }, 'N', 'Nzzzv');
 
+keymap({ 'n', 'x' }, '<C-w>t', '<C-w>v<c-]>');
+keymap({ 'n', 'x' }, '<C-w>T', '<C-w><c-]>');
+
 -- Some custom text-objects
 -- Work on an entire line, either with or without the whitespace
 keymap({ 'o', 'x' }, 'il', ':<C-u>norm! $v^<CR>', { silent = true });

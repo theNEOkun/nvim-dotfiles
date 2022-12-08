@@ -34,9 +34,10 @@ palette.all.bg4 = palette.all.delta;
 palette.all.fg0 = palette.all.lavender;
 palette.all.fg1 = palette.all.lavender;
 palette.all.fg2 = palette.all.lilac;
-palette.all.fg3 = palette.all.delta;
+palette.all.fg3 = palette.all.comet;
 palette.all.sel0 = palette.all.cursor_bg;
 palette.all.sel1 = palette.all.bossanova;
+palette.all.background_column = palette.all.midnight;
 
 local specs = {
   all = {
@@ -49,7 +50,7 @@ local specs = {
       conditional = "almond",
       const = "white",
       dep = "red",
-      field = "lavender",
+      field = "white",
       func = "white",
       ident = "lilac",
       keyword = "almond",
@@ -68,12 +69,12 @@ local specs = {
       info = "delta",
       hint = "silver",
     },
-    diag_bg = {
-      warn = "revolver",
-      error = "revolver",
-      info = "revolver",
-      hint = "revolver",
-    },
+    -- diag_bg = {
+    --   warn = "background_column",
+    --   error = "background_column",
+    --   info = "background_column",
+    --   hint = "background_column",
+    -- },
     git = {
       add = "add",
       remove = "remove",
@@ -88,22 +89,22 @@ nightfox.setup({
   specs = specs,
   groups = {
     all = {
-      CursorLineNr = { bg = palette.all.revolver },
-      LineNr = { bg = palette.all.revolver },
-      SignColumn = { bg = palette.all.revolver },
-      FoldColumn = { bg = palette.all.revolver },
-      SignColumnSB = { bg = palette.all.revolver },
-      GitGutterAdd = { bg = palette.all.revolver },
-      GitGutterDelete = { bg = palette.all.revolver },
-      GitGutterChange = { bg = palette.all.revolver },
+      -- CursorLineNr = { bg = palette.all.background_column },
+      -- LineNr = { bg = palette.all.background_column },
+      -- SignColumn = { bg = palette.all.background_column },
+      -- FoldColumn = { bg = palette.all.background_column },
+      -- SignColumnSB = { bg = palette.all.background_column },
+      -- GitGutterAdd = { bg = palette.all.background_column },
+      -- GitGutterDelete = { bg = palette.all.background_column },
+      -- GitGutterChange = { bg = palette.all.background_column },
       ["@tag.attribute"] = { fg = palette.all.lavender },
       ["@parameter"] = { fg = palette.all.lavender },
       ["@type.qualifier"] = { fg = palette.all.almond },
       ["@keyword.return"] = { fg = palette.all.almond },
-      DiagnosticSignError = { bg = palette.all.revolver },
-      DiagnosticSignWarn = { bg = palette.all.revolver },
-      DiagnosticSignInfo = { bg = palette.all.revolver },
-      DiagnosticSignHint = { bg = palette.all.revolver },
+      -- DiagnosticSignError = { bg = palette.all.background_column },
+      -- DiagnosticSignWarn = { bg = palette.all.background_column },
+      -- DiagnosticSignInfo = { bg = palette.all.background_column },
+      -- DiagnosticSignHint = { bg = palette.all.background_column },
     },
   },
   options = {
