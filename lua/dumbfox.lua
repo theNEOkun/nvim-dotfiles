@@ -101,6 +101,7 @@ nightfox.setup({
       ["@parameter"] = { fg = palette.all.lavender },
       ["@type.qualifier"] = { fg = palette.all.almond },
       ["@keyword.return"] = { fg = palette.all.almond },
+      ["@constructor"] = { fg = palette.all.variable },
       -- DiagnosticSignError = { bg = palette.all.background_column },
       -- DiagnosticSignWarn = { bg = palette.all.background_column },
       -- DiagnosticSignInfo = { bg = palette.all.background_column },

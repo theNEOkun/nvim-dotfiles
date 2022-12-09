@@ -23,4 +23,4 @@ keymap('n', '<leader>rt', '<Plug>RestNvim');
 keymap('n', '<leader>rp', '<Plug>RestNvimPreview');
 
 -- Command to create ctags
-cmd('MakeTags', ':!ctags -R .');
+cmd('MakeTags', ':!ctags -R --exclude=node_modules --exclude="target/*" .');
