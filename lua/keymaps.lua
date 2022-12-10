@@ -6,11 +6,13 @@ local keymap = require('utils').map;
 
 --Tabs
 --Next
-keymap('n', '<A-t>', '<cmd>:tabn<CR>');
+keymap('n', 'tn', '<cmd>:tabn<CR>');
+--Prev
+keymap('n', 'tp', '<cmd>:tabp<CR>');
 --New
-keymap('n', '<A-e>', '<cmd>:tabe<CR>');
+keymap('n', 'te', '<cmd>:tabe<CR>');
 --Close
-keymap('n', '<A-q>', '<cmd>:tabc<CR>');
+keymap('n', 'tc', '<cmd>:tabc<CR>');
 
 --Increment and Decrement
 keymap('n', '+', '<C-a>');

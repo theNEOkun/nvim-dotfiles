@@ -5,6 +5,7 @@ require("dep") {
     'lsp-conf.init',
     'dap.init',
     'line',
+    'eyeline',
     -- 'neoTree',
     'netrw',
     'telescope-conf',
