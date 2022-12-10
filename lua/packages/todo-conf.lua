@@ -4,6 +4,7 @@ return {
     function()
 
       local todo = require("todo-comments");
+      todo.setup();
       local keymap = require("utils").map;
 
       local m = {};

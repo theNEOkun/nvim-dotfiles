@@ -63,3 +63,4 @@ keymap({ 'o', 'x' }, 'al', ':<C-u>norm! $v0<CR>', { silent = true });
 
 -- Work on the entire file
 keymap({ 'o', 'x' }, 'aa', ':<C-u>norm! gg^vG$<CR>', { silent = true });
+

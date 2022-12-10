@@ -24,8 +24,10 @@ return {
     function()
       local dap = require('dap')
       local nvim_dap = require('mason-nvim-dap');
-      nvim_dap.setup();
-      nvim_dap.setup_handles({
+      nvim_dap.setup({
+        automatic_setup = true,
+      });
+      nvim_dap.setup_handlers({
         function(source_name)
           -- all sources with no handler get passed here
           -- Keep original functionality of `automatic_setup = true`
