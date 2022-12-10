@@ -95,7 +95,7 @@ vim.lsp.buf.execute_command = function(command)
 end
 
 M.on_attach = function(client, bufnr)
-	require('lsp-conf.helper').on_attach(client, bufnr)
+	require('packages.lsp-conf.helper').on_attach(client, bufnr)
 	--require('config.lspconfig').make_config().on_attach(client)
 	-- Set some config on attach to prevent reading from the
 	-- files when the language server is not used
@@ -105,11 +105,11 @@ M.on_attach = function(client, bufnr)
 	local buf_map = require('utils').buf_map
 	buf_map(bufnr, 'n', 'zuw', function()
 		vim.cmd('normal! zuw')
-		require('lsp-conf.custom_servers.ltex').update_config('en-US', 'dictionary')
+		update_config('en-US', 'dictionary')
 	end)
 	buf_map(bufnr, 'n', 'zg', function()
 		vim.cmd('normal! zg')
-		require('lsp-conf.custom_servers.ltex').update_config('en-US', 'dictionary')
+		update_config('en-US', 'dictionary')
 	end)
 	-- TODO: Add some commands to remove the entry
 	-- under the cursor from both disable and false

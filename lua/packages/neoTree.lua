@@ -5,6 +5,12 @@ return {
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
+      {
+        'miversen33/netman.nvim',
+        branch = 'v1.1',
+      },
+    },
+    deps = {
     },
     function()
       local tree = require("neo-tree");
@@ -33,6 +39,10 @@ return {
       end)
 
       tree.setup({
+        sources = {
+          "filesystem", -- Neotree filesystem source
+          -- "netman.ui.neo-tree", -- The one you really care about 😉
+        },
         enable_git_status = true,
         window = {
           position = "current",
