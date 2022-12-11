@@ -32,6 +32,22 @@ return {
           -- all sources with no handler get passed here
           -- Keep original functionality of `automatic_setup = true`
           require('mason-nvim-dap.automatic_setup')(source_name)
+        end,
+        codelldb = function(source_name)
+          require('mason-nvim-dap.automatic_setup')(source_name)
+          dap.configurations.cpp = {
+            {
+              name = 'Launch debug',
+              type = 'codelldb',
+              request = 'launch',
+              program = function()
+                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/bin/', 'file')
+              end,
+              cwd = '${workspaceFolder}',
+              stopOnEntry = false,
+              args = {},
+            }
+          }
         end
       });
       require('packages.dap.keymaps')
