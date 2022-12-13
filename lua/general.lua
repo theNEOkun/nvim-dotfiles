@@ -35,7 +35,7 @@ set.clipboard:prepend { "unnamed" };
 g.wildmenu = true;
 g.wildmode = { "list", "longest", "full" };
 g.wildoptions = { "fuzzy" };
-vim.cmd(":set wildignore+=*/node_modules/*,*.obj,*.class,*/obj/*,tags,*/CMakeFiles/*,**/*.dex,**/build/*");
+vim.cmd(":set wildignore+=**/node_modules/*,*.obj,*.class,*/obj/*,tags,*/CMakeFiles/*,**/*.dex,**/build/*");
 
 -- set.path:append { "**" };
 
