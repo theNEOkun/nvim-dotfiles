@@ -25,6 +25,8 @@ set.wrap = false;
 set.termguicolors = true;
 set.timeoutlen = 500;
 set.background = "dark";
+set.splitbelow = true;
+set.splitright = true;
 
 set.mouse = "nv";
 
@@ -33,14 +35,13 @@ set.colorcolumn = "101";
 set.clipboard:prepend { "unnamed" };
 
 g.wildmenu = true;
-g.wildmode = { "list", "longest", "full" };
+g.wildmode = { "list", "longest:full", "full" };
 g.wildoptions = { "fuzzy" };
 vim.cmd(":set wildignore+=**/node_modules/*,*.obj,*.class,*/obj/*,tags,*/CMakeFiles/*,**/*.dex,**/build/*");
 
 -- set.path:append { "**" };
 
 set.list = true;
+set.listchars:append({ trail = '.', tab = '> '});
 
--- vim.cmd('colorscheme onedarkpro');
-set.listchars = { space = '⋅', eol = '¬', extends = '»', precedes = '«', nbsp = '⣿', trail = '_', tab = '> ',
-  unpack(set.listchars) };
+set.confirm = true;

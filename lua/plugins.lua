@@ -15,6 +15,7 @@ require("dep") {
     'rest',
     'autopairs',
     'which',
+    'projections'
   },
 
   --  'kosayoda/nvim-lightbulb'

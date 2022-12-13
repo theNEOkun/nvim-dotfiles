@@ -4,6 +4,10 @@ local keymap = require('utils').map;
 -- require('utils').map('n', '<space>', '<nop>');
 -- g.mapleader = " ";
 
+-- Edit vim
+keymap({ 'n' }, '<leader>ve', ':edit ~/.config/nvim/init.lua<cr>');
+keymap({ 'n' }, '<leader>vr', ':source ~/.config/nvim/init.lua<cr>');
+
 --Tabs
 --Next
 keymap('n', 'tn', '<cmd>:tabn<CR>', { desc = "Go to the next tab" });
@@ -22,7 +26,7 @@ keymap('n', '-', '<C-x>', { desc = "Decrement the first number in the line" });
 keymap('x', '<C-c>', '"+y', { desc = "Copy visual selection to system clipboard" });
 
 --Paste from clipboard
-keymap({ 'n', 'i' }, '<C-p>', '"+p', { desc = "Paste from the clipboard" });
+keymap({ 'n', 'x' }, '<C-p>', '"+p', { desc = "Paste from the clipboard" });
 
 -- save
 keymap('n', '<C-s>', ':updatea<CR>', { desc = "Save all files" });
@@ -66,3 +70,12 @@ keymap({ 'o', 'x' }, 'al', ':<C-u>norm! $v0<CR>',
 
 -- Work on the entire file
 keymap({ 'o', 'x' }, 'aa', ':<C-u>norm! gg^vG$<CR>', { silent = true, desc = "Choose entire file" });
+
+-- Based on [Jess Archer](https://www.youtube.com/watch?v=434tljD-5C8&t=339s)
+keymap({ 'n', 'x' }, 'gf', ':edit<cfile><cr>', { desc = "Open a file, and create it if it does not exist" });
+
+keymap({ 'n' }, '<leader>k', ':noh', { desc = "Remove the highlighting" })
+keymap({ 'x' }, '<', '<gv', { desc = "Reindent, and then visually select again", noremap = true });
+keymap({ 'x' }, '>', '>gv', { desc = "Reindent, and then visually select again", noremap = true });
+
+keymap({ 'n' }, '<leader>x', ':!xdg-open %<cr><cr>', { desc = "Open file in default program" })
