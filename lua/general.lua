@@ -26,7 +26,7 @@ set.termguicolors = true;
 set.timeoutlen = 500;
 set.background = "dark";
 
-set.mouse = "";
+set.mouse = "nv";
 
 set.colorcolumn = "101";
 
