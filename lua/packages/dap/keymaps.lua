@@ -17,3 +17,4 @@ keymap( "n", start .. "uh", ":lua require('dap.ui.widgets').hover()<CR>" )
 keymap( "n", start .. "uf", ":lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>" )
 
 keymap( "n", start .. "sc", ":lua require('dap.ui.variables').scopes()<CR>" )
+

@@ -50,10 +50,6 @@ require("dep") {
   },
   -- JS
 
-  {
-    'preservim/tagbar'
-  },
-
   ----Line
   -- 'vim-airline/vim-airline'
   {

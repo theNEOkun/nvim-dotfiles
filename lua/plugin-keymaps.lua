@@ -1,9 +1,6 @@
 local keymap = require('utils').map
 local cmd = require('utils').u_cmd;
 
---Tagbar
-keymap('n', '<F8>', '<cmd>:TagbarToggle<CR>')
-
 --Telescope
 keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')

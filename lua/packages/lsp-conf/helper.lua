@@ -8,7 +8,7 @@ local start = '<leader>c'
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-keymap('n', start, '<cmd>lua vim.diagnostic.open_float()<CR>')
+keymap('n', start .. 'f', '<cmd>lua vim.diagnostic.open_float()<CR>')
 keymap('n', start .. 'd', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 keymap('n', start .. 'd', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 keymap('n', start .. 'q', '<cmd>lua vim.diagnostic.setloclist()<CR>')
@@ -16,9 +16,6 @@ keymap('n', start .. 'q', '<cmd>lua vim.diagnostic.setloclist()<CR>')
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 M.on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_keymap(bufnr, 'n', start .. 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = "Open the hover-menu" })
@@ -36,6 +33,9 @@ M.on_attach = function(client, bufnr)
   else
     buf_keymap(bufnr, 'n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Opens the hover-action menu" })
   end
+
+  -- LSPSaga
+  buf_keymap(bufnr, 'n', start .. 't', '<cmd>LSoutlineToggle<CR>', { desc = "Show the outline of the file" });
 end
 
 return M
