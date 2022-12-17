@@ -1,7 +1,12 @@
 return {
   {
     'rest-nvim/rest.nvim',
-    function() require('rest-nvim').setup({
+    function()
+
+      local keymap = require('utils').map
+
+      require('rest-nvim').setup({
+
         -- Open request results in a horizontal split
         result_split_horizontal = false,
         -- Keep the http file buffer above|left when split horizontal|vertical
@@ -35,6 +40,10 @@ return {
         custom_dynamic_variables = {},
         yank_dry_run = true,
       })
+
+      -- REST keymaps
+      keymap('n', '<leader>rt', '<Plug>RestNvim');
+      keymap('n', '<leader>rp', '<Plug>RestNvimPreview');
     end,
     opt = true,
     ft = { 'http' },

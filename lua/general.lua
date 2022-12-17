@@ -27,6 +27,8 @@ set.timeoutlen = 500;
 set.background = "dark";
 set.splitbelow = false;
 set.splitright = true;
+set.hlsearch = false;
+set.incsearch = true;
 
 set.mouse = "nv";
 

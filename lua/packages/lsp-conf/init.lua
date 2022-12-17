@@ -44,8 +44,18 @@ local M = {
       mapping = cmp_mappings
     });
 
+    local list = require('packages.lsp-conf.custom_servers')
+
+    for client, opts in pairs(list) do
+      lsp.configure(client, opts.server_config());
+    end
+
     lsp.on_attach(function(client, bufnr)
-      helper.on_attach(client, bufnr);
+      if list[client] then
+        list[client].on_attach(client, bufnr);
+      else
+        helper.on_attach(client, bufnr);
+      end
     end)
 
     lsp.setup({

@@ -15,7 +15,9 @@ require("dep") {
     'rest',
     'autopairs',
     'which',
-    'projections'
+    'projections',
+    'rust',
+    'clangd',
   },
 
   --  'kosayoda/nvim-lightbulb'
@@ -31,24 +33,8 @@ require("dep") {
   },
 
   --Specific
-  ----Rust
-  {
-    'simrat39/rust-tools.nvim',
-    requires = {
-      'mfussenegger/nvim-dap',
-      'nvim-lua/plenary.nvim',
-      'rust-lang/rust.vim',
-      'ron-rs/ron.vim'
-    },
-  },
-
-  --  'mfussenegger/nvim-jdtls';
-
   ----C/C++
 
-  {
-    'p00f/clangd_extensions.nvim'
-  },
   -- JS
 
   ----Line

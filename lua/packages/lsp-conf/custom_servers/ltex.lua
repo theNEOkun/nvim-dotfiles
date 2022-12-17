@@ -115,8 +115,8 @@ M.on_attach = function(client, bufnr)
 	-- under the cursor from both disable and false
 end
 
-M.server_config = function(_, opts)
-	opts.on_attach = M.on_attach
+M.server_config = function()
+  local opts = {};
 	opts.settings = {
 		ltex = {
 			dictionary = {},

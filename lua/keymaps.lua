@@ -1,6 +1,10 @@
 local keymap = require('utils').map;
 --General
 
+local cmd = require('utils').u_cmd;
+-- Command to create ctags
+cmd('MakeTags', ':!ctags -R --exclude=node_modules --exclude="target/*" .');
+
 -- require('utils').map('n', '<space>', '<nop>');
 -- g.mapleader = " ";
 
