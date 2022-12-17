@@ -1,72 +1,60 @@
 local M = {
-  'neovim/nvim-lspconfig',
+  'VonHeikemen/lsp-zero.nvim',
   requires = {
+    -- LSP Support
+    { 'neovim/nvim-lspconfig' },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
-    {
-      'glepnir/lspsaga.nvim',
-      function()
-        local saga = require('lspsaga');
 
-        saga.init_lsp_saga {
+    -- Autocompletion
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lua' },
 
-        }
-      end
-    },
-    --Autocomplete
-    {
-      'ms-jpq/coq_nvim',
-      branch = 'dev',
-      pin = true,
-      deps = {
-        {
-          'ms-jpq/coq.artifacts'
-        },
-        {
-          'ms-jpq/coq.thirdparty',
-          function()
-            require('coq_3p') {
-              { src = 'dap' },
-              { src = "nvimlua", short_name = "nLUA", conf_only = true },
-            }
-          end
-        },
-      },
-      function()
-        -- vim.g.coq_settings = { auto_start = true }
-        vim.cmd(':COQnow --shut-up')
-      end
-    },
+    -- Snippets
+    { 'L3MON4D3/LuaSnip' },
+    { 'rafamadriz/friendly-snippets' },
   },
   function()
-    require("mason").setup()
-    require("mason-lspconfig").setup()
-    local lsp_installer = require("mason-lspconfig")
+    local lsp = require('lsp-zero');
+    local helper = require('packages.lsp-conf.helper');
+    lsp.preset('recommended');
 
-    local list = require('packages.lsp-conf.custom_servers')
+    lsp.ensure_installed({
+      'tsserver',
+      'sumneko_lua',
+      'clangd',
+      'jdtls',
+      'rust_analyzer'
+    });
 
-    -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
-    -- or if the server is already installed).
-    local func = function()
-      for _, server in pairs(lsp_installer.get_installed_servers()) do
-        local opts = require('coq').lsp_ensure_capabilities {
-          on_attach = require('packages.lsp-conf.helper').on_attach,
-        }
-        if list[server] then
-          local curr_server = list[server]
-          opts = curr_server.server_config(server, opts)
-        end
+    local cmp = require('cmp');
+    local cmp_select = { behavior = cmp.SelectBehavior.Select };
+    local cmp_mappings = lsp.defaults.cmp_mappings({
+      ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+      ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+      ["<C-Space>"] = cmp.mapping.complete(),
+    });
 
-        -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-        -- before passing it onwards to lspconfig.
-        -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-        if opts then
-          require('lspconfig')[server].setup(opts)
-        end
-      end
-    end
+    lsp.setup_nvim_cmp({
+      mapping = cmp_mappings
+    });
 
-    func();
+    lsp.on_attach(function(client, bufnr)
+      helper.on_attach(client, bufnr);
+    end)
+
+    lsp.setup({
+
+    });
+
+    vim.diagnostic.config({
+      virtual_text = true,
+    })
   end,
 }
 
