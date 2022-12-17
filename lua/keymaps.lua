@@ -39,10 +39,8 @@ keymap('i', '<C-s>', '<C-o>:updatea<CR>', { desc = "Save all file" });
 --move text
 keymap('n', '<C-j>', ':m .+1<CR>==', { desc = "Move lines down in normal mode" });
 keymap('n', '<C-k>', ':m .-2<CR>==', { desc = "Move lines up in normal mode" });
-keymap('i', '<C-j>', '<Esc>:m .+1<CR>==gi', { desc = "Move lines down in insertmode" });
-keymap('i', '<C-k>', '<Esc>:m .-2<CR>==gi', { desc = "Move lines up in insertmode" });
-keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = "Move the visually chosen lines down" });
-keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = "Move the visually chosen lines up" });
+keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = "Move the visually chosen lines down, and indent" });
+keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = "Move the visually chosen lines up, and indent" });
 
 -- ENter just a line
 keymap({ 'n', 'v' }, '<leader>o', 'o<ESC>j', { desc = "Enter a new line below" });
@@ -54,23 +52,12 @@ keymap({ 'n', 'v' }, '<Down>', '<Nop>', { desc = "Remove the down-button" });
 keymap({ 'n', 'v' }, '<Left>', '<Nop>', { desc = "Remove the left-button" });
 keymap({ 'n', 'v' }, '<Right>', '<Nop>', { desc = "Remove the right-button" });
 
--- Go To Tag
-keymap({ 'n' }, 'gt', '<c-]>', { desc = "GoTo tag" });
-keymap({ 'n', 'x' }, '<C-w>t', '<C-w>v<c-]>', { desc = "GoTo tag in VSplit" });
-keymap({ 'n', 'x' }, '<C-w>T', '<C-w><c-]>', { desc = "GoTo tag in Split" });
-
-
-keymap({ 'n' }, '<C-d>', '<C-d>zz', { desc = "Center the screen on down" });
-keymap({ 'n' }, '<C-u>', '<C-u>zz', { desc = "Center the screen on up" });
-keymap({ 'n' }, 'n', 'nzzzv', { desc = "Center the screen on next" });
-keymap({ 'n' }, 'N', 'Nzzzv', { desc = "Center the screen on Next" });
-
 -- Some custom text-objects
 -- Work on an entire line, either with or without the whitespace
 keymap({ 'o', 'x' }, 'il', ':<C-u>norm! $v^<CR>',
-  { silent = true, desc = "Choose entire line, not including whitespace start" });
+    { silent = true, desc = "Choose entire line, not including whitespace start" });
 keymap({ 'o', 'x' }, 'al', ':<C-u>norm! $v0<CR>',
-  { silent = true, desc = "Choose entire line, including whitespace start" });
+    { silent = true, desc = "Choose entire line, including whitespace start" });
 
 -- Work on the entire file
 keymap({ 'o', 'x' }, 'aa', ':<C-u>norm! gg^vG$<CR>', { silent = true, desc = "Choose entire file" });
@@ -83,3 +70,18 @@ keymap({ 'x' }, '<', '<gv', { desc = "Reindent, and then visually select again",
 keymap({ 'x' }, '>', '>gv', { desc = "Reindent, and then visually select again", noremap = true });
 
 keymap({ 'n' }, '<leader>x', ':!xdg-open %<cr><cr>', { desc = "Open file in default program" })
+
+-- Based on [ThePrimeagen](https://www.youtube.com/watch?v=w7i4amO_zaE&t=1657s)
+keymap({ 'n' }, 'J', 'mzJ`z', { desc = "J but places the cursor where it were" });
+keymap({ 'x' }, 'J', 'mzJ`zgv', { desc = "J but places the cursor where it were, and highlights it again" });
+
+keymap({ 'n' }, '<C-d>', '<C-d>zz', { desc = "Center the screen on down" });
+keymap({ 'n' }, '<C-u>', '<C-u>zz', { desc = "Center the screen on up" });
+keymap({ 'n' }, 'n', 'nzzzv', { desc = "Center the screen on next" });
+keymap({ 'n' }, 'N', 'Nzzzv', { desc = "Center the screen on Next" });
+
+local qstart = '<leader>q';
+keymap({ 'n' }, qstart .. 'k', '<cmd>cnext<cr>zz');
+keymap({ 'n' }, qstart .. 'j', '<cmd>cprev<cr>zz');
+
+keymap({ 'n' }, '<leader>sk', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

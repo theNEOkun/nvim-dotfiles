@@ -16,10 +16,12 @@ set.signcolumn = "yes";
 set.filetype = "on";
 
 -- Use tabstop;
-set.tabstop = 2;
-set.softtabstop = 2;
-set.shiftwidth = 2;
+set.tabstop = 4;
+set.softtabstop = 4;
+set.shiftwidth = 4;
 set.expandtab = true;
+
+-- Smartly indent things
 set.smartindent = true;
 set.wrap = false;
 set.termguicolors = true;
@@ -27,12 +29,18 @@ set.timeoutlen = 500;
 set.background = "dark";
 set.splitbelow = false;
 set.splitright = true;
+
+-- no hightligh
 set.hlsearch = false;
+-- incremental search
 set.incsearch = true;
 
 set.mouse = "nv";
 
-set.colorcolumn = "101";
+set.scrolloff = 8;
+vim.opt.isfname:append("@-@");
+
+set.colorcolumn = "80";
 
 set.clipboard:prepend { "unnamed" };
 

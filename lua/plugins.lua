@@ -8,6 +8,7 @@ require("dep") {
     'eyeline',
     -- 'neoTree',
     'netrw',
+    'harp',
     'telescope-conf',
     'treesitter-conf',
     'todo-conf',
@@ -19,23 +20,6 @@ require("dep") {
     'rust',
     'clangd',
   },
-
-  --  'kosayoda/nvim-lightbulb'
-
-  {
-    'tpope/vim-dispatch'
-  },
-
-  --Debugging
-
-  {
-    'jbyuki/one-small-step-for-vimkind'
-  },
-
-  --Specific
-  ----C/C++
-
-  -- JS
 
   ----Line
   -- 'vim-airline/vim-airline'
@@ -70,8 +54,5 @@ require("dep") {
   ----RipGrep
   {
     'jremmen/vim-ripgrep'
-  },
-  {
-    'ThePrimeagen/vim-be-good'
   },
 }

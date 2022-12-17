@@ -16,13 +16,12 @@ return {
       require 'nvim-treesitter.configs'.setup {
         -- One of "all", "maintained" (parsers with maintainers), or a list of languages
         ensure_installed = { "rust", "c", "javascript", "typescript", "lua", "cpp", "markdown", "markdown_inline",
-          "kotlin", "java", "json", "html", "latex", "css" },
+          "kotlin", "java", "json", "html", "latex", "css", "help" },
         ignore_install = { "phpdoc" },
         -- Install languages synchronously (only applied to `ensure_installed`)
         sync_install = false,
         highlight = {
           enable = true,
-          additional_vim_regex_hightlighting = { "markdown" }
         },
         incremental_selection = {
           enable = true,
