@@ -25,7 +25,7 @@ set.wrap = false;
 set.termguicolors = true;
 set.timeoutlen = 500;
 set.background = "dark";
-set.splitbelow = true;
+set.splitbelow = false;
 set.splitright = true;
 
 set.mouse = "nv";

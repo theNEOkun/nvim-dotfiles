@@ -1,8 +1,12 @@
-return {
-  {
+local function window()
+  return vim.api.nvim_win_get_number(0);
+end
+
+local m = {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', },
     function()
+      local keymap = require('utils').map;
       require('lualine').setup {
         options = {
           icons_enabled = true,
@@ -30,11 +34,17 @@ return {
           lualine_a = {},
           lualine_b = {},
           lualine_c = { 'filename' },
-          lualine_x = { 'location' },
+          lualine_x = { 'location', window },
           lualine_y = {},
           lualine_z = {}
         },
       }
+      for i = 1, 6 do
+        local lhs = "<leader>" .. i
+        local rhs = i .. "<C-W>w";
+        keymap({ 'n' }, lhs, rhs, { desc = "Move to window " .. i });
+      end
     end
-  },
-}
+  }
+
+return { m }

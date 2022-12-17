@@ -74,7 +74,7 @@ keymap({ 'o', 'x' }, 'aa', ':<C-u>norm! gg^vG$<CR>', { silent = true, desc = "Ch
 -- Based on [Jess Archer](https://www.youtube.com/watch?v=434tljD-5C8&t=339s)
 keymap({ 'n', 'x' }, 'gf', ':edit<cfile><cr>', { desc = "Open a file, and create it if it does not exist" });
 
-keymap({ 'n' }, '<leader>k', ':noh', { desc = "Remove the highlighting" })
+keymap({ 'n' }, '<leader>k', ':noh<cr>', { desc = "Remove the highlighting" })
 keymap({ 'x' }, '<', '<gv', { desc = "Reindent, and then visually select again", noremap = true });
 keymap({ 'x' }, '>', '>gv', { desc = "Reindent, and then visually select again", noremap = true });
 
