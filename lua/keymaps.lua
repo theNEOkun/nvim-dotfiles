@@ -5,6 +5,9 @@ local cmd = require('utils').u_cmd;
 -- Command to create ctags
 cmd('MakeTags', ':!ctags -R --exclude=node_modules --exclude="target/*" .');
 
+cmd('CalcLine', '<esc>vil:!bc<CR>');
+cmd('CalcWord', '<esc>viw:!bc<CR>');
+
 -- require('utils').map('n', '<space>', '<nop>');
 -- g.mapleader = " ";
 
@@ -14,13 +17,13 @@ keymap({ 'n' }, '<leader>vr', ':source ~/.config/nvim/init.lua<cr>');
 
 --Tabs
 --Next
-keymap('n', 'tn', '<cmd>:tabn<CR>', { desc = "Go to the next tab" });
+keymap('n', 'tn', '<cmd>:tabn<CR>', { desc = "Go to the [T]ab [N]ext" });
 --Prev
-keymap('n', 'tp', '<cmd>:tabp<CR>', { desc = "Go to the previous tab" });
+keymap('n', 'tp', '<cmd>:tabp<CR>', { desc = "Go to the [T]ab [P]rev" });
 --New
-keymap('n', 'te', '<cmd>:tabe<CR>', { desc = "Open a new tab" });
+keymap('n', 'te', '<cmd>:tabe<CR>', { desc = "Open a [T]ab [E]dit" });
 --Close
-keymap('n', 'tc', '<cmd>:tabc<CR>', { desc = "Close the current tab" });
+keymap('n', 'tc', '<cmd>:tabc<CR>', { desc = "Close the [T]ab [C]lose" });
 
 --Increment and Decrement
 keymap('n', '+', '<C-a>', { desc = "Increment the first number in the line" });
@@ -43,8 +46,8 @@ keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = "Move the visually chosen line
 keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = "Move the visually chosen lines up, and indent" });
 
 -- ENter just a line
-keymap({ 'n', 'v' }, '<leader>o', 'o<ESC>j', { desc = "Enter a new line below" });
-keymap({ 'n', 'v' }, '<leader>O', 'O<ESC>k', { desc = "Enter a new line above" });
+keymap({ 'n', 'v' }, '<leader>o', 'o<ESC>k', { desc = "Enter a new line below" });
+keymap({ 'n', 'v' }, '<leader>O', 'O<ESC>j', { desc = "Enter a new line above" });
 
 -- Remove arrow-keys
 keymap({ 'n', 'v' }, '<Up>', '<Nop>', { desc = "Remove the up-button" });
@@ -81,10 +84,10 @@ keymap({ 'n' }, 'n', 'nzzzv', { desc = "Center the screen on next" });
 keymap({ 'n' }, 'N', 'Nzzzv', { desc = "Center the screen on Next" });
 
 local qstart = '<leader>l';
-keymap({ 'n' }, qstart .. 'k', '<cmd>cnext<CR>zz');
-keymap({ 'n' }, qstart .. 'j', '<cmd>cprev<CR>zz');
+keymap({ 'n' }, qstart .. 'k', '<cmd>cnext<CR>zz', { desc = "[L]ocation next" });
+keymap({ 'n' }, qstart .. 'j', '<cmd>cprev<CR>zz', { desc = "[L]ocation previous" });
 
-keymap({ 'n' }, qstart .. 'K', '<cmd>lnext<cr>zz');
-keymap({ 'n' }, qstart .. 'J', '<cmd>lprev<cr>zz');
+keymap({ 'n' }, qstart .. 'K', '<cmd>lnext<cr>zz', { desc = "[L]ocation Next" });
+keymap({ 'n' }, qstart .. 'J', '<cmd>lprev<cr>zz', { desc = "[L]ocation Prev" });
 
 keymap({ 'n' }, '<leader>sk', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
