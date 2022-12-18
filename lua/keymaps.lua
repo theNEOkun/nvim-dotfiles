@@ -80,8 +80,11 @@ keymap({ 'n' }, '<C-u>', '<C-u>zz', { desc = "Center the screen on up" });
 keymap({ 'n' }, 'n', 'nzzzv', { desc = "Center the screen on next" });
 keymap({ 'n' }, 'N', 'Nzzzv', { desc = "Center the screen on Next" });
 
-local qstart = '<leader>q';
-keymap({ 'n' }, qstart .. 'k', '<cmd>cnext<cr>zz');
-keymap({ 'n' }, qstart .. 'j', '<cmd>cprev<cr>zz');
+local qstart = '<leader>l';
+keymap({ 'n' }, qstart .. 'k', '<cmd>cnext<CR>zz');
+keymap({ 'n' }, qstart .. 'j', '<cmd>cprev<CR>zz');
+
+keymap({ 'n' }, qstart .. 'K', '<cmd>lnext<cr>zz');
+keymap({ 'n' }, qstart .. 'J', '<cmd>lprev<cr>zz');
 
 keymap({ 'n' }, '<leader>sk', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

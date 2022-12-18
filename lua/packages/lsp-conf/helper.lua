@@ -8,10 +8,10 @@ local start = '<leader>c'
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-keymap('n', start .. 'f', '<cmd>lua vim.diagnostic.open_float()<CR>')
-keymap('n', start .. 'd', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-keymap('n', start .. 'd', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-keymap('n', start .. 'q', '<cmd>lua vim.diagnostic.setloclist()<CR>')
+keymap('n', start .. 'qf', '<cmd>lua vim.diagnostic.open_float()<CR>')
+keymap('n', start .. 'qp', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+keymap('n', start .. 'qd', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+keymap('n', start .. 'ql', '<cmd>lua vim.diagnostic.setloclist()<CR>')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -21,7 +21,10 @@ M.on_attach = function(client, bufnr)
   buf_keymap(bufnr, 'n', start .. 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = "Open the hover-menu" })
   buf_keymap(bufnr, 'n', start .. 'i', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "Go to Implementation" })
   buf_keymap(bufnr, 'n', start .. 'r', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "Go to References" })
+  buf_keymap(bufnr, 'n', start .. 's', require('telescope.builtin').lsp_references, { desc = "Show referenes in telescope" });
   buf_keymap(bufnr, 'n', start .. 'd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
+    { desc = "Go to the Definition" })
+  buf_keymap(bufnr, 'n', start .. 'D', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
     { desc = "Go to the Type Definition" })
   buf_keymap(bufnr, 'n', start .. 'a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
     { desc = "Selects a code action available" })
@@ -33,9 +36,6 @@ M.on_attach = function(client, bufnr)
   else
     buf_keymap(bufnr, 'n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Opens the hover-action menu" })
   end
-
-  -- LSPSaga
-  buf_keymap(bufnr, 'n', start .. 't', '<cmd>LSoutlineToggle<CR>', { desc = "Show the outline of the file" });
 end
 
 return M

@@ -1,3 +1,5 @@
+-- [based on](https://elianiva.my.id/post/neovim-lua-statusline/)
+
 local fn = vim.fn;
 local api = vim.api;
 
