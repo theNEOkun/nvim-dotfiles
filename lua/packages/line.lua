@@ -24,7 +24,7 @@ local m = {
             { 'diff', color = 'StatusLine' },
             { 'diagnostics', color = 'StatusLine' }
           },
-          lualine_c = { 'filename' },
+          lualine_c = { { 'filename', path = 1 } },
           lualine_f = {},
           lualine_x = {},
           lualine_y = { { 'filetype', color = 'StatusLine' } },

@@ -5,8 +5,7 @@ local cmd = require('utils').u_cmd;
 -- Command to create ctags
 cmd('MakeTags', ':!ctags -R --exclude=node_modules --exclude="target/*" .');
 
-cmd('CalcLine', '<esc>vil:!bc<CR>');
-cmd('CalcWord', '<esc>viw:!bc<CR>');
+keymap({ 'x' }, '<leader>b', ':!bc<CR>', { desc = "Calculate a chosen line using bc" });
 
 -- require('utils').map('n', '<space>', '<nop>');
 -- g.mapleader = " ";
@@ -58,9 +57,9 @@ keymap({ 'n', 'v' }, '<Right>', '<Nop>', { desc = "Remove the right-button" });
 -- Some custom text-objects
 -- Work on an entire line, either with or without the whitespace
 keymap({ 'o', 'x' }, 'il', ':<C-u>norm! $v^<CR>',
-    { silent = true, desc = "Choose entire line, not including whitespace start" });
+  { silent = true, desc = "Choose entire line, not including whitespace start" });
 keymap({ 'o', 'x' }, 'al', ':<C-u>norm! $v0<CR>',
-    { silent = true, desc = "Choose entire line, including whitespace start" });
+  { silent = true, desc = "Choose entire line, including whitespace start" });
 
 -- Work on the entire file
 keymap({ 'o', 'x' }, 'aa', ':<C-u>norm! gg^vG$<CR>', { silent = true, desc = "Choose entire file" });
