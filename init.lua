@@ -7,5 +7,7 @@ else
     require('keymaps')
     require('skeletons')
     require('autocommands')
+    require('bootstrap')
+    require('lazy').setup("plugins")
     require('plugins')
 end

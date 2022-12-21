@@ -13,9 +13,9 @@ local api = vim.api
 --@param command is the command to execute
 --@param opts are the options to use
 M.map = function(mode, keys, command, opts)
-	local options = { noremap = false, silent = true }
-	if opts then options = vim.tbl_extend("force", options, opts) end
-	keymap(mode, keys, command, options)
+  local options = { noremap = false, silent = true }
+  if opts then options = vim.tbl_extend("force", options, opts) end
+  keymap(mode, keys, command, options)
 end
 
 --Used to map to a keybinding
@@ -25,13 +25,13 @@ end
 --@param command is the command to execute
 --@param opts are the options to use
 M.buf_map = function(bufnr, mode, keys, command, opts)
-	local options = { noremap = true, silent = false, buffer = bufnr }
-	if opts then options = vim.tbl_extend("force", options, opts) end
-	keymap(mode, keys, command, options)
+  local options = { noremap = true, silent = false, buffer = bufnr }
+  if opts then options = vim.tbl_extend("force", options, opts) end
+  keymap(mode, keys, command, options)
 end
 
 M.autogroup = function(group_name)
-	return api.nvim_create_augroup(group_name, { clear = false });
+  return api.nvim_create_augroup(group_name, { clear = false });
 end
 
 -- Creates an autocommand "easier"
@@ -39,11 +39,11 @@ end
 -- @param aupattern is the pattern to listen formd
 -- @param aucommand is the command to do
 M.autocmd = function(actions, aupattern, aucommand, augroup)
-	api.nvim_create_autocmd(actions, {
-		pattern = aupattern,
-		group = augroup,
-		command = aucommand,
-	});
+  api.nvim_create_autocmd(actions, {
+    pattern = aupattern,
+    group = augroup,
+    command = aucommand,
+  });
 end
 
 -- Creates a user-command
@@ -51,13 +51,13 @@ end
 -- @param func is the function to execute
 -- @param args are the args to give
 M.u_cmd = function(command, func, args)
-	local l_args = { nargs = 0 };
-	if args then l_args = vim.tbl_extend("force", l_args, args) end
-	api.nvim_create_user_command(
-		command,
-		func,
-		l_args
-	);
+  local l_args = { nargs = 0 };
+  if args then l_args = vim.tbl_extend("force", l_args, args) end
+  api.nvim_create_user_command(
+    command,
+    func,
+    l_args
+  );
 end
 
 -- Just a split function because Lua does not have this, nothing more
@@ -66,24 +66,24 @@ end
 -- @param sep Separator
 -- @param max_splits Number of times to split the string (optional)
 M.split = function(str, sep, max_splits)
-	if sep == nil then
-		sep = "%s"
-	end
-	max_splits = max_splits or -1
+  if sep == nil then
+    sep = "%s"
+  end
+  max_splits = max_splits or -1
 
-	local str_tbl = {}
-	local nField, nStart = 1, 1
-	local nFirst, nLast = str:find(sep, nStart)
-	while nFirst and max_splits ~= 0 do
-		str_tbl[nField] = str:sub(nStart, nFirst - 1)
-		nField = nField + 1
-		nStart = nLast + 1
-		nFirst, nLast = str:find(sep, nStart)
-		max_splits = max_splits - 1
-	end
-	str_tbl[nField] = str:sub(nStart)
+  local str_tbl = {}
+  local nField, nStart = 1, 1
+  local nFirst, nLast = str:find(sep, nStart)
+  while nFirst and max_splits ~= 0 do
+    str_tbl[nField] = str:sub(nStart, nFirst - 1)
+    nField = nField + 1
+    nStart = nLast + 1
+    nFirst, nLast = str:find(sep, nStart)
+    max_splits = max_splits - 1
+  end
+  str_tbl[nField] = str:sub(nStart)
 
-	return str_tbl
+  return str_tbl
 end
 
 return M
