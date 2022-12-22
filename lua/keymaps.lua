@@ -7,6 +7,8 @@ cmd('MakeTags', ':!ctags -R --exclude=node_modules --exclude="target/*" .');
 
 keymap({ 'x' }, '<leader>b', ':!bc<CR>', { desc = "Calculate a chosen line using bc" });
 
+keymap({ 'n' }, '<F5>', ":put =strftime('%Y-%m-%dT%T%z')<cr>", { desc = "Enter todays date into the current buffer" });
+
 -- require('utils').map('n', '<space>', '<nop>');
 -- g.mapleader = " ";
 

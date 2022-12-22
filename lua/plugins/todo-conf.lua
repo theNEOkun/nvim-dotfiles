@@ -13,17 +13,17 @@ return {
         return todo.setup(extra)
       end
 
-      local start = '<leader>t';
+      local start = '<leader>f';
 
       keymap("n", start .. "n", function()
         todo.jump_next();
-      end)
+      end, { desc = "[F]ix [N]ext" })
 
       keymap("n", start .. "p", function()
         todo.jump_prev();
-      end)
+      end, { desc = "[F]ix [P]revious" })
 
-      keymap({ 'n' }, 'tt', '<cmd>:TodoQuickFix<cr>');
+      keymap({ 'n' }, start .. 'l', '<cmd>:TodoQuickFix<cr>', { desc = "[F]ix [L]ist" });
 
       return m;
 
