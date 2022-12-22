@@ -11,15 +11,15 @@ local function switchFunction()
   end
 end
 
-local function switch() 
+local function switch()
   vim.cmd(':e ' .. switchFunction());
 end
 
-local function splitSwitch() 
+local function splitSwitch()
   vim.cmd(':sp ' .. switchFunction());
 end
 
-local function vsplitSwitch(cmd) 
+local function vsplitSwitch(cmd)
   vim.cmd(':vsp ' .. switchFunction());
 end
 
@@ -27,12 +27,13 @@ cmd('A', switch);
 cmd('AS', splitSwitch);
 cmd('AV', vsplitSwitch);
 
-local t = {};
-local t_html = {};
-t_html['alternate'] = '{}.html';
-
-local t_ts = {};
-t_ts['alternate'] = '{}.ts';
-t['**.html'] = t_ts;
-t['**.ts'] = t_html;
-vim.g.projectionist_heuristic = t;
+-- local t = {};
+-- t['src/app/**.html'] = {
+--   alternate = 'src/app/{}.ts',
+--   type = 'html'
+-- };
+-- t['src/app/**.ts'] = {
+--   alternate = 'src/app/{}.html',
+--   type = 'source'
+-- };
+-- vim.g.projectionist_heuristics = t;
