@@ -1,7 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    deps = {
+    dependencies = {
       { 'nvim-treesitter/nvim-treesitter-refactor', },
       { 'windwp/nvim-ts-autotag' },
       { 'p00f/nvim-ts-rainbow' },
