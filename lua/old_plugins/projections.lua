@@ -16,6 +16,12 @@ local m = {
     proj["*"] = {
       make = "maven"
     }
+    proj['src/app/*.ts'] = {
+      alternate = 'src/app/{}.html'
+    }
+    proj['src/app/*.html'] = {
+      alternate = 'src/app/{}.ts'
+    }
     vim.g.projectionist_heuristic = proj;
   end
 }
