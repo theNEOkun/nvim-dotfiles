@@ -9,6 +9,7 @@ local function switchFunction()
   elseif vim.fn.expand("%:e") == 'html' then
     return file .. '.ts';
   end
+  return file .. '.ts';
 end
 
 local function switch()
@@ -19,13 +20,18 @@ local function splitSwitch()
   vim.cmd(':sp ' .. switchFunction());
 end
 
-local function vsplitSwitch(cmd)
+local function vsplitSwitch()
   vim.cmd(':vsp ' .. switchFunction());
+end
+
+local function switchAlt(args)
+  vim.cmd(':e ' .. vim.fn.expand("%:r") .. args['args'])
 end
 
 cmd('A', switch);
 cmd('AS', splitSwitch);
 cmd('AV', vsplitSwitch);
+cmd('AA', switchAlt, { nargs = 1 })
 
 -- local t = {};
 -- t['src/app/**.html'] = {
