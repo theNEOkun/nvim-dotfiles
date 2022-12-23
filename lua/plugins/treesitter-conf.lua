@@ -16,7 +16,7 @@ return {
       require 'nvim-treesitter.configs'.setup {
         -- One of "all", "maintained" (parsers with maintainers), or a list of languages
         ensure_installed = { "rust", "c", "javascript", "typescript", "lua", "cpp", "markdown", "markdown_inline",
-          "kotlin", "java", "json", "html", "latex", "css", "help" },
+          "kotlin", "java", "json", "html", "latex", "css", "help", "comment" },
         ignore_install = { "phpdoc" },
         -- Install languages synchronously (only applied to `ensure_installed`)
         sync_install = false,
@@ -31,6 +31,9 @@ return {
             scope_incremental = "grc",
             node_decremental = "grm",
           },
+        },
+        context_commentstring = {
+          enable = true,
         },
         refactor = {
           smart_rename = {
@@ -121,9 +124,6 @@ return {
             -- and should return true of false
             include_surrounding_whitespace = true,
           },
-        },
-        context_commentstring = {
-          enable = true,
         },
       }
     end
