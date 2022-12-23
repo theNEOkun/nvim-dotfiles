@@ -52,8 +52,8 @@ local M = {
     end
 
     lsp.on_attach(function(client, bufnr)
-      if list[client] then
-        list[client].on_attach(client, bufnr);
+      if list[client.name] then
+        list[client.name].on_attach(client, bufnr);
       else
         require('plugins.lsp-conf.helper').on_attach(client, bufnr);
       end
