@@ -111,6 +111,7 @@ M.on_attach = function(client, bufnr)
     vim.cmd('normal! zg')
     update_config('en-US', 'dictionary')
   end)
+
   -- TODO: Add some commands to remove the entry
   -- under the cursor from both disable and false
 end
