@@ -35,6 +35,7 @@ set.hlsearch = false;
 -- incremental search
 set.incsearch = true;
 
+-- Mouse only in Normal and Visual
 set.mouse = "nv";
 
 set.scrolloff = 8;

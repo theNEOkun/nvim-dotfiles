@@ -17,7 +17,10 @@ local M = {
     -- Snippets
     { 'L3MON4D3/LuaSnip' },
     { 'rafamadriz/friendly-snippets' },
-    { 'nvim-telescope/telescope.nvim' }
+    { 'nvim-telescope/telescope.nvim' },
+
+    -- Autopairs
+    { 'windwp/nvim-autopairs' },
   },
   config = function()
     local lsp = require('lsp-zero');
@@ -37,9 +40,9 @@ local M = {
       ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
       ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-e>'] = cmp.mapping.abort(),
       ["<C-Space>"] = cmp.mapping.complete(),
     });
-
 
     lsp.setup_nvim_cmp({
       mapping = cmp_mappings

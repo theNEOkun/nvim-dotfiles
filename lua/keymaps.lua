@@ -14,7 +14,7 @@ keymap({ 'n' }, '<F5>', ":put =strftime('%Y-%m-%dT%T%z')<cr>", { desc = "Enter t
 
 -- Edit vim
 keymap({ 'n' }, '<leader>ve', ':edit ~/.config/nvim/init.lua<cr>');
-keymap({ 'n' }, '<leader>vr', ':source ~/.config/nvim/init.lua<cr>');
+-- keymap({ 'n' }, '<leader>vr', ':source ~/.config/nvim/init.lua<cr>'); Does not work with Lazy
 
 --Tabs
 --Next
