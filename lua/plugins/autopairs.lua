@@ -24,8 +24,7 @@ local M = {
         javascript = { 'template_string' },
       },
       ignored_next_char = "[%w%.]",
-      fast_wrap = {},
-    })
+    });
 
     -- -- skip it, if you use another global object
     -- _G.MUtils = {}
