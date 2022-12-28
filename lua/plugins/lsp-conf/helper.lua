@@ -24,6 +24,7 @@ M.on_attach = function(client, bufnr)
   buf_keymap(bufnr, 'n', start .. 's', require('telescope.builtin').lsp_references, { desc = "[C]ode [S]how references" });
   buf_keymap(bufnr, 'n', start .. 'd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
     { desc = "Go to [C]ode [Definition]" })
+  buf_keymap(bufnr, 'n', start .. 'vd', ':vsp | lua vim.lsp.buf.type_definition()<cr>', { desc = "Go to [C]ode [D]efinition in [V]ertical split"})
   buf_keymap(bufnr, 'n', start .. 'D', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
     { desc = "Go to [C]ode Type [D]efinition" })
   buf_keymap(bufnr, 'n', start .. 'a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
