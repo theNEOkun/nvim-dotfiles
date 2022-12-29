@@ -40,11 +40,11 @@ local get_client_by_name = function(name)
   return nil
 end
 
-local update_config = function(lang, configtype, client)
+local update_config = function(lang, short, configtype, client)
   if client then
     if client.config.settings.ltex[configtype] then
       client.config.settings.ltex[configtype] = {
-        [lang] = M.lines_from(M.file('en')[configtype]),
+        [lang] = M.lines_from(M.file(short)[configtype]),
       }
       return client.notify('workspace/didChangeConfiguration', client.config.settings)
     else
@@ -96,21 +96,26 @@ end
 
 M.on_attach = function(client, bufnr)
   require('plugins.lsp-conf.helper').on_attach(client, bufnr)
-  --require('config.lspconfig').make_config().on_attach(client)
   -- Set some config on attach to prevent reading from the
   -- files when the language server is not used
-  update_config('en-US', 'dictionary', client)
-  update_config('en-US', 'disabledRules', client)
-  update_config('en-US', 'hiddenFalsePositives', client)
   local buf_map = require('utils').buf_map
-  buf_map(bufnr, 'n', 'zuw', function()
-    vim.cmd('normal! zuw')
-    update_config('en-US', 'dictionary')
-  end)
-  buf_map(bufnr, 'n', 'zg', function()
-    vim.cmd('normal! zg')
-    update_config('en-US', 'dictionary')
-  end)
+
+  local basepath = vim.fn.stdpath('config') .. '/spell'
+  vim.o.spellfile = basepath .. '/en.utf-8.add';
+  for short, lang in pairs({ en = 'en-GB' }) do
+    update_config(lang, short, 'dictionary', client)
+    update_config(lang, short, 'disabledRules', client)
+    update_config(lang, short, 'hiddenFalsePositives', client)
+
+    buf_map(bufnr, 'n', 'zuw', function()
+      vim.cmd('normal! zuw')
+      update_config(lang, 'dictionary')
+    end)
+    buf_map(bufnr, 'n', 'zg', function()
+      vim.cmd('normal! zg')
+      update_config(lang, 'dictionary')
+    end)
+  end
 
   -- TODO: Add some commands to remove the entry
   -- under the cursor from both disable and false
