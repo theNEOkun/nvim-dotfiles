@@ -5,6 +5,7 @@ if vim.g.vscode then
 else
     require('general')
     require('keymaps')
+    require('spellchecking')
     require('skeletons')
     require('autocommands')
     require('bootstrap')
