@@ -7,6 +7,7 @@ local M = {
     'ron-rs/ron.vim',
     'VonHeikemen/lsp-zero.nvim',
   },
+  ft="rust",
   config = function()
     local extension_path = os.getenv('HOME') .. '/library/vscode_lldb/extension'
     local codelldb_path = extension_path .. '/adapter/codelldb'
