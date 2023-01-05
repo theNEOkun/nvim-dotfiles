@@ -28,7 +28,7 @@ M.on_attach = function(client, bufnr)
   buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [R]eferences" });
   buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
   { desc = "[G]o to Code [Definition]" });
-  buf_keymap(bufnr, 'n', 'gvd', ':vsp | lua vim.lsp.buf.type_definition()<cr>', { desc = "[G]o to Code [D]efinition in [V]ertical split"});
+  buf_keymap(bufnr, 'n', 'gVd', ':vsp | lua vim.lsp.buf.type_definition()<cr>', { desc = "[G]o to Code [D]efinition in [V]ertical split"});
   buf_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
   { desc = "[G]o to Code Type [D]efinition" });
 
