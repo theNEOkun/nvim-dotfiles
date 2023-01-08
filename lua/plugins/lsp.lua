@@ -29,10 +29,15 @@ local M = {
     lsp.ensure_installed({
       'tsserver',
       'sumneko_lua',
-      'clangd',
       'jdtls',
-      'rust_analyzer'
     });
+
+    -- This is installed on the computer already so...
+    lsp.setup_servers({
+      'clangd',
+      'rust_analyzer',
+      force = true,
+    })
 
     local cmp = require('cmp');
     local cmp_select = { behavior = cmp.SelectBehavior.Select };
