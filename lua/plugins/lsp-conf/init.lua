@@ -99,8 +99,8 @@ local M = {
     local cmp_mappings = lsp.defaults.cmp_mappings({
       ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
       ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ['<C-e>'] = cmp.mapping.abort(),
+      ['<C-e>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.abort(),
       ["<C-Space>"] = cmp.mapping.complete(),
     });
 
