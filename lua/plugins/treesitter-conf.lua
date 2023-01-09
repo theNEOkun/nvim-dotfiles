@@ -4,7 +4,7 @@ return {
     dependencies = {
       { 'nvim-treesitter/nvim-treesitter-refactor', },
       { 'windwp/nvim-ts-autotag' },
-      { 'p00f/nvim-ts-rainbow' },
+      { 'mrjones2014/nvim-ts-rainbow' },
       { 'RRethy/nvim-treesitter-endwise' },
       { 'RRethy/nvim-treesitter-textsubjects' },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },

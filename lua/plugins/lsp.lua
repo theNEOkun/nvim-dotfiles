@@ -21,9 +21,14 @@ local M = {
 
     -- Autopairs
     { 'windwp/nvim-autopairs' },
+    { 'jose-elias-alvarez/null-ls.nvim',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+    }
   },
   config = function()
     local lsp = require('lsp-zero');
+
+    local null_ls = require("null-ls");
     lsp.preset('recommended');
 
     lsp.ensure_installed({
@@ -66,6 +71,15 @@ local M = {
         require('plugins.lsp-conf.helper').on_attach(client, bufnr);
       end
     end)
+
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.clang_format,
+        null_ls.builtins.formatting.prettier,
+      },
+      on_attach = require('plugin.lsp-conf.helper').on_attach
+    });
 
     lsp.setup({
 
