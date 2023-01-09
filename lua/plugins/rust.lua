@@ -10,15 +10,19 @@ local M = {
   ft="rust",
   config = function()
 
-    local extension_path = os.getenv('HOME') .. '/library/vscode_lldb/extension'
-    local codelldb_path = extension_path .. '/adapter/codelldb'
-    local lidlldb_path = extension_path .. '/lldb/lib/liblldb.so'
+    local extension_path = os.getenv('HOME') .. '/library/vscode_lldb/extension';
+    local codelldb_path = extension_path .. '/adapter/codelldb';
+    local lidlldb_path = extension_path .. '/lldb/lib/liblldb.so';
+
     local rust_lsp = require('lsp-zero').build_options('rust_analyzer', {});
 
     local rust_opts = {
       tools = {
         hover_actions = {
           auto_focus = true
+        },
+        inlay_hints = {
+          auto = true,
         }
       },
       dap = {

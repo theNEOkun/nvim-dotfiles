@@ -85,10 +85,10 @@ local M = {
     lsp.preset('recommended');
 
     -- This is installed on the computer already so...
-    lsp.setup_servers({
-      'rust_analyzer',
-      force = true,
-    })
+    -- lsp.setup_servers({
+    --   'rust_analyzer',
+    --   force = true,
+    -- })
 
     local cmp = require('cmp');
     local cmp_select = { behavior = cmp.SelectBehavior.Select };
