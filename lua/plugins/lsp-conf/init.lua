@@ -90,7 +90,6 @@ local M = {
 
     -- This is installed on the computer already so...
     lsp.setup_servers({
-      'clangd',
       'rust_analyzer',
       force = true,
     })
