@@ -9,12 +9,12 @@ local M = {
   },
   ft="rust",
   config = function()
+
     local extension_path = os.getenv('HOME') .. '/library/vscode_lldb/extension'
     local codelldb_path = extension_path .. '/adapter/codelldb'
     local lidlldb_path = extension_path .. '/lldb/lib/liblldb.so'
-    local opts = require 'lsp-zero'.build_options('rust_analyzer', {});
+    local rust_lsp = require('lsp-zero').build_options('rust_analyzer', {});
 
-    opts.cmd = { 'rust-analyzer' }
     local rust_opts = {
       tools = {
         hover_actions = {
@@ -26,7 +26,7 @@ local M = {
           'codelldb', lidlldb_path
         )
       },
-      server = opts,
+      server = rust_lsp,
     }
     require('rust-tools').setup(rust_opts)
   end

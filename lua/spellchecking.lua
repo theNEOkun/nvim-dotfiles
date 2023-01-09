@@ -1,10 +1,11 @@
 local keymap = require('utils').map;
-local dict = '<leader>w';
 local set = vim.opt;
 
 local basepath = vim.fn.stdpath('config') .. '/spell'
 set.spellfile = basepath .. '/en.utf-8.add' .. ', ' .. basepath .. '/sv.utf-8.add';
 set.spelllang:append({ 'en_gb', 'sv' });
+
+local dict = '<leader>w';
 
 keymap({ 'n', 'x' }, dict .. 'a', 'zg', { desc = "[W]ord [A]dd" });
 keymap({ 'n', 'x' }, dict .. 'w', 'zuw', { desc = "[W]ord [W]rong add" });

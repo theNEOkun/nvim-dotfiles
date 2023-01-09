@@ -39,10 +39,10 @@ local function keymaps()
 
     --Open context-menu
     if client.name == "rust_analyzer" then
-      buf_keymap(bufnr, 'n', '<C-s>', '<cmd>:RustHoverActions<cr>', { desc = "Opens the Hover-Actions" });
+      buf_keymap(bufnr, 'n', start .. 'h', '<cmd>:RustHoverActions<cr>', { desc = "[C]ode [H]over-action" });
     else
-      buf_keymap(bufnr, 'n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-        { desc = "Opens the hover-action menu" });
+      buf_keymap(bufnr, 'n', start .. 'h', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
+        { desc = "[C]ode [H]over-action" });
     end
   end
 
@@ -83,12 +83,6 @@ local M = {
 
     local null_ls = require("null-ls");
     lsp.preset('recommended');
-
-    lsp.ensure_installed({
-      'tsserver',
-      'sumneko_lua',
-      'jdtls',
-    });
 
     -- This is installed on the computer already so...
     lsp.setup_servers({

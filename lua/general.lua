@@ -48,7 +48,7 @@ set.clipboard:prepend { "unnamed" };
 g.wildmenu = true;
 g.wildmode = { "list", "longest:full", "full" };
 g.wildoptions = { "fuzzy" };
-set.wildignore = "**/node_modules/*,*.obj,*.class,*/obj/*,tags,*/CMakeFiles/*,**/*.dex,**/build/*";
+set.wildignore = "**/node_modules/*,*.obj,*.class,*/obj/*,tags,*/CMakeFiles/*,**/*.dex,**/build/*,**/target/*";
 set.completeopt = 'menuone,noselect';
 
 -- set.path:append { "**" };
