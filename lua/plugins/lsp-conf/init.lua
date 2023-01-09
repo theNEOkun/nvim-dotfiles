@@ -28,7 +28,7 @@ local function keymaps()
       { desc = "Selects a [C]ode [A]ction available" });
     buf_keymap(bufnr, 'n', start .. 'f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', { desc = "[C]ode [F]ormat" });
 
-    buf_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "[G]o to Code [I]mplementation" });
+    buf_keymap(bufnr, 'n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "[G]o to Code [I]mplementation" });
     buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [R]eferences" });
     buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
       { desc = "[G]o to Code [Definition]" });
