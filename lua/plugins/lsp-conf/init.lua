@@ -72,6 +72,8 @@ local M = {
 
     -- Autopairs
     { 'windwp/nvim-autopairs' },
+
+    -- Null LS for more capabilities
     { 'jose-elias-alvarez/null-ls.nvim',
       dependencies = { 'nvim-lua/plenary.nvim' }
     }
@@ -99,8 +101,9 @@ local M = {
     local cmp_mappings = lsp.defaults.cmp_mappings({
       ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
       ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-      ['<C-e>'] = cmp.mapping.confirm({ select = true }),
-      ['<CR>'] = cmp.mapping.abort(),
+      ['<C-o>'] = cmp.mappings.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
       ["<C-Space>"] = cmp.mapping.complete(),
     });
 
