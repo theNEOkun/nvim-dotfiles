@@ -1,4 +1,4 @@
-return {  -- 'vim-airline/vim-airline'
+return { -- 'vim-airline/vim-airline'
   {
     'kyazdani42/nvim-web-devicons',
     config = function() require("nvim-web-devicons").setup() end,
@@ -19,5 +19,8 @@ return {  -- 'vim-airline/vim-airline'
   -- require('autopairs')
 
   ----RipGrep
-  'jremmen/vim-ripgrep',
+  {
+    'jremmen/vim-ripgrep',
+    cmd = 'Rg'
+  },
 }

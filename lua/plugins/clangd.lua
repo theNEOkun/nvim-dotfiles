@@ -1,5 +1,6 @@
 local m = {
   url = "https://git.sr.ht/~p00f/clangd_extensions.nvim",
+  fg = { 'c', 'cpp' },
   dependencies = {
     'VonHeikemen/lsp-zero.nvim',
   },

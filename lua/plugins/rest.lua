@@ -1,6 +1,7 @@
 return {
   {
     'rest-nvim/rest.nvim',
+    cmd = { 'RestNvim', 'RestNvimPreview' },
     config = function()
 
       local keymap = require('utils').map
