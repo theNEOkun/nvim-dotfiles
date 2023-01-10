@@ -4,6 +4,8 @@
 
 These are my neovim dotfiles
 
+| 100 |
+
 ## Colorscheme
 
 The colorscheme is a try to copy the helix default theme, due to the colors being so good
