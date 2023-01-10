@@ -6,7 +6,6 @@ return {
       { 'windwp/nvim-ts-autotag' },
       { 'mrjones2014/nvim-ts-rainbow' },
       { 'RRethy/nvim-treesitter-endwise' },
-      { 'RRethy/nvim-treesitter-textsubjects' },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
       { 'nvim-treesitter/playground' },
@@ -14,7 +13,6 @@ return {
     build = function() vim.cmd(':TSUpdate') end,
     config = function()
       require 'nvim-treesitter.configs'.setup {
-        -- One of "all", "maintained" (parsers with maintainers), or a list of languages
         ensure_installed = { "rust", "c", "javascript", "typescript", "lua", "cpp", "markdown", "markdown_inline",
           "kotlin", "java", "json", "html", "latex", "css", "help", "comment" },
         ignore_install = { "phpdoc" },
@@ -72,15 +70,6 @@ return {
         autotag = {
           enable = true
         },
-        textsubjects = {
-          enable = true,
-          prev_selection = ',', -- (Optional) keymap to select the previous selection
-          keymaps = {
-            ['.'] = 'textsubjects-smart',
-            ['<C-o>'] = 'textsubjects-container-outer',
-            ['<C-i>'] = 'textsubjects-container-inner',
-          },
-        },
         textobjects = {
           select = {
             enable = true,
@@ -122,7 +111,7 @@ return {
             -- * query_string: eg '@function.inner'
             -- * selection_mode: eg 'v'
             -- and should return true of false
-            include_surrounding_whitespace = true,
+            include_surrounding_whitespace = false,
           },
         },
       }
