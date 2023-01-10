@@ -3,8 +3,6 @@ local M = {
   dependencies = {
     'mfussenegger/nvim-dap',
     'nvim-lua/plenary.nvim',
-    'rust-lang/rust.vim',
-    'ron-rs/ron.vim',
     'VonHeikemen/lsp-zero.nvim',
   },
   ft="rust",

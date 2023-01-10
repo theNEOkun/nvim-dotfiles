@@ -26,16 +26,17 @@ local function keymaps()
       { desc = "[C]ode [S]how references" });
     buf_keymap(bufnr, 'n', start .. 'a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
       { desc = "Selects a [C]ode [A]ction available" });
-    buf_keymap(bufnr, 'n', start .. 'f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', { desc = "[C]ode [F]ormat" });
 
     buf_keymap(bufnr, 'n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "[G]o to Code [I]mplementation" });
     buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [R]eferences" });
-    buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
+      buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
       { desc = "[G]o to Code [Definition]" });
     buf_keymap(bufnr, 'n', 'gVd', ':vsp | lua vim.lsp.buf.type_definition()<cr>',
       { desc = "[G]o to Code [D]efinition in [V]ertical split" });
     buf_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
       { desc = "[G]o to Code Type [D]efinition" });
+    buf_keymap(bufnr, 'n', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true }) <CR>', { desc = "[C]ode [F]ormat" });
+      buf_keymap(bufnr, 'x', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = "[C]ode [F]ormat" });
 
     --Open context-menu
     if client.name == "rust_analyzer" then
@@ -56,6 +57,7 @@ local M = {
     { 'neovim/nvim-lspconfig' },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
+    { 'joechrisellis/lsp-format-modifications.nvim' },
 
     -- Autocompletion
     { 'hrsh7th/nvim-cmp' },
@@ -85,10 +87,12 @@ local M = {
     lsp.preset('recommended');
 
     -- This is installed on the computer already so...
-    -- lsp.setup_servers({
-    --   'rust_analyzer',
-    --   force = true,
-    -- })
+    lsp.setup_servers({
+      'rust_analyzer',
+      force = true,
+    });
+
+    lsp.skip_server_setup({ 'rust_analyzer' });
 
     local cmp = require('cmp');
     local cmp_select = { behavior = cmp.SelectBehavior.Select };
@@ -101,8 +105,25 @@ local M = {
       ["<C-Space>"] = cmp.mapping.complete(),
     });
 
+    local ts_utils = require('nvim-treesitter.ts_utils');
     lsp.setup_nvim_cmp({
-      mapping = cmp_mappings
+      mapping = cmp_mappings,
+      sources = {
+        {
+          name = 'nvim_lsp',
+          entry_filter = function(entry, context)
+            local kind = entry:get_kind();
+            local node = ts_utils.get_node_at_cursor():type();
+            if node == "arguments" then
+              if kind == 6 then
+                return true;
+              end
+              return false;
+            end
+            return true;
+          end
+        }
+      }
     });
 
     local list = require('plugins.lsp-conf.servers')
@@ -128,13 +149,11 @@ local M = {
       on_attach = keymaps().on_attach
     });
 
-    lsp.setup({
-
-    });
+    lsp.setup();
 
     vim.diagnostic.config({
       virtual_text = true,
-    })
+    });
   end,
 }
 
