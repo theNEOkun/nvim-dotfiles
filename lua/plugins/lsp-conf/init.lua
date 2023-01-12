@@ -29,14 +29,16 @@ local function keymaps()
 
     buf_keymap(bufnr, 'n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "[G]o to Code [I]mplementation" });
     buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [R]eferences" });
-      buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
+    buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
       { desc = "[G]o to Code [Definition]" });
     buf_keymap(bufnr, 'n', 'gVd', ':vsp | lua vim.lsp.buf.type_definition()<cr>',
       { desc = "[G]o to Code [D]efinition in [V]ertical split" });
     buf_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
       { desc = "[G]o to Code Type [D]efinition" });
-    buf_keymap(bufnr, 'n', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true }) <CR>', { desc = "[C]ode [F]ormat" });
-      buf_keymap(bufnr, 'x', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = "[C]ode [F]ormat" });
+    buf_keymap(bufnr, 'n', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true }) <CR>',
+      { desc = "[C]ode [F]ormat" });
+    buf_keymap(bufnr, 'x', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
+      { desc = "[C]ode [F]ormat" });
 
     --Open context-menu
     if client.name == "rust_analyzer" then
@@ -114,8 +116,11 @@ local M = {
         {
           name = 'nvim_lsp',
           entry_filter = function(entry, context)
+            if entry == nil then return true; end
             local kind = entry:get_kind();
+            if ts_utils.get_node_at_cursor() == nil then return true; end
             local node = ts_utils.get_node_at_cursor():type();
+            if node == nil then return true; end
             if node == "arguments" then
               if kind == 6 then
                 return true;
