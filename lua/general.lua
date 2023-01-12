@@ -11,6 +11,9 @@ g.mapleader = " ";
 set.number = true;
 set.relativenumber = true;
 set.signcolumn = "yes";
+-- Does not work yet: set.statuscolumn="%=%l%s%C";
+
+set.colorcolumn = "80";
 
 -- Use filetypes-plugin;
 set.filetype = "on";
@@ -39,9 +42,7 @@ set.incsearch = true;
 set.mouse = "nv";
 
 set.scrolloff = 8;
-vim.opt.isfname:append("@-@");
-
-set.colorcolumn = "80";
+set.isfname:append("@-@");
 
 set.clipboard:prepend { "unnamed" };
 
