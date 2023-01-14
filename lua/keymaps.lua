@@ -10,6 +10,8 @@ keymap({ 'x' }, '<leader>b', ':lua require("utils").get_visual_selection()<cr>',
 
 keymap({ 'n' }, '<F5>', ":put =strftime('%Y-%m-%dT%T%z')<cr>", { desc = "Enter todays date into the current buffer" });
 
+keymap({'x'}, 'K', '<ESC>:Man<CR>', { desc = "Open the chosen word as a Man-page"});
+
 -- Edit vim
 keymap({ 'n' }, '<leader>ve', ':edit ~/.config/nvim/init.lua<cr>');
 -- keymap({ 'n' }, '<leader>vr', ':source ~/.config/nvim/init.lua<cr>'); Does not work with Lazy
