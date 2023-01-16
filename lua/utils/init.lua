@@ -87,8 +87,8 @@ M.split = function(str, sep, max_splits)
 end
 
 local function t(str)
-    -- Adjust boolean arguments as needed
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+  -- Adjust boolean arguments as needed
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 M.visual_range = function()
@@ -99,17 +99,17 @@ M.visual_range = function()
   if vim.api.nvim_get_mode().mode == 'v' then
     csrow, cscol = unpack(vim.api.nvim_buf_get_mark(0, "v"));
     cerow, cecol = unpack(vim.api.nvim_buf_get_mark(0, "."));
-  else 
+  else
     csrow, cscol = unpack(vim.api.nvim_buf_get_mark(0, "<"));
     cerow, cecol = unpack(vim.api.nvim_buf_get_mark(0, ">"));
   end
-  if(cecol > 1000) then
+  if (cecol > 1000) then
     cecol = vim.fn.col('$') - 1;
   end
   if csrow < cerow or (csrow == cerow and cscol <= cecol) then
-    return {csrow - 1, cscol}, {cerow - 1, cecol + 1}
+    return { csrow - 1, cscol }, { cerow - 1, cecol + 1 }
   else
-    return {cerow - 1, cecol}, {csrow - 1, cscol + 1}
+    return { cerow - 1, cecol }, { csrow - 1, cscol + 1 }
   end
 end
 
@@ -136,11 +136,6 @@ M.calculate_selection = function()
 end
 
 M.test_func = function()
-  local word = M.get_visual_text()[1];
-  vim.pretty_print(word);
-  local command = '[' .. word .. ']()';
-  vim.pretty_print(command);
-  vim.cmd('norm gvs'..command);
 end
 
 return M
