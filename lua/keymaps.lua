@@ -5,7 +5,7 @@ local cmd = require('utils').u_cmd;
 -- Command to create ctags
 cmd('MakeTags', ':!ctags -R --exclude=node_modules --exclude="target/*" .');
 
-keymap({ 'x' }, '<leader>b', ':lua require("utils").get_visual_selection()<cr>',
+keymap({ 'x' }, '<leader>b', ':lua require("utils").calculate_selection()<cr>',
   { desc = "Calculate a chosen line using bc" });
 
 keymap({ 'n' }, '<F5>', ":put =strftime('%Y-%m-%dT%T%z')<cr>", { desc = "Enter todays date into the current buffer" });

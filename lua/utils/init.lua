@@ -92,23 +92,55 @@ local function t(str)
 end
 
 M.visual_range = function()
-  local _, csrow, cscol, _ = unpack(vim.fn.getcharpos("'<"));
-  local _, cerow, cecol, _ = unpack(vim.fn.getcharpos("'>"));
+  -- local _, csrow, cscol, _ = unpack(vim.fn.getpos("v"));
+  -- local _, cerow, cecol, _ = unpack(vim.fn.getpos("."));
+  local csrow, cscol = -1, -1;
+  local cerow, cecol = -1, -1;
+  if vim.api.nvim_get_mode().mode == 'v' then
+    csrow, cscol = unpack(vim.api.nvim_buf_get_mark(0, "v"));
+    cerow, cecol = unpack(vim.api.nvim_buf_get_mark(0, "."));
+  else 
+    csrow, cscol = unpack(vim.api.nvim_buf_get_mark(0, "<"));
+    cerow, cecol = unpack(vim.api.nvim_buf_get_mark(0, ">"));
+  end
+  if(cecol > 1000) then
+    cecol = vim.fn.col('$') - 1;
+  end
   if csrow < cerow or (csrow == cerow and cscol <= cecol) then
-    return csrow - 1, cscol - 1, cerow - 1, cecol
+    return {csrow - 1, cscol}, {cerow - 1, cecol + 1}
   else
-    return cerow - 1, cecol - 1, csrow - 1, cscol
+    return {cerow - 1, cecol}, {csrow - 1, cscol + 1}
   end
 end
 
 -- Method to get the information in the visual selection
-M.get_visual_selection = function()
-  local ls, cs, le, ce = M.visual_range();
-  print(ls, cs, le, ce)
-  local text = vim.api.nvim_buf_get_text(0, ls, cs, le, ce, {});
+M.get_visual_selection = function(start, stop, type)
+  local text = vim.api.nvim_buf_get_text(0, start[1], start[2], stop[1], stop[2], {});
+  -- local text = vim.region(0, start, stop, type, true);
+  return text;
+end
+
+M.get_visual_text = function()
+  local start, stop = M.visual_range();
+  vim.pretty_print(start, stop);
+  local text = M.get_visual_selection(start, stop);
+  vim.pretty_print(text);
+  return text
+end
+
+M.calculate_selection = function()
+  local text = M.get_visual_text();
   local cmd = t("echo " .. text[1] .. " | bc");
   local result = vim.fn.system(cmd);
-  vim.cmd("norm gv s" .. result)
+  vim.cmd("norm gv h s" .. result)
+end
+
+M.test_func = function()
+  local word = M.get_visual_text()[1];
+  vim.pretty_print(word);
+  local command = '[' .. word .. ']()';
+  vim.pretty_print(command);
+  vim.cmd('norm gvs'..command);
 end
 
 return M
