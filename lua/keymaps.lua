@@ -46,6 +46,9 @@ keymap('n', '<C-k>', ':m .-2<CR>==', { desc = "Move lines up in normal mode" });
 keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = "Move the visually chosen lines down, and indent" });
 keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = "Move the visually chosen lines up, and indent" });
 
+keymap('n', '<C-h>', 'hxph');
+keymap('n', '<C-l>', 'xp');
+
 -- ENter just a line
 keymap({ 'n', 'v' }, '<leader>o', 'o<ESC>k', { desc = "Enter a new line below" });
 keymap({ 'n', 'v' }, '<leader>O', 'O<ESC>j', { desc = "Enter a new line above" });
