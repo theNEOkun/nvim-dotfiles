@@ -19,8 +19,10 @@ M.on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_keymap(bufnr, 'n', start .. 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = "[C]ode Open the hover-menu" });
-  buf_keymap(bufnr, 'n', start .. 's', require('telescope.builtin').lsp_references,
-    { desc = "[C]ode [S]how references" });
+
+  -- buf_keymap(bufnr, 'n', start .. 's', require('telescope.builtin').lsp_references,
+  --   { desc = "[C]ode [S]how references" });
+
   buf_keymap(bufnr, 'n', start .. 'a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
     { desc = "Selects a [C]ode [A]ction available" });
 
