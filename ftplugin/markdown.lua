@@ -8,5 +8,5 @@ set.wrap = true;
 set.spell = true;
 
 local start = '<leader>m'
-keymap({ 'x' }, start .. 'l', ':lua require("markdown").insert_link()<cr>');
+keymap({ 'x', 'n' }, start .. 'l', ':lua require("markdown").insert_link()<cr>');
 keymap({ 'x' }, start .. 'h', ':lua require("markdown").highlight()<cr>');

@@ -1,4 +1,5 @@
 local g = vim.g;
+local M = {}
 
 g.netrw_banner = 0;
 -- g.netrw_liststyle = 3;
@@ -17,4 +18,4 @@ g.netrw_hide = 0;
 --     end,
 -- }
 
-return { m };
+return { M };
