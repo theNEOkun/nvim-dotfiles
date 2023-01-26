@@ -15,10 +15,8 @@ return { -- 'vim-airline/vim-airline'
     'kylechui/nvim-surround',
     config = function() require("nvim-surround").setup() end
   },
-  --  'fladson/vim-kitty'
-  -- require('autopairs')
 
-  ----RipGrep
+  -- RipGrep
   {
     'jremmen/vim-ripgrep',
     cmd = 'Rg'

@@ -53,9 +53,8 @@ local M = {
       ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
       ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
       ['<C-o>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ["<C-Space>"] = cmp.mapping.complete(),
+      ['<CR>'] = cmp.mapping.abort(),
+      ['<C-e>'] = cmp.mapping.confirm({ select = true }),
     });
 
     local ts_utils = require('nvim-treesitter.ts_utils');
