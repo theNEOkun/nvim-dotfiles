@@ -34,11 +34,8 @@ M.on_attach = function(client, bufnr)
     { desc = "[G]o to Code [D]efinition in [V]ertical split" });
   buf_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
     { desc = "[G]o to Code Type [D]efinition" });
-  buf_keymap(bufnr, 'n', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true }) <CR>',
+  buf_keymap(bufnr, { 'n', 'x' }, start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true }) <CR>',
     { desc = "[C]ode [F]ormat" });
-  buf_keymap(bufnr, 'x', start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
-    { desc = "[C]ode [F]ormat" });
-
   --Open context-menu
   if client.name == "rust_analyzer" then
     buf_keymap(bufnr, 'n', start .. 'h', '<cmd>:RustHoverActions<cr>', { desc = "[C]ode [H]over-action" });
