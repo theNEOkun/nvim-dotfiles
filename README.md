@@ -4,25 +4,18 @@
 
 These are my neovim dotfiles
 
-| 100 |
-
 ## Colorscheme
 
-The colorscheme is a try to copy the helix default theme, due to the colors being so good It is built on top of [nightfox](https://github.com/EdenEast/nightfox.nvim) due to ease of use of
-building on-top of nightfox itself.
+The colorscheme is a try to copy the helix default theme, due to the colors being so good It is
+built on top of [nightfox](https://github.com/EdenEast/nightfox.nvim) due to ease of use of building
+on-top of nightfox itself.
 
 ## LSP
 
 The LSP is built upon [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim) and also uses
 [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 
-Ensured are:
-
-- tsserver
-- sumneko_lua
-- jdtls
-
-And installed on the machine is
+Installed on the machine is
 
 - rust_analyzer
 - clangd
