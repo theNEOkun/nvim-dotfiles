@@ -6,6 +6,7 @@ set.colorcolumn = "101";
 set.textwidth = 100;
 set.wrap = true;
 set.spell = true;
+set.fex="";
 
 local start = '<leader>m'
 keymap({ 'x', 'n' }, start .. 'l', ':lua require("markdown").insert_link()<cr>');

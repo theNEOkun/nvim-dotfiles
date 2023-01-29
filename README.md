@@ -8,8 +8,7 @@ These are my neovim dotfiles
 
 ## Colorscheme
 
-The colorscheme is a try to copy the helix default theme, due to the colors being so good
-It is built on top of [nightfox](https://github.com/EdenEast/nightfox.nvim) due to ease of use of
+The colorscheme is a try to copy the helix default theme, due to the colors being so good It is built on top of [nightfox](https://github.com/EdenEast/nightfox.nvim) due to ease of use of
 building on-top of nightfox itself.
 
 ## LSP
