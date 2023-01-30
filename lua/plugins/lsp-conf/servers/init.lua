@@ -14,6 +14,16 @@ local get_files = function(path)
   end
 end
 
+M["marksman"] = {
+  server_config = function()
+
+  end,
+  on_attach = function (client, bufnr)
+    require( 'plugins.lsp-conf.helper' ).on_attach(client, bufnr);
+    vim.api.nvim_buf_set_option(bufnr, "formatexpr", "");
+  end
+}
+
 local home = os.getenv('HOME')
 
 get_files(home .. "/.config/nvim/lua/plugins/lsp-conf/servers")
