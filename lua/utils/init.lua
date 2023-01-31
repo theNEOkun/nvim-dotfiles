@@ -122,9 +122,9 @@ end
 
 M.get_visual_text = function()
   local start, stop = M.visual_range();
-  vim.pretty_print(start, stop);
+  -- vim.pretty_print(start, stop);
   local text = M.get_visual_selection(start, stop);
-  vim.pretty_print(text);
+  -- vim.pretty_print(text);
   return text
 end
 
