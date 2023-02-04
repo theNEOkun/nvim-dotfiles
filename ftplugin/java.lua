@@ -1,5 +1,11 @@
 local keymap = require('utils').map;
 local u_cmd = require('utils').u_cmd;
+local set = vim.opt;
+
+set.tabstop = 4;
+set.softtabstop = 4;
+set.shiftwidth = 4;
+set.expandtab = true;
 
 vim.cmd("compiler ant");
 local maven = "mvn";
