@@ -41,11 +41,15 @@ local M = {
     -- This is installed on the computer already so...
     lsp.setup_servers({
       'rust_analyzer',
+      -- 'hls',
       -- 'clangd',
       force = true,
     });
 
-    lsp.skip_server_setup({ 'rust_analyzer' });
+    lsp.skip_server_setup({
+      'rust_analyzer',
+      'hls'
+    });
 
     local cmp = require('cmp');
     local cmp_select = { behavior = cmp.SelectBehavior.Select };
