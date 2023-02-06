@@ -36,7 +36,7 @@ u_cmd('Mt', ":!mvn -q test");
 
 local pkgLine = 'package ' .. getPackage() .. ';';
 local firstLine = 'public class ' .. getName() .. " {";
-local constructor = '  public ' .. getName() .. "() { \t}"
+local constructor = '    public ' .. getName() .. "() {}"
 local lastLine = "}";
 
 u_cmd('Mf', ':norm i' .. pkgLine .. '<CR>' .. firstLine .. '<CR>' .. constructor .. '<CR>' .. lastLine)
