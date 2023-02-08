@@ -41,15 +41,15 @@ local M = {
     -- This is installed on the computer already so...
     lsp.setup_servers({
       'rust_analyzer',
-      'hls',
+      -- 'hls',
       -- 'clangd',
       force = true,
     });
 
     lsp.skip_server_setup({
       'rust_analyzer',
-      'hls',
-      -- 'jdtls',
+      -- 'hls',
+      'jdtls',
     });
 
     local cmp = require('cmp');
@@ -89,7 +89,6 @@ local M = {
     local list = require('plugins.lsp-conf.servers')
 
     for client, opts in pairs(list) do
-      vim.pretty_print(opts.server_config());
       lsp.configure(client, opts.server_config());
     end
 
