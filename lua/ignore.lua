@@ -19,8 +19,6 @@ require('utils').get_files('.', function(file)
       t[#t + 1] = line;
       ::continue::
     end
-    vim.pretty_print(t);
     vim.opt.wildignore = table.concat(t, ',');
-    vim.pretty_print(vim.opt.wildignore)
   end
 end)
