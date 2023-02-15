@@ -12,4 +12,4 @@ local start = '<leader>t';
 keymap({ 'x', 'n' }, start .. 'l', ':lua require("tex").insert_link()<cr>');
 keymap({ 'n' }, start .. 'l', ':lua require("tex").insert_link_on_word()<cr>');
 keymap({ 'x' }, start .. 'h', ':lua require("tex").highlight()<cr>');
-keymap({ 'x' }, start .. 'h', ':lua require("tex").italizise()<cr>');
+keymap({ 'x' }, start .. 'i', ':lua require("tex").italizise()<cr>');
