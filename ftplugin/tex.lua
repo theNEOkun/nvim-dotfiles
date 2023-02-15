@@ -2,11 +2,16 @@ local set = vim.opt;
 local utils = require('utils');
 local keymap = utils.map;
 
+vim.g.global_excepts = {
+  "*.log"
+}
+
+require('ignore').rerun();
+
 set.colorcolumn = "101";
 set.textwidth = 100;
 set.wrap = true;
 set.spell = true;
-set.fex="";
 
 local start = '<leader>t';
 keymap({ 'x', 'n' }, start .. 'l', ':lua require("tex").insert_link()<cr>');

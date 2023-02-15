@@ -11,5 +11,5 @@ else
     require('bootstrap')
     require('lazy').setup("plugins")
     require('plugins')
-    require('ignore')
+    require('ignore').run();
 end
