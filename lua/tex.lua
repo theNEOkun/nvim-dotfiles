@@ -2,7 +2,7 @@ local M = {};
 
 M.insert_link = function()
   local word = require('utils').get_visual_text()[1];
-  local command = '\href{<insert link>}{' .. word .. '}';
+  local command = '\\href{<insert link>}{' .. word .. '}';
   vim.cmd('norm gvs'..command);
 end
 
@@ -13,13 +13,13 @@ end
 
 M.highlight = function()
   local word = require('utils').get_visual_text()[1];
-  local command = '\textbf{' .. word .. '}';
+  local command = '\\textbf{' .. word .. '}';
   vim.cmd('norm gvs'..command);
 end
 
 M.italisize = function()
   local word = require('utils').get_visual_text()[1];
-  local command = '\textit{' .. word .. '}';
+  local command = '\\textit{' .. word .. '}';
   vim.cmd('norm gvs'..command);
 end
 
