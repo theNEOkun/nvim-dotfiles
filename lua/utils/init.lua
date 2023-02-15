@@ -135,7 +135,13 @@ M.calculate_selection = function()
   vim.cmd("norm gv h s" .. result)
 end
 
-M.test_func = function()
+
+M.get_files = function(path, func)
+  local scan = require("plenary.scandir")
+  local scanned = scan.scan_dir(path, { hidden = false, depth = 1 })
+  for _, file in pairs(scanned) do
+    func(file)
+  end
 end
 
 return M

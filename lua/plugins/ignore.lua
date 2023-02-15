@@ -1,0 +1,1 @@
+local filename = '.gitignore';
