@@ -105,6 +105,8 @@ local M = {
       sources = {
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.latexindent,
+        null_ls.builtins.diagnostics.chktex,
       },
       on_attach = require( 'plugins.lsp-conf.helper' ).on_attach
     });
