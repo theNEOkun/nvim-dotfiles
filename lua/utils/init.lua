@@ -138,7 +138,7 @@ end
 
 M.get_files = function(path, func)
   local scan = require("plenary.scandir")
-  local scanned = scan.scan_dir(path, { hidden = false, depth = 1 })
+  local scanned = scan.scan_dir(path, { hidden = true, depth = 1 })
   for _, file in pairs(scanned) do
     func(file)
   end
