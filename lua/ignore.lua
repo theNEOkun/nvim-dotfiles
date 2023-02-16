@@ -21,6 +21,10 @@ M.run = function()
           goto continue;
         end
       end
+      if line:match('%w/') then
+        t[#t + 1] = "," .. line .. '*';
+        goto continue;
+      end
       if line:match('/$') then
         t[#t + 1] = "," .. line .. '*';
         goto continue;
