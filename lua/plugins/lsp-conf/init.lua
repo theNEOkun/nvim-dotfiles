@@ -40,7 +40,7 @@ local M = {
 
     -- This is installed on the computer already so...
     lsp.setup_servers({
-      'rust_analyzer',
+      -- 'rust_analyzer',
       -- 'hls',
       -- 'clangd',
       force = true,
