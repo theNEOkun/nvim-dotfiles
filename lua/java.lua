@@ -80,4 +80,3 @@ config.handlers = java_lsp.handlers;
 config.on_attach = function(client, bufnr)
   require('plugins.lsp-conf.helper').on_attach(client, bufnr);
 end;
-require('jdtls').start_or_attach(config)

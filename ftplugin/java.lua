@@ -42,5 +42,5 @@ local lastLine = "}";
 u_cmd('Mf',
     ':norm i' .. pkgLine .. '<CR>' .. firstLine .. '<CR>' .. constructor .. '<CR>' .. lastLine .. '<ESC>:LspRestart')
 
-vim.lsp.set_log_level "info"
-require("java");
+-- require("java");
+require('jdtls').start_or_attach(vim.g.java_config)
