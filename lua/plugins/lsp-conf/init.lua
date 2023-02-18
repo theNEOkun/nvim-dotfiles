@@ -63,12 +63,15 @@ local M = {
     });
 
     local ts_utils = require('nvim-treesitter.ts_utils');
+
     lsp.setup_nvim_cmp({
       mapping = cmp_mappings,
+
       preselect = 'none',
       completion = {
         completeopt = 'menu,menuone,noinsert,noselect',
       },
+
       sources = {
         {
           name = 'nvim_lsp',
