@@ -22,11 +22,11 @@ M.run = function()
         end
       end
       if line:match('%w/') then
-        t[#t + 1] = "," .. line .. '*';
+        t[#t + 1] = line .. '*';
         goto continue;
       end
       if line:match('/$') then
-        t[#t + 1] = "," .. line .. '*';
+        t[#t + 1] = line .. '*';
         goto continue;
       end
       t[#t + 1] = line;
@@ -40,7 +40,7 @@ M.rerun = function()
   if vim.g.global_excepts then
     local new = vim.opt.wildignore['_value'];
     for _, value in pairs(vim.g.global_excepts) do
-      new = new:gsub(value, '');
+      new = new:gsub(',' .. value, '');
     end
     vim.opt.wildignore = new;
   end
