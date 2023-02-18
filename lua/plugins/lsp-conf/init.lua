@@ -59,12 +59,16 @@ local M = {
       ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
       ['<C-o>'] = cmp.mapping.complete(),
       ['<CR>'] = cmp.mapping.abort(),
-      ['<C-e>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-e>'] = cmp.mapping.confirm({ select = false }),
     });
 
     local ts_utils = require('nvim-treesitter.ts_utils');
     lsp.setup_nvim_cmp({
       mapping = cmp_mappings,
+      preselect = 'none',
+      completion = {
+        completeopt = 'menu,menuone,noinsert,noselect',
+      },
       sources = {
         {
           name = 'nvim_lsp',
