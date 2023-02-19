@@ -15,6 +15,7 @@ local M = {
     { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-nvim-lua' },
+    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
 
     -- Snippets
     { 'L3MON4D3/LuaSnip' },
@@ -67,9 +68,10 @@ local M = {
     lsp.setup_nvim_cmp({
       mapping = cmp_mappings,
 
-      preselect = 'none',
+      view = "native",
+      -- preselect = 'none',
       completion = {
-        completeopt = 'menu,menuone,noinsert,noselect',
+        completeopt = 'menu,menuone',
       },
 
       sources = {
