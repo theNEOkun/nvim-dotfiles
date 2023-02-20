@@ -29,18 +29,28 @@ keymap('n', '<leader>mt', '<cmd>:split<cr> :term<cr>i mvn test<cr>');
 
 keymap({ 'n', 'x' }, '<leader>mp', function()
   local info = getPackage();
-  vim.cmd(':normal ipackage ' .. info .. ';');
+  local line = {
+    "package " .. info .. ";",
+  };
+  vim.api.nvim_put(line, 'l',
+    true, false)
 end)
 
 u_cmd('Mt', ":!mvn -q test");
 
-local pkgLine = 'package ' .. getPackage() .. ';';
-local firstLine = 'public class ' .. getName() .. " {";
-local constructor = '    public ' .. getName() .. "() {}"
-local lastLine = "}";
 
 u_cmd('Mf',
-    ':norm i' .. pkgLine .. '<CR>' .. firstLine .. '<CR>' .. constructor .. '<CR>' .. lastLine .. '<ESC>:LspRestart')
+  function()
+    local line = {
+      'package ' .. getPackage() .. ';',
+      '',
+      'public class ' .. getName() .. ' {',
+      '    public ' .. getName() .. '() {}',
+      '}',
+    };
+    vim.api.nvim_put(line, 'l',
+      true, false)
+  end)
 
 -- require("java");
 require('jdtls').start_or_attach(vim.g.java_config)

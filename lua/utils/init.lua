@@ -132,7 +132,8 @@ M.calculate_selection = function()
   local text = M.get_visual_text();
   local cmd = t("echo " .. text[1] .. " | bc");
   local result = vim.fn.system(cmd);
-  vim.cmd("norm gv h s" .. result)
+  vim.cmd("norm gv h s")
+  vim.api.nvim_put(result, 'l', true, false);
 end
 
 M.get_files = function(path, func)
