@@ -150,4 +150,30 @@ M.check_file = function(path, func)
   end
 end
 
+M.escape = function(word)
+  local escape_lua_pattern
+  do
+    local matches =
+    {
+      ["^"] = "%^",
+      ["$"] = "%$",
+      ["("] = "%(",
+      [")"] = "%)",
+      ["%"] = "%%",
+      ["."] = "%.",
+      ["["] = "%[",
+      ["]"] = "%]",
+      ["*"] = "%*",
+      ["+"] = "%+",
+      ["-"] = "%-",
+      ["?"] = "%?",
+    }
+
+    escape_lua_pattern = function(s)
+      return (s:gsub(".", matches))
+    end
+  end
+  return escape_lua_pattern(word);
+end
+
 return M

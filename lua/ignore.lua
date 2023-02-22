@@ -40,6 +40,7 @@ M.rerun = function()
   if vim.g.global_excepts then
     local new = vim.opt.wildignore['_value'];
     for _, value in pairs(vim.g.global_excepts) do
+      value = require'utils'.escape(value);
       new = new:gsub(',' .. value, '');
     end
     vim.opt.wildignore = new;

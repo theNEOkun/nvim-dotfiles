@@ -3,7 +3,8 @@ local utils = require('utils');
 local keymap = utils.map;
 
 vim.g.global_excepts = {
-  "*.log"
+  "*.log",
+  "*.bib",
 }
 
 require('ignore').rerun();
