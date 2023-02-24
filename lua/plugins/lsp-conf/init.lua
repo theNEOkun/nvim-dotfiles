@@ -1,4 +1,3 @@
-
 local M = {
   'VonHeikemen/lsp-zero.nvim',
   dependencies = {

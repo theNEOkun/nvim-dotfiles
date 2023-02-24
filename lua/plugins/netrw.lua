@@ -5,7 +5,7 @@ local M = {
     local oil = require 'oil';
 
 
-    local command = "lua require('oil').open()"
+    local command = "lua require('oil').open(vim.fn.getcwd())"
 
     local cmd = require('utils').u_cmd;
     -- Just explore
@@ -20,7 +20,6 @@ local M = {
       vim.cmd('vsplit')
       vim.cmd(command)
     end)
-
 
     local options = {
       columns = {
@@ -47,6 +46,7 @@ local M = {
 -- g.netrw_banner = 0;
 -- g.netrw_hide = 0;
 -- g.netrw_liststyle = 3;
+-- let g:netrw_keepdir= 0
 
 -- local m = {
 --     'prichrd/netrw.nvim',
