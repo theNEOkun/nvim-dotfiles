@@ -46,7 +46,6 @@ return {
       keymap('n', '<leader>rt', '<Plug>RestNvim');
       keymap('n', '<leader>rp', '<Plug>RestNvimPreview');
     end,
-    opt = true,
     ft = { 'http' },
   }
 }
