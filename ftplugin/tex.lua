@@ -10,8 +10,6 @@ vim.g.global_excepts = {
 require('ignore').rerun();
 
 set.colorcolumn = "101";
-set.textwidth = 100;
-set.wrap = true;
 set.spell = true;
 
 local start = '<leader>t';
