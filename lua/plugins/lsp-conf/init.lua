@@ -28,7 +28,8 @@ local M = {
     { 'windwp/nvim-autopairs' },
 
     -- Null LS for more capabilities
-    { 'jose-elias-alvarez/null-ls.nvim',
+    {
+      'jose-elias-alvarez/null-ls.nvim',
       dependencies = { 'nvim-lua/plenary.nvim' }
     }
   },
@@ -55,24 +56,28 @@ local M = {
     local cmp = require('cmp');
     local cmp_select = { behavior = cmp.SelectBehavior.Select };
     local cmp_mappings = lsp.defaults.cmp_mappings({
-      ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-      ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-      ['<C-o>'] = cmp.mapping.complete(),
-      ['<CR>'] = cmp.mapping.abort(),
-      ['<C-e>'] = cmp.mapping.confirm({ select = false }),
+          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+          ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+          ['<C-o>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.abort(),
+          ['<C-e>'] = cmp.mapping.confirm({ select = false }),
     });
 
     local ts_utils = require('nvim-treesitter.ts_utils');
 
     lsp.setup_nvim_cmp({
       mapping = cmp_mappings,
-
-      view = "native",
-      -- preselect = 'none',
-      completion = {
-        completeopt = 'menu,menuone',
+      view = {
+        entries = { name = 'custom', selection_order = 'near_cursor' }
       },
-
+      -- preselect = 'none',
+      window = {
+        completion = {
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          col_offset = -3,
+          side_padding = 0,
+        },
+      },
       sources = {
         {
           name = 'nvim_lsp',
@@ -104,7 +109,7 @@ local M = {
       if list[client.name] then
         list[client.name].on_attach(client, bufnr);
       else
-        require( 'plugins.lsp-conf.helper' ).on_attach(client, bufnr);
+        require('plugins.lsp-conf.helper').on_attach(client, bufnr);
       end
     end)
 
@@ -116,7 +121,7 @@ local M = {
         null_ls.builtins.formatting.latexindent,
         null_ls.builtins.diagnostics.chktex,
       },
-      on_attach = require( 'plugins.lsp-conf.helper' ).on_attach
+      on_attach = require('plugins.lsp-conf.helper').on_attach
     });
 
     lsp.setup();
