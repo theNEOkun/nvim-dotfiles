@@ -25,8 +25,8 @@ M.run = function()
         t[#t + 1] = line .. '*';
         goto continue;
       end
-      if line:match('/$') then
-        t[#t + 1] = line .. '*';
+      if line:match('/%w') then
+        t[#t + 1] = line:gsub("/", "") .. "/" .. '*';
         goto continue;
       end
       t[#t + 1] = line;
