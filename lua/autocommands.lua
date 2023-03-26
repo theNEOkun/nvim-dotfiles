@@ -7,3 +7,4 @@ autocmd('InsertLeave', '*', ':set relativenumber')
 -- Try to discover ron-files
 local ft = require('utils').autogroup("filetypes");
 require('utils').autocmd({'BufRead', 'BufNewFile'}, '*.ron', 'set filetype=ron', ft);
+require('utils').autocmd({'BufRead', 'BufNewFile'}, '*.quh', 'set filetype=quh', ft);
