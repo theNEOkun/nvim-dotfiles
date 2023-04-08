@@ -11,7 +11,7 @@ g.mapleader = " ";
 set.number = true;
 set.relativenumber = true;
 set.signcolumn = "yes";
--- Does not work yet: set.statuscolumn="%=%l%s%C";
+set.statuscolumn="%=%l%s%C";
 
 set.colorcolumn = "80";
 
