@@ -11,7 +11,7 @@ g.mapleader = " ";
 set.number = true;
 set.relativenumber = true;
 set.signcolumn = "yes";
-set.statuscolumn="%=%l%s%C";
+set.statuscolumn = "%=%{%g:relnum?v:relnum:v:lnum%}%s%C";
 
 set.colorcolumn = "80";
 
@@ -55,6 +55,6 @@ set.completeopt = 'menuone,noselect';
 -- set.path:append { "**" };
 
 set.list = true;
-set.listchars:append({ trail = '.', tab = '> '});
+set.listchars:append({ trail = '.', tab = '> ' });
 
 set.confirm = true;
