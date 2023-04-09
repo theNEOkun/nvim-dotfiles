@@ -10,8 +10,11 @@ g.mapleader = " ";
 -- Use relative linenumbers;
 set.number = true;
 set.relativenumber = true;
+g.relnum = true;
 set.signcolumn = "yes";
-set.statuscolumn = "%=%{%g:relnum?v:relnum:v:lnum%}%s%C";
+-- Found [here](https://github.com/neovim/neovim/issues/21745#issuecomment-1501197311)
+-- set.statuscolumn= "%=%{%v:virtnum?'':(&nu?(&rnu?(v:relnum?v:relnum:printf('%-'.max([3,len(line('$'))]).'S',v:lnum)):v:lnum):(&rnu?v:relnum:''))%}%s%C";
+set.stc="%=%4{&nu?(&rnu&&v:relnum?v:relnum:v:lnum):''}%s%C";
 
 set.colorcolumn = "80";
 

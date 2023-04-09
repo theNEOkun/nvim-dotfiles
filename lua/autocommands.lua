@@ -1,10 +1,16 @@
 local autogroup = require('utils').autogroup;
-local autocmd = require('utils').autocmd;
+local autocmd = require('utils').autocmdf;
 
-autocmd('InsertEnter', '*', ':set norelativenumber')
-autocmd('InsertLeave', '*', ':set relativenumber')
+autocmd('InsertEnter', '*', function()
+  vim.cmd(':set norelativenumber');
+  vim.g.relnum = false;
+end)
+autocmd('InsertLeave', '*', function()
+  vim.cmd(':set relativenumber');
+  vim.g.relnum = true;
+end)
 
 -- Try to discover ron-files
-local ft = require('utils').autogroup("filetypes");
-require('utils').autocmd({'BufRead', 'BufNewFile'}, '*.ron', 'set filetype=ron', ft);
-require('utils').autocmd({'BufRead', 'BufNewFile'}, '*.quh', 'set filetype=quh', ft);
+local ft = autogroup("filetypes");
+autocmd({ 'BufRead', 'BufNewFile' }, '*.ron', 'set filetype=ron', ft);
+autocmd({ 'BufRead', 'BufNewFile' }, '*.quh', 'set filetype=quh', ft);

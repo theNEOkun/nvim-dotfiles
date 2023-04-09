@@ -38,6 +38,18 @@ end
 -- @param actions are the actions to do the command on
 -- @param aupattern is the pattern to listen formd
 -- @param aucommand is the command to do
+M.autocmdf = function(actions, aupattern, aucommand, augroup)
+  api.nvim_create_autocmd(actions, {
+    pattern = aupattern,
+    group = augroup,
+    callback = aucommand,
+  });
+end
+
+-- Creates an autocommand "easier"
+-- @param actions are the actions to do the command on
+-- @param aupattern is the pattern to listen formd
+-- @param aucommand is the command to do
 M.autocmd = function(actions, aupattern, aucommand, augroup)
   api.nvim_create_autocmd(actions, {
     pattern = aupattern,
