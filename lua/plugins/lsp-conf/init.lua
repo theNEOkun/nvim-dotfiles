@@ -44,6 +44,7 @@ local M = {
       -- 'rust_analyzer',
       -- 'hls',
       -- 'clangd',
+      'zls',
       force = true,
     });
 
