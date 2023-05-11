@@ -1,5 +1,5 @@
 local M = {
-  'ziglang/zig.vim',
+  'NTBBloodbath/zig-tools.nvim',
   config = function ()
   end
 }
