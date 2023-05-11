@@ -1,6 +1,7 @@
 local M = {
-  'NTBBloodbath/zig-tools.nvim',
+  'ziglang/zig.vim',
   config = function ()
+    vim.g.zig_fmt_autosave = false;
   end
 }
 
