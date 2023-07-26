@@ -12,4 +12,5 @@ else
     require('lazy').setup("plugins")
     require('plugins')
     require('ignore').run();
+    require("coloring");
 end

@@ -1,53 +1,46 @@
 local M = {
   'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
   dependencies = {
     -- LSP Support
-    { 'neovim/nvim-lspconfig' },
-    { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
+    {'neovim/nvim-lspconfig'},             -- Required
+    {                                      -- Optional
+      'williamboman/mason.nvim',
+      build = function()
+        pcall(vim.api.nvim_command, 'MasonUpdate')
+      end,
+    },
+    {'williamboman/mason-lspconfig.nvim'}, -- Optional
     { 'joechrisellis/lsp-format-modifications.nvim' },
 
+
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },
+    {'hrsh7th/nvim-cmp'},     -- Required
+    {'hrsh7th/cmp-nvim-lsp'}, -- Required
+    {'L3MON4D3/LuaSnip'},     -- Required
+    { 'rafamadriz/friendly-snippets' },
+
+    -- Autocompletion - other
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-nvim-lua' },
     { 'hrsh7th/cmp-nvim-lsp-signature-help' },
 
-    -- Snippets
-    { 'L3MON4D3/LuaSnip' },
-    { 'rafamadriz/friendly-snippets' },
-
-    -- --Telescope
-    -- { 'nvim-telescope/telescope.nvim' },
-    --
-
     -- Autopairs
     { 'windwp/nvim-autopairs' },
-
-    -- Null LS for more capabilities
-    {
-      'jose-elias-alvarez/null-ls.nvim',
-      dependencies = { 'nvim-lua/plenary.nvim' }
-    }
   },
-  config = function()
-    local lsp = require('lsp-zero');
+  config = function() 
+    local lsp = require('lsp-zero').preset('recommended')
 
-    local null_ls = require("null-ls");
-    lsp.preset('recommended');
-
-    -- This is installed on the computer already so...
     lsp.setup_servers({
       -- 'rust_analyzer',
       -- 'hls',
       -- 'clangd',
       'zls',
+      'lua_ls',
       force = true,
     });
-
     lsp.skip_server_setup({
       'rust_analyzer',
       -- 'hls',
@@ -61,7 +54,7 @@ local M = {
           ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
           ['<C-o>'] = cmp.mapping.complete(),
           ['<CR>'] = cmp.mapping.abort(),
-          ['<C-e>'] = cmp.mapping.confirm({ select = false }),
+          ['<C-e>'] = cmp.mapping.confirm({ select = true; }),
     });
 
     local ts_utils = require('nvim-treesitter.ts_utils');
@@ -71,13 +64,11 @@ local M = {
       view = {
         entries = { name = 'custom', selection_order = 'near_cursor' }
       },
-      -- preselect = 'none',
-      window = {
-        completion = {
-          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-          col_offset = -3,
-          side_padding = 0,
-        },
+      completion = {
+        completeopt = 'menu,menuone,noinsert',
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        col_offset = -3,
+        side_padding = 0,
       },
       sources = {
         {
@@ -114,23 +105,12 @@ local M = {
       end
     end)
 
-    -- Add in null-ls as well there
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.latexindent,
-        null_ls.builtins.diagnostics.chktex,
-      },
-      on_attach = require('plugins.lsp-conf.helper').on_attach
-    });
-
     lsp.setup();
 
     vim.diagnostic.config({
       virtual_text = true,
     });
-  end,
+  end
 }
 
 return { M };
