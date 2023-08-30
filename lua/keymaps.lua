@@ -2,29 +2,8 @@ local keymap = require('utils').map;
 --General
 
 local cmd = require('utils').u_cmd;
--- Command to create ctags
-cmd('MakeTags', ':!ctags -R --exclude=node_modules --exclude="target/*" .');
-
-keymap({ 'x' }, '<leader>b', ':lua require("utils").calculate_selection()<cr>',
-  { desc = "Calculate a chosen line using bc" });
-
-keymap({ 'n' }, '<F5>', ":put =strftime('%Y-%m-%dT%T%z')<cr>", { desc = "Enter todays date into the current buffer" });
 
 keymap({'x'}, 'K', '<ESC>:Man<CR>', { desc = "Open the chosen word as a Man-page"});
-
--- Edit vim
-keymap({ 'n' }, '<leader>ve', ':edit ~/.config/nvim/init.lua<cr>');
--- keymap({ 'n' }, '<leader>vr', ':source ~/.config/nvim/init.lua<cr>'); Does not work with Lazy
-
---Tabs
---Next
-keymap('n', 'tn', '<cmd>:tabn<CR>', { desc = "Go to the [T]ab [N]ext" });
---Prev
-keymap('n', 'tp', '<cmd>:tabp<CR>', { desc = "Go to the [T]ab [P]rev" });
---New
-keymap('n', 'te', '<cmd>:tabe<CR>', { desc = "Open a [T]ab [E]dit" });
---Close
-keymap('n', 'tc', '<cmd>:tabc<CR>', { desc = "Close the [T]ab [C]lose" });
 
 --Increment and Decrement
 keymap('n', '+', '<C-a>', { desc = "Increment the first number in the line" });
@@ -36,18 +15,11 @@ keymap('x', '<C-c>', '"+y', { desc = "Copy visual selection to system clipboard"
 --Paste from clipboard
 keymap({ 'n', 'x' }, '<C-p>', '"+p', { desc = "Paste from the clipboard" });
 
--- save
-keymap('n', '<C-s>', ':updatea<CR>', { desc = "Save all files" });
-keymap('i', '<C-s>', '<C-o>:updatea<CR>', { desc = "Save all file" });
-
 --move text
 keymap('n', '<C-j>', ':m .+1<CR>==', { desc = "Move lines down in normal mode" });
 keymap('n', '<C-k>', ':m .-2<CR>==', { desc = "Move lines up in normal mode" });
 keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = "Move the visually chosen lines down, and indent" });
 keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = "Move the visually chosen lines up, and indent" });
-
-keymap('n', '<C-h>', 'hxph');
-keymap('n', '<C-l>', 'xp');
 
 -- ENter just a line
 keymap({ 'n', 'v' }, '<leader>o', 'o<ESC>k', { desc = "Enter a new line below" });
@@ -94,4 +66,3 @@ keymap({ 'n' }, qstart .. 'j', '<cmd>cprev<CR>zz', { desc = "[L]ocation previous
 keymap({ 'n' }, qstart .. 'K', '<cmd>lnext<cr>zz', { desc = "[L]ocation Next" });
 keymap({ 'n' }, qstart .. 'J', '<cmd>lprev<cr>zz', { desc = "[L]ocation Prev" });
 
-keymap({ 'n' }, '<leader>sk', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
