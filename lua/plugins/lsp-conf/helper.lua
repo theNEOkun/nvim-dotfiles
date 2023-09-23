@@ -27,7 +27,8 @@ M.on_attach = function(client, bufnr)
     { desc = "Selects a [C]ode [A]ction available" });
 
   buf_keymap(bufnr, 'n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "[G]o to Code [I]mplementation" });
-  buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [R]eferences" });
+  buf_keymap(bufnr, 'n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [R]eferences" });
+  buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "[G]o to Code [r]ename" });
   buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>',
     { desc = "[G]o to Code [Definition]" });
   buf_keymap(bufnr, 'n', 'gVd', ':vsp | lua vim.lsp.buf.type_definition()<cr>',

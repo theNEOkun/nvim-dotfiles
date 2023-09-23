@@ -1,13 +1,14 @@
-local m = {
+local M = {
   ----Colors
   {
     'EdenEast/nightfox.nvim',
     config = function()
-      require "dumbfox"
+      require("dumbfox")
     end
   },
   {
     'navarasu/onedark.nvim',
+    enabled = false,
     config = function()
       local onedark = require('onedark');
       onedark.setup({ style = 'darker' });
@@ -16,13 +17,15 @@ local m = {
   },
   {
     'rockerBOO/boo-colorscheme-nvim',
+    enabled = false,
     config = function ()
     end
   },
   {
     'NvChad/nvim-colorizer.lua',
+    enabled = false,
     config = function() require('colorizer').setup() end
   },
 };
 
-return { m };
+return { M };

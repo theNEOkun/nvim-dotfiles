@@ -1,6 +1,6 @@
 local M = {
   'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
+  branch = 'v3.x',
   dependencies = {
     -- LSP Support
     {'neovim/nvim-lspconfig'},             -- Required
@@ -30,26 +30,37 @@ local M = {
     -- Autopairs
     { 'windwp/nvim-autopairs' },
   },
-  config = function() 
-    local lsp = require('lsp-zero').preset('recommended')
+  config = function()
+    local lsp_zero = require('lsp-zero')
 
-    lsp.setup_servers({
-      -- 'rust_analyzer',
-      -- 'hls',
-      -- 'clangd',
-      'zls',
-      'lua_ls',
-      force = true,
-    });
-    lsp.skip_server_setup({
-      'rust_analyzer',
-      -- 'hls',
-      'jdtls',
-    });
+    local list = require('plugins.lsp-conf.servers')
+
+    lsp_zero.on_attach(function(client, bufnr)
+      if list[client.name] then
+        list[client.name].on_attach(client, bufnr);
+      else
+        require('plugins.lsp-conf.helper').on_attach(client, bufnr);
+      end
+    end)
+
+    require('mason').setup({})
+    require('mason-lspconfig').setup({
+      ensure_installed = {
+        'lua_ls'
+      },
+      handlers = {
+        lsp_zero.default_setup,
+        lua_ls = function()
+          local lua_opts = lsp_zero.nvim_lua_ls()
+          require('lspconfig').lua_ls.setup(lua_opts)
+        end
+      }
+    })
 
     local cmp = require('cmp');
     local cmp_select = { behavior = cmp.SelectBehavior.Select };
-    local cmp_mappings = lsp.defaults.cmp_mappings({
+    local cmp_format = lsp_zero.cmp_format();
+    local cmp_mappings = lsp_zero.defaults.cmp_mappings({
           ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
           ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
           ['<C-o>'] = cmp.mapping.complete(),
@@ -59,7 +70,8 @@ local M = {
 
     local ts_utils = require('nvim-treesitter.ts_utils');
 
-    lsp.setup_nvim_cmp({
+    cmp.setup({
+      format = cmp_format,
       mapping = cmp_mappings,
       view = {
         entries = { name = 'custom', selection_order = 'near_cursor' }
@@ -90,22 +102,6 @@ local M = {
         }
       }
     });
-
-    local list = require('plugins.lsp-conf.servers')
-
-    for client, opts in pairs(list) do
-      lsp.configure(client, opts.server_config());
-    end
-
-    lsp.on_attach(function(client, bufnr)
-      if list[client.name] then
-        list[client.name].on_attach(client, bufnr);
-      else
-        require('plugins.lsp-conf.helper').on_attach(client, bufnr);
-      end
-    end)
-
-    lsp.setup();
 
     vim.diagnostic.config({
       virtual_text = true,
