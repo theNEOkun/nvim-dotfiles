@@ -1,9 +1,19 @@
 local M = {
   ----Colors
+  -- {
+  --   'EdenEast/nightfox.nvim',
+  --   enabled = false,
+  --   config = function()
+  --     require("dumbfox")
+  --   end
+  -- },
   {
-    'EdenEast/nightfox.nvim',
+    dir='~/.config/nvim/dumbledore',
+    dependencies = {
+      'rktjmp/lush.nvim',
+    },
     config = function()
-      require("dumbfox")
+      vim.cmd('colorscheme dumbledore')
     end
   },
   {
@@ -15,17 +25,17 @@ local M = {
       onedark.load();
     end
   },
-  {
-    'rockerBOO/boo-colorscheme-nvim',
-    enabled = false,
-    config = function ()
-    end
-  },
-  {
-    'NvChad/nvim-colorizer.lua',
-    enabled = false,
-    config = function() require('colorizer').setup() end
-  },
+  -- {
+  --   'rockerBOO/boo-colorscheme-nvim',
+  --   enabled = false,
+  --   config = function ()
+  --   end
+  -- },
+  -- {
+  --   'NvChad/nvim-colorizer.lua',
+  --   enabled = false,
+  --   config = function() require('colorizer').setup() end
+  -- },
 };
 
 return { M };

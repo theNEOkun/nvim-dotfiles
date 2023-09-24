@@ -2,19 +2,6 @@ local base = 'plugins.lsp-conf.servers'
 
 local M = {}
 
-M["jdtls"] = {
-  server_config = function()
-    return {
-      capabilities = {
-        dynamicRegistration = true;
-      }
-    }
-  end,
-  on_attach = function(client, bufnr)
-    require('plugins.lsp-conf.helper').on_attach(client, bufnr);
-  end
-}
-
 -- M["marksman"] = {
 --   server_config = function()
 --

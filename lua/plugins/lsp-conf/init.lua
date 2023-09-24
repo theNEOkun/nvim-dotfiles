@@ -33,15 +33,17 @@ local M = {
   config = function()
     local lsp_zero = require('lsp-zero')
 
-    local list = require('plugins.lsp-conf.servers')
+    -- local list = require('plugins.lsp-conf.servers')
 
     lsp_zero.on_attach(function(client, bufnr)
-      if list[client.name] then
-        list[client.name].on_attach(client, bufnr);
-      else
-        require('plugins.lsp-conf.helper').on_attach(client, bufnr);
-      end
+      lsp_zero.default_keymaps({buffer = bufnr})
+      -- require('plugins.lsp-conf.helper').on_attach(client, bufnr);
     end)
+    lsp_zero.setup_servers({
+      'jedi_language_server',
+      'zls',
+      'bashls',
+    })
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
@@ -53,7 +55,7 @@ local M = {
         lua_ls = function()
           local lua_opts = lsp_zero.nvim_lua_ls()
           require('lspconfig').lua_ls.setup(lua_opts)
-        end
+        end,
       }
     })
 
@@ -64,8 +66,8 @@ local M = {
           ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
           ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
           ['<C-o>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.abort(),
-          ['<C-e>'] = cmp.mapping.confirm({ select = true; }),
+          ['<ESC>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true; }),
     });
 
     local ts_utils = require('nvim-treesitter.ts_utils');
@@ -101,10 +103,6 @@ local M = {
           end
         }
       }
-    });
-
-    vim.diagnostic.config({
-      virtual_text = true,
     });
   end
 }

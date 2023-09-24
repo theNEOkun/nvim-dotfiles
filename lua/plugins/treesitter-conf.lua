@@ -13,12 +13,13 @@ return {
     config = function()
       require 'nvim-treesitter.configs'.setup {
         ensure_installed = { "rust", "c", "javascript", "typescript", "lua", "cpp", "markdown", "markdown_inline",
-          "kotlin", "java", "json", "html", "latex", "css", "comment" },
+          "kotlin", "java", "json", "html", "latex", "css", "comment", 'zig' },
         ignore_install = { "phpdoc" },
         -- Install languages synchronously (only applied to `ensure_installed`)
         sync_install = false,
         highlight = {
           enable = true,
+          additional_vim_regex_highlightning = false,
         },
         incremental_selection = {
           enable = true,
