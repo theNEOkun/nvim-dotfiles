@@ -4,7 +4,7 @@ local utils = require('utils');
 local keymap = utils.map
 local buf_keymap = utils.buf_map
 
-local start = '<leader>c'
+local start = '<leader>l'
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -18,23 +18,23 @@ keymap('n', start .. 'ql', '<cmd>lua vim.diagnostic.setloclist()<CR>', { desc = 
 M.on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_keymap(bufnr, 'n', start .. 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = "[C]ode Open the hover-menu" });
+  buf_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = "Open the [K]over-menu" });
 
   -- buf_keymap(bufnr, 'n', start .. 's', require('telescope.builtin').lsp_references,
   --   { desc = "[C]ode [S]how references" });
 
-  buf_keymap(bufnr, 'n', start .. 'a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-    { desc = "Selects a [C]ode [A]ction available" });
-
   buf_keymap(bufnr, 'n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "[G]o to Code [I]mplementation" });
-  buf_keymap(bufnr, 'n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [R]eferences" });
-  buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "[G]o to Code [r]ename" });
+  buf_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = "[G]o to Code [r]eferences" });
   buf_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>',
     { desc = "[G]o to Code [Definition]" });
   buf_keymap(bufnr, 'n', 'gVd', ':vsp | lua vim.lsp.buf.type_definition()<cr>',
     { desc = "[G]o to Code [D]efinition in [V]ertical split" });
   buf_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
     { desc = "[G]o to Code Type [D]efinition" });
+
+  buf_keymap(bufnr, 'n', start .. 'a', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+    { desc = "Selects a [C]ode [A]ction available" });
+  buf_keymap(bufnr, 'n', start .. 'r', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "[G]o to Code [r]ename" });
   buf_keymap(bufnr, { 'n', 'x' }, start .. 'f', '<cmd>lua vim.lsp.buf.format({ async = true }) <CR>',
     { desc = "[C]ode [F]ormat" });
   --Open context-menu

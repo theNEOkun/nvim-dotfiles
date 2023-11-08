@@ -4,6 +4,7 @@ local keymap = require('utils').map;
 local cmd = require('utils').u_cmd;
 
 keymap({'x'}, 'K', '<ESC>:Man<CR>', { desc = "Open the chosen word as a Man-page"});
+keymap({'t'}, '<ESC>', '<C-\\><C-n>', { desc = "Go out of terminal"});
 
 --Increment and Decrement
 keymap('n', '+', '<C-a>', { desc = "Increment the first number in the line" });

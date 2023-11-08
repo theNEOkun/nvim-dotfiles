@@ -33,17 +33,21 @@ local M = {
   config = function()
     local lsp_zero = require('lsp-zero')
 
-    -- local list = require('plugins.lsp-conf.servers')
-
     lsp_zero.on_attach(function(client, bufnr)
-      lsp_zero.default_keymaps({buffer = bufnr})
-      -- require('plugins.lsp-conf.helper').on_attach(client, bufnr);
+      require('plugins.lsp-conf.helper').on_attach(client, bufnr);
     end)
     lsp_zero.setup_servers({
       'jedi_language_server',
-      'zls',
       'bashls',
     })
+
+    local lspconfig = require('lspconfig');
+
+    lspconfig.zls.setup({
+      settings = {
+        enable_inlay_hints = true
+      }
+    });
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
