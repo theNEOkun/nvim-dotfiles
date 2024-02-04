@@ -1,6 +1,6 @@
 plugin/*
 lua/.plugin
-lua/old_plugin
+lua/old_plugin/*
 
 spell/*
 /tags

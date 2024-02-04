@@ -11,6 +11,8 @@ return {
     },
     build = function() vim.cmd(':TSUpdate') end,
     config = function()
+      require('ts_context_commentstring').setup {};
+      vim.g.skip_ts_context_commentstring_module = true;
       require 'nvim-treesitter.configs'.setup {
         ensure_installed = { "rust", "c", "javascript", "typescript", "lua", "cpp", "markdown", "markdown_inline",
           "kotlin", "java", "json", "html", "latex", "css", "comment", 'zig' },
@@ -28,9 +30,6 @@ return {
             scope_incremental = "grc",
             node_decremental = "grm",
           },
-        },
-        context_commentstring = {
-          enable = true,
         },
         rainbow = {
           enable = true,
